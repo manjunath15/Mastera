@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:si="http://schema.intuit.com/platform/fdatafeed/securityinfo/v1"
+    xmlns:txn="http://schema.intuit.com/platform/fdatafeed/transaction/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/invtransaction/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/invtransaction/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/securityinfo/v1" schemaLocation="SecurityInfo_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/transaction/v1" schemaLocation="Transaction_1.xsd"/>
+
+    <xs:element name="InvestmentTransaction" type="tns:InvestmentTransaction" />
+    
+	<!-- COMPLEX TYPES -->
+
+    <xs:complexType name="InvestmentTransaction">
+        <xs:complexContent>
+            <xs:extension base="txn:Transaction">
+                <xs:sequence>
+                    <xs:element name="reversalInstitutionTransactionId" type="xs:string" minOccurs="0"/>
+                    <xs:element name="description" type="xs:string" minOccurs="0"/>
+                    <xs:element name="buyType" type="tns:BuyType" minOccurs="0"/>
+                    <xs:element name="incomeType" type="tns:IncomeType" minOccurs="0"/>
+                    <xs:element name="inv401kSource" type="xs:string" minOccurs="0"/>
+                    <xs:element name="loanId" type="xs:string" minOccurs="0"/>
+                    <xs:element name="optionsActionType" type="tns:OptionsActionType" minOccurs="0"/>
+                    <xs:element name="optionsBuyType" type="tns:OptionsBuyType" minOccurs="0"/>
+                    <xs:element name="optionsSellType" type="tns:OptionsSellType" minOccurs="0" />
+                    <xs:element name="positionType" type="tns:PositionType" minOccurs="0"/>
+                    <xs:element name="relatedInstitutionTradeId" type="xs:string" minOccurs="0"/>
+                    <xs:element name="relatedOptionTransType" type="tns:RelatedOptionTransType" minOccurs="0"/>
+                    <xs:element name="securedType" type="tns:SecuredType" minOccurs="0" />
+                    <xs:element name="sellReason" type="tns:SellReason" minOccurs="0"/>
+                    <xs:element name="sellType" type="tns:SellType" minOccurs="0"/>
+                    <xs:element name="subaccountFromType" type="txn:InvestmentSubAccountType" minOccurs="0"/>
+                    <xs:element name="subaccountFundType" type="txn:InvestmentSubAccountType" minOccurs="0"/>
+                    <xs:element name="subaccountSecurityType" type="txn:InvestmentSubAccountType" minOccurs="0"/>
+                    <xs:element name="subaccountToType" type="txn:InvestmentSubAccountType" minOccurs="0"/>
+                    <xs:element name="transferAction" type="tns:TransferAction" minOccurs="0" />
+                    <xs:element name="unitType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cusip" type="xs:string" minOccurs="0"/>
+                    <xs:element name="symbol" type="xs:string" minOccurs="0"/>
+                    <xs:element name="unitAction" type="xs:string" minOccurs="0"/>
+                    <xs:element name="optionsSecurity" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tradeDate" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="settleDate" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="accruedInterestAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="averageCostBasisAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="commissionAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="denominator" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="payrollDate" type="xs:dateTime"  minOccurs="0"/>
+                    <xs:element name="purchaseDate" type="xs:dateTime"  minOccurs="0"/>
+                    <xs:element name="gainAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="feesAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="fractionalUnitsCashAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="loadAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="loanInterestAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="loanPrincipalAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="markdownAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="markupAmount" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="newUnits" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="numerator" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="oldUnits" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="penaltyAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="priorYearContribution" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="sharesPerContract" type="xs:short" minOccurs="0"/>
+                    <xs:element name="stateWithholding" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="totalAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="taxesAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="taxExempt" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="unitPrice" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="units" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="withholdingAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="optionsSharesPerContract" type="xs:long"  minOccurs="0"/>
+                    <xs:element name="invSecurityType" type="si:InvSecurityType" minOccurs="0"/>
+                    <xs:choice>
+                        <xs:element name="debtInfo" type="si:DebtInfo" minOccurs="0"/>
+                        <xs:element name="mfInfo" type="si:MFInfo" minOccurs="0"/>
+                        <xs:element name="stockInfo" type="si:StockInfo" minOccurs="0"/>
+                        <xs:element name="optionInfo" type="si:OptionInfo" minOccurs="0"/>
+                        <xs:element name="otherInfo" type="si:OtherInfo" minOccurs="0"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- simple types -->
+    
+    <xs:simpleType name="BuyType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BUY"/>
+            <xs:enumeration value="BUYTOCOVER"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IncomeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CGLONG"/>
+            <xs:enumeration value="CGSHORT"/>
+            <xs:enumeration value="DIV"/>
+            <xs:enumeration value="INTEREST"/>
+            <xs:enumeration value="MISC"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="OptionsActionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EXERCISE"/>
+            <xs:enumeration value="ASSIGN"/>
+            <xs:enumeration value="EXPIRE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="OptionsBuyType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BUYTOOPEN"/>
+            <xs:enumeration value="BUYTOCLOSE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="OptionsSellType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SELLTOOPEN"/>
+            <xs:enumeration value="SELLTOCLOSE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PositionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LONG"/>
+            <xs:enumeration value="SHORT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TransferAction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="IN"/>
+            <xs:enumeration value="OUT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="RelatedOptionTransType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SPREAD"/>
+            <xs:enumeration value="STRADDLE"/>
+            <xs:enumeration value="NONE"/>
+            <xs:enumeration value="OTHER"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SecuredType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NAKED"/>
+            <xs:enumeration value="COVERED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SellReason">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CALL"/>
+            <xs:enumeration value="SELL"/>
+            <xs:enumeration value="MATURITY"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SellType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SELL"/>
+            <xs:enumeration value="SELLSHORT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>

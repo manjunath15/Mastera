@@ -1,0 +1,2413 @@
+{
+    "endpoints":[
+        {
+            "name":"Account",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Account.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/account",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Account",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/account/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Account.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/account?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Account",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/account?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Account",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Account"
+            ]
+        },
+        {
+            "name":"Attachment",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"Creates an Attachable record.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/attachable",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Attachable",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/attachable/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates an Attachment.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/attachable",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Attachable",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes an attachable record.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/attachable?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Attachable",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Upload",
+                    "Synopsis":"This operation deletes an attachable record.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/upload",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "multipart/form-data"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Query",
+                    "Synopsis":"This is for attachable simple query.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/query",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/text"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Access File",
+                    "Synopsis":"This operation is for accessing files (download).",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/download/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ],
+            "EntityNames":[
+                "Attachable"
+            ]
+        },
+        {
+            "name":"Bill",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Bill.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/bill",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Bill",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/bill/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Bill.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/bill?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Bill",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/bill?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Bill",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Bill"
+            ]
+        },
+        {
+            "name":"Class",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Class.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/class",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Class",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/class/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Class.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/class?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Class",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/class?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Class",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Class"
+            ]
+        },
+        {
+            "name":"Company",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Company.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/company",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Company",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/company/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ],
+            "EntityNames":[
+                "Company"
+            ]
+        },
+        {
+            "name":"CreditMemo",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type CreditMemo.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/creditmemo",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CreditMemo",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/creditmemo/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a CreditMemo.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/creditmemo?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CreditMemo",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/creditmemo?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CreditMemo",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "CreditMemo"
+            ]
+        },
+        {
+            "name":"Customer",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Customer.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/customer",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Customer",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/customer/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Customer.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/customer?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Customer",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/customer?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Customer",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Customer"
+            ]
+        },
+        {
+            "name":"Department",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Department.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/department",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Department",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/department/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Department.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/department?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Department",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/department?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Department",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Department"
+            ]
+        },
+        {
+            "name":"Estimate",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Estimate.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/estimate",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Estimate",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/estimate/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Estimate.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/estimate?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Estimate",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/estimate?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Estimate",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Estimate"
+            ]
+        },
+        {
+            "name":"Invoice",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Invoice.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/invoice",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Invoice",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/invoice/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Invoice.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/invoice?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Invoice",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/invoice?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Invoice",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Invoice"
+            ]
+        },
+        {
+            "name":"Item",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Item.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/item",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Item",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/item/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Item.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/item?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Item",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/item?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Item",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Item"
+            ]
+        },
+        {
+            "name":"Payment",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Payment.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/payment",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Payment",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/payment/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Payment.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/payment?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Payment",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/payment?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Payment",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Payment"
+            ]
+        },
+        {
+            "name":"PaymentMethod",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type PaymentMethod.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/paymentmethod",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PaymentMethod",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/paymentmethod/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a PaymentMethod.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/paymentmethod?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PaymentMethod",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/paymentmethod?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PaymentMethod",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "PaymentMethod"
+            ]
+        },
+        {
+            "name":"Preferences",
+            "methods":[
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/preferences/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ],
+            "EntityNames":[
+                "Preferences"
+            ]
+        },
+        {
+            "name":"Purchase",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Purchase.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/purchase",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Purchase",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/purchase/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Purchase.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/purchase?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Purchase",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/purchase?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Purchase",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Purchase"
+            ]
+        },
+        {
+            "name":"PurchaseOrder",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type PurchaseOrder.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/purchaseorder",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PurchaseOrder",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/purchaseorder/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a PurchaseOrder.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/purchaseorder?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PurchaseOrder",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/purchaseorder?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PurchaseOrder",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "PurchaseOrder"
+            ]
+        },
+        {
+            "name":"SalesReceipt",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type SalesReceipt.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/salesreceipt",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesReceipt",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/salesreceipt/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a SalesReceipt.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/salesreceipt?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesReceipt",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/salesreceipt?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesReceipt",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "SalesReceipt"
+            ]
+        },
+        {
+            "name":"TaxCode",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type TaxCode.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/taxcode",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "TaxCode",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"Gets a TaxCode",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/taxcode/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ],
+            "EntityNames":[
+                "TaxCode"
+            ]
+
+        },
+        {
+            "name":"TaxRate",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type TaxRate.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/taxrate",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "TaxRate",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"Gets a taxrate",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/taxrate/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ],
+            "EntityNames":[
+                "TaxRate"
+            ]
+
+        },
+        {
+            "name":"Term",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Term.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/term",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Term",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/term/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Term.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/term?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Term",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/term?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Term",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Term"
+            ]
+        },
+        {
+            "name":"Vendor",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Vendor.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/vendor",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Vendor",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This operation retrieves a single entity by ID.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/vendor/:entityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "entityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation updates a Vendor.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/vendor?operation=update",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Vendor",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes a single entity by ID.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/vendor?operation=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "requestid",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Vendor",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Vendor"
+            ]
+        },
+        {
+            "name":"Query",
+            "methods":[
+                {
+                    "MethodName":"Query Operation (GET)",
+                    "Synopsis":"Execute query for entities.",
+                    "HTTPMethod":"GET",
+                    "URI":"/company/:companyId/query",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "query",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Query Operation (POST)",
+                    "Synopsis":"Execute query for entities.",
+                    "HTTPMethod":"POST",
+                    "URI":"/company/:companyId/query",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/text"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "companyId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.intuit.com/sb/cdm/v2"
+	targetNamespace="http://www.intuit.com/sb/cdm/v2" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:include schemaLocation="./PartyCdmTypes.xsd"/>
+	<xs:include schemaLocation="../common/Groups.xsd"/>
+	<xs:include schemaLocation="../common/IntuitCdmBaseTypes.xsd"/>
+	<!-- Element definitions -->
+	<!-- Party element definition -->
+	<xs:element name="Person" type="Person"/>
+	<xs:element name="Organization" type="Organization"/>
+	<xs:element name="Persons" type="Persons"/>
+	<xs:element name="Organizations" type="Organizations"/>
+	<xs:element name="Party" type="Party"/>
+	<xs:element name="Parties" type="Parties"/>
+	<!-- Role element definition -->
+	<xs:element name="Customer" type="Customer" substitutionGroup="CdmObject"/>
+	<xs:element name="CustomerType" type="CustomerType" substitutionGroup="CdmObject"/>
+	<xs:element name="Employee" type="Employee" substitutionGroup="CdmObject"/>
+	<xs:element name="JobType" type="JobType" substitutionGroup="CdmObject"/>
+	<xs:element name="OtherName" type="OtherName" substitutionGroup="CdmObject"/>
+	<xs:element name="Vendor" type="Vendor" substitutionGroup="CdmObject"/>
+	<xs:element name="VendorType" type="VendorType" substitutionGroup="CdmObject"/>
+	<!--Start complex type definitions -->
+	<xs:complexType name="Customer">
+		<xs:annotation>
+			<xs:documentation> 
+			Product: QBO
+			Description: The Customer represents the consumer of the service or the product that your business offers. QBO allows categorizing the customers in a way that is meaningful to the business. For example, you can set up a category of customers to indicate which industry a customer represents, the geographic location of a customer, or how a customer came to know about the business. The categorization can be then used for reports or mails.			
+			Product: QBW
+			Description: A customer is a consumer of the service or product that your business offers. The Customer object allows you to categorize customers according to your business requirements. For example, you can create a category of customers to indicate the industry that a customer represents, the geographic location of a customer, or the awareness of the business. Categorization of customers is useful for reports. While creating a customer, avoid entering any job data. If you enter a job data, the system can prevent you from adding any more jobs for that customer. You must first create a customer, and then create a job using that customer as a parent.
+			Business Rules: [li]The customer name must be unique.[/li][li]The customer name must not contain a colon (:).[/li][li]The e-mail address of the customer must contain @ and . (dot).[/li][li]The customer address field is mandatory.[/li]			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="RoleBase">
+				<xs:sequence>
+					<xs:element name="Active" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: If true, this object is currently enabled for use by QuickBooks. The default value is true.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ShowAs" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: How the name of the customer should be presented, e.g. on credit cards.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 41 characters. 
+							Product: QBO
+							Description: How the name of the customer should be presented, e.g. on credit cards.[br /]If you do not provide any value, the value of the Name attribute is used. If Name is not specified, the value of the GivenName and FamilyName attributes are used.[br /]For example, if the name of the customer is John Doe and you specify a value for ShowAs, such as John, the ShowAs contains John in the return value. If you do not specify any value for ShowAs, the ShowAs contains John Doe in the return value.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="CustomerTypeReferenceGroup" minOccurs="0"/>
+					<xs:group ref="SalesTermReferenceGroup" minOccurs="0"/>
+					<xs:group ref="SalesRepReferenceGroup" minOccurs="0"/>
+					<xs:group ref="SalesTaxCodeReferenceGroup" minOccurs="0"/>
+					<xs:group ref="TaxChoiceGroup" minOccurs="0"/>
+					<xs:group ref="PaymentMethodReferenceGroup" minOccurs="0"/>
+					<xs:group ref="PriceLevelReferenceGroup" minOccurs="0"/>
+					<xs:element name="OpenBalance" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBO
+							Description: Open balance amount (unpaid) by the customer. For the Create request it represents the Open Balance for the customer. When returned in response to the Query request it represents the Current Open Balance (unpaid amount) of the customer.
+							Product: QBO
+							Description: The amount outstanding that the customer or job owes. Read-only field.
+							Filterable: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OpenBalanceDate" type="IDSDate" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 							
+							Description: Date of the Open Balance for the Create request.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OpenBalanceWithJobs" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Cumulative open balance amount for the current customer (or Job) and all its sub-jobs.[br /]Cannot be written to QuickBooks.
+							Filterable: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CreditLimit" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Maximum amount of an unpaid customer balance.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AcctNum" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Name or number of the account associated with this customer.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 99 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OverDueBalance" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Overdue balance amount.[br /]Cannot be written to QuickBooks.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TotalRevenue" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Total revenue amount.[br /]Cannot be written to QuickBooks.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TotalExpense" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Total expense amount.[br /]Cannot be written to QuickBooks.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="JobInfo" type="JobInfo" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Information about the job. Relevant only if the Customer is not just a person or organization, but also represents the actual task or project.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CustomerType">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: Customer types allow categorizing customers in ways that are meaningful to the business. For example, one could set up customer types so that they indicate which industry a customer represents, a customer's geographic location, or how a customer first heard about the business. The categorization then can be used for reporting or mailings.
+			Business Rules: None			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Filterable: QBW
+							Description: User recognizable name for the Customer Type.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters.[br /]Required for the Create request.
+							Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="CustomerTypeParentReferenceGroup" minOccurs="0"/>
+					<xs:element name="Active" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Whether or not the customer is active. Inactive customer types may be hidden from display and may not be used on financial transactions.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Employee">
+		<xs:annotation>
+			<xs:documentation> 			
+			Product: QBW
+			Description: The Employee represents the persons who are working for the company.
+			Business Rules: [li]The employee name must be unique.[/li][li]The employee name, first name, or last name must not contain a colon (:).[/li][li]The name, first name or last name field should not be blank.[/li][li]The e-mail, phone, and address fields are mandatory.[/li][li]The e-mail address of the employee must contain @ and . (dot).[/li][li]The value for the EmployeeType element must be either of the following: Officer, Owner, Regular, or Statutory.[/li][li]The value for the DeviceType element must be either of the following: Landline, Mobile, Fax, or Pager.[/li]			
+			Product: QBO
+			Description: The Employee represents the persons who are working for the company. In QBO, the Employee resource is available as a read-only resource. That is, only retrieve and simple query operations are supported for this resource.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="RoleBase">
+				<xs:sequence>
+					<xs:element name="Active" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Active Employee may be hidden from most display purposes
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ShowAs" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: How the name of the employee should be represented, e.g. on paychecks.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 41 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="EmployeeType" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Employee type. For QB DT the acceptable values are defined in the EmployeeTypeEnum.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="EmployeeNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Number of the employee (or account) in the employer's directory.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 99 characters.[br /]UNSUPPORTED FIELD.
+							Product: QBO
+							Description: Employee ID in QBO. Externald and EmployeeNumber are both mapped to the Employee ID in QBO.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BillableTime" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: BillableTime should be true if this employee&apos;s hours are typically billed to customers.[br /]UNSUPPORTED FIELD.
+							Product: QBO
+							Description: True if the hours of the employee are billed to the customer.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="HiredDate" type="IDSDate" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW 
+								Description: Date the employee was hired.
+								Product: QBO
+								Description: Date the employee was hired.[br /]For QBO, the Data Type is DateTime, not IDSDate.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ReleasedDate" type="IDSDate" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW 
+								Description: Date the employee was released.
+								Product: QBO
+								Description: Date the employee was released.[br /]For QBO, the Data Type is DateTime, not IDSDate.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="UseTimeEntry" type="TimeEntryUsedForPaychecksEnum">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Whether the Time Entry (time sheets) should be used to create paychecks for the employee.[br /]
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JobInfo">
+		<xs:sequence>
+			<xs:element name="Status" type="JobStatusEnum" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: ALL
+					Description: current status of the job. The acceptable values are defined in the JobStatusEnum.[br /]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartDate" type="IDSDate" minOccurs="0"/>
+			<xs:element name="ProjectedEndDate" type="IDSDate" minOccurs="0"/>
+			<xs:element name="EndDate" type="IDSDate" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: Description of the job.[br /]Data Services max. length: 4000 characters. QuickBooks max. length: 99 characters.
+						[span style="display: none"] Default-Field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:group ref="JobTypeReferenceGroup" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="JobType">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: Job types allow categorizing jobs so that similar jobs can be grouped and subtotaled on reports. Ultimately, they will help in determining which jobs are most profitable for the business.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Filterable: QBW
+							Description: User recognizable name for the Job Type.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters.[br /]Required for the Create request.
+							Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="JobTypeParentReferenceGroup" minOccurs="0"/>
+					<xs:element name="Active" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Whether or not the job type is active. Inactive job types may be hidden from display and may not be used on financial transactions.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Label">
+		<xs:annotation>
+			<xs:documentation> 
+			Product: ALL
+			Description: Tag usage for any of the objects, normally LabelType is used with a list.[br /]UNSUPPORTED FIELD.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: ALL
+					Description: Unique Identifier for an Intuit object.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: ALL
+					Description: Text for the tag of the object. 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Note">
+		<xs:annotation>
+			<xs:documentation> 
+			Product: ALL
+			Description: Free form text information associated with an object. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element name="Content" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: ALL
+							Description: Free form text content.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Organizations">
+		<xs:sequence>
+			<xs:element name="Organization" type="Organization" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OtherName">
+		<xs:annotation>
+			<xs:documentation> 
+			Product: QBW
+			Description: The OtherName object represents a person or a company that is not your customer, vendor, or employee. For example, you can use OtherName object to represent owners or partners.
+			Business Rules: None			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="RoleBase">
+				<xs:sequence>
+					<xs:element name="Active" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Active Customer may be hidden from display.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AcctNum" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Name or number of the account associated with this other name (payee).[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 41 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Party">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: Base Party that describes the party model.[br /]UNSUPPORTED FIELD.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:group ref="PartyGroup"/>
+					<xs:element name="Role" type="roleType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>
+							Product: ALL
+							Description: Association between Party and other objects. 
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomField" type="CustomField" minOccurs="0"
+						maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>
+							Product: ALL
+							Description: Custom fields for which CustomFieldDefinition was previously associated with Party.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Parties">
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element name="CustomFieldDefinition" type="CustomFieldDefinition"
+						minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Custom field definitions previously associated with this CustomField.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Party" type="Party" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Party as an entity type.  
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Persons">
+		<xs:sequence>
+			<xs:element name="Person" type="Person" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoleBase">
+		<xs:annotation>
+			<xs:documentation> 
+			Product: QBW 
+			Description: Describes Role of a Party. Generally the role can be Customer, Vendor, Employee, Other Name.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element name="PartyReferenceId" type="IdType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 	
+							Description: Reference to Party UniqueId, need to be specified when Party elements can be referenced.
+							[span style="display: none"] Default-Field: QBW [/span]
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="PartyGroup">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Substitutes PartyGroup elements to enable reuse, all the elements appear to be defined locally 
+							</xs:documentation>
+						</xs:annotation>
+					</xs:group>
+					<xs:group ref="PersonGroup">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Substitutes PersonGroup elements to enable reuse, all the elements appear to be defined locally 
+							</xs:documentation>
+						</xs:annotation>
+					</xs:group>
+					<xs:group ref="OrganizationGroup">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Substitutes OrganizationGroup elements to enable reuse, all the elements appear to be defined locally 
+							</xs:documentation>
+						</xs:annotation>
+					</xs:group>
+					<xs:element name="TaxIdentifier" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Tax ID of the person or organization.
+							Product: QBO
+							Description: Tax ID of the person or organization. This is a Personally Identifiable Information (PII) attribute.[br /]Supported for Employee and Vendor only.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Notes" type="Note" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Free form text content.[br /]Only one note (the first one) is used when writing the data back to QuickBooks.[br /]Data services max. length: 4000 characters. QuickBooks max. length: 4000 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Vendor">
+		<xs:annotation>
+			<xs:documentation> 
+			Product: QBO
+			Description: The Vendor represents the seller from whom your company purchases any service or product.			
+			Product: QBW
+			Description: You can use the Vendor object to store information about the people and companies you do business with. A vendor is an individual or an organization that provides goods and services to a customer. For example, banks and tax agencies.
+			Business Rules: [li]The vendor name must be unique.[/li][li]The name, first name, and last name of the vendor must not contain a colon (:).[/li][li]The name, first name, or last name field should not be blank.[/li][li]The e-mail address of the vendor must contain @ and . (dot).[/li]			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="RoleBase">
+				<xs:sequence>
+					<xs:element name="Active" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Active Vendor may be hidden from display.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ShowAs" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW 
+								Description: How the name of the vendor should be presented, e.g. on checks.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 41 characters. 
+								Product: QBO
+								Description: How the name of the vendor should be presented, e.g. on checks.[br /]If you do not provide any value, the value of the Name attribute is used. If Name is not specified, the value of the GivenName and FamilyName attributes are used.[br /]For example, if the name of the vendor is John Doe and you specify a value for ShowAs, such as John, the ShowAs contains John in the return value. If you do not specify any value for ShowAs, the ShowAs contains John Doe in the return value.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="VendorTypeReferenceGroup" minOccurs="0"/>
+					<xs:group ref="SalesTermReferenceGroup" minOccurs="0"/>
+					<xs:element name="OpenBalance" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+				                Product: QBO
+				                Description: Open balance amount unpaid, owed to the vendor. Read-only field.
+				                Product: QBW
+				                Description: Open balance amount unpaid, owed to the vendor. Cannot be written to QuickBooks.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OpenBalanceDate" type="IDSDate" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Date of the Open Balance. Cannot be written to QuickBooks.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CreditLimit" type="Money" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Maximum amount of an unpaid vendor balance.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AcctNum" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+				                Product: QBW
+				                Description: Name or number of the account associated with this vendor.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 41 characters.
+				                Product: QBO
+				                Description: Name or number of the account associated with this vendor.
+								Filterable: QBO
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Vendor1099" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: ALL
+							Description: True if the Vendor is an independent contractor, given a 1099-MISC form at the end of the year. A &quot;1099 Vendor&quot; is paid with regular checks, and taxes are not withheld on their behalf.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="VendorType">
+		<xs:annotation>
+			<xs:documentation>
+				Product: QBW
+				Description: Vendor types allow categorizing vendors in ways that are meaningful to the business. For example, one could set up vendor types so that they indicate a vendor&apos;s industry or geographic location. The categorization then can be used for reporting. You can also create a vendor type as a subtype of another vendor type.
+				Business Rules: None			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: User recognizable name for the Vendor Type.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters.[br /]Required for the Create request.
+							Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="VendorTypeParentReferenceGroup" minOccurs="0"/>
+					<xs:element name="Active" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Whether or not the vendor type is active. Inactive vendor types may be hidden from display and may not be used on financial transactions.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--Simple type definitions -->
+	<xs:simpleType name="EmployeeTypeEnum">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW
+			Description: Employee type enumeration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Officer"/>
+			<xs:enumeration value="Owner"/>
+			<xs:enumeration value="Regular"/>
+			<xs:enumeration value="Statutory"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JobStatusEnum">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: Job status enumeration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Awarded"/>
+			<xs:enumeration value="Closed"/>
+			<xs:enumeration value="InProgress"/>
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="NotAwarded"/>
+			<xs:enumeration value="Pending"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="partyType">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: Party type enumeration, can be a Person or Organization 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Person"/>
+			<xs:enumeration value="Organization"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimeEntryUsedForPaychecksEnum">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: Job status enumeration
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NotSet"/>
+			<xs:enumeration value="DoNotUseTimeEntry"/>
+			<xs:enumeration value="UseTimeEntry"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Groups definitions -->
+	<xs:group name="CustomerParentReferenceGroup">
+		<xs:sequence>
+			<xs:element name="CustomerParentId" type="IdType" minOccurs="0"/>
+			<xs:element name="CustomerParentName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Fully-qualified name for a customer parent name. A fully-qualified name starts with the name followed by a colon (:), followed by the sub name; append a colon and sub name for each additional sub name (up to five levels) until you have delineated the full name. For example: "Jennifer Hermann:Residential Maintenance" is the parent name for "Jennifer Hermann:Residential Maintenance:Lawn Mowing".[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 41 characters (single name) or 209 characters (fully qualified name).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="CustomerTypeParentReferenceGroup">
+		<xs:sequence>
+			<xs:element name="CustomerTypeParentId" type="IdType" minOccurs="0"/>
+			<xs:element name="CustomerTypeParentName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Customer type parent name.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="CustomerTypeReferenceGroup">
+		<xs:sequence>
+			<xs:element name="CustomerTypeId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: ID of the CustomerType object.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerTypeName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Fully-qualified name for a customer type. A fully-qualified name starts with the name followed by a colon (:), followed by the sub name; append a colon and sub name for each additional sub name (up to five levels) until you have delineated the full name. For example: "Retail:Clothing".[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters (single name) or 159 characters (fully qualified name).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="JobTypeParentReferenceGroup">
+		<xs:sequence>
+			<xs:element name="JobTypeParentId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: ID of the JobParentType object.
+						[span style="display:none"] Default field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="JobTypeParentName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW
+					Description: Job type parent name.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters.
+					[span style="display:none"] Default field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="JobTypeReferenceGroup">
+		<xs:sequence>
+			<xs:element name="JobTypeId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: ID of the JobType object.
+						[span style="display:none"] Default field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="JobTypeName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Fully-qualified name for a job type. A fully-qualified name starts with the name followed by a colon (:), followed by the sub name; append a colon and sub name for each additional sub name (up to five levels) until you have delineated the full name. For example: "Residential Maintenance:Lawn Mowing".[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters (single name) or 159 characters (fully qualified name).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="PartyGroup">
+		<xs:annotation>
+			<xs:documentation> 
+			Product: QBW 
+			Description: Describes PartyGroup elements as a &quot;group&quot; so that PartyGroup can be substituted in places where all elements of Party need to appear 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TypeOf" type="partyType">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW					
+					Description: Type of party, this is very useful if a list of &quot;parties&quot; are returned and this element can specify the type of Party without having to look at extended elements.[br /]Required for the Create request.
+					Required: QBW
+					[span style="display: none"] Default-Field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Name assigned by the customer management subsystem; input only element.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 41 characters.[br /]Required for the Create request.
+					Product: QBO
+					Description: Full name of the customer, employee, job, or vendor. If the Name is specified, then GivenName, MiddleName, and FamilyName values are ignored.[br /]Default sort attribute for Employee and Vendor.[br /]Required for Job if Given Name, Middle Name or Last Name are not specified; if the FullName is not specified, then GivenName, MiddleName, and FamilyName are concatenated and used for the value of this field.[br /]Required for Vendor if GivenName is not specified.
+					Filterable: ALL
+					Sortable: ALL
+					Required: ALL
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:group ref="ContactInfoGroup"/>
+			<xs:element name="ExternalId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: ExternalID associated with the Person.[br /]UNSUPPORTED FIELD.
+					Product: QBO
+					Description: Employee ID in QBO. This is the same value as EmployeeNumber. [i]Supported for Employee only.[/i] 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="VendorTypeParentReferenceGroup">
+		<xs:sequence>
+			<xs:element name="VendorTypeParentId" type="IdType" minOccurs="0"/>
+			<xs:element name="VendorTypeParentName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Vendor type parent name.[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="VendorTypeReferenceGroup">
+		<xs:sequence>
+			<xs:element name="VendorTypeId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: ID of the VendorType object.
+						[span style="display:none"] Default field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VendorTypeName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Fully-qualified name for a vendor type. A fully-qualified name starts with the name followed by a colon (:), followed by the sub name; append a colon and sub name for each additional sub name (up to five levels) until you have delineated the full name. For example: "Transportation:Trucking".[br /]Data Services max. length: 1024 characters. QuickBooks max. length: 31 characters (single name) or 159 characters (fully qualified name).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+</xs:schema>

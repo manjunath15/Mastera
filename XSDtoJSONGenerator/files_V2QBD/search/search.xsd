@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Schema definition for IDS Search Service
+    
+    author: Sreejith Rajkumar, Mukesh Aggarwal
+    
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xdb="http://xmlns.oracle.com/xdb"
+           xmlns="http://www.intuit.com/sb/cdm/v2" targetNamespace="http://www.intuit.com/sb/cdm/v2"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+		   <xs:include schemaLocation="../common/RestDataFilter.xsd"/>
+
+    
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Response (returned by server)                                       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    
+    <xs:element name="SearchRestResponse" type="SearchRestResponse"/>
+    
+    <xs:complexType name="SearchRestResponse">
+        <xs:sequence minOccurs="1">
+            <xs:element name="MetaData" type="MetaData" minOccurs="1"/>
+			<xs:element name="SearchDocs" type="SearchDocs"/>
+ 			<xs:element name="EntityCollection" type="EntityCollection"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+	
+	<xs:complexType name="SearchDoc">
+        <xs:sequence minOccurs="1">
+            <xs:element name="Id" type="IdType" minOccurs="1"/>
+   			<xs:element name="score" type="xs:float" minOccurs="1"/>
+			<xs:element name="EntityType" type="objectName" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	
+	
+    <xs:complexType name="Facets">
+        <xs:sequence>   
+            <xs:element name="FacetType" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="facet" type="facet" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                    <xs:attribute name="name" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>	
+        </xs:sequence>     
+    </xs:complexType>
+	
+	
+	
+	
+  <xs:complexType name="facet">
+    <xs:simpleContent>
+      <xs:extension base="xs:long">
+        <xs:attribute name="name" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+	
+	
+	
+	
+	
+    
+    <xs:complexType name="MetaData">
+        <xs:sequence>
+            <xs:element name="numDocs" type="xs:long" minOccurs="1"/>
+			<xs:element name ="Facets" type="Facets" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LastIndexedTms" type="xs:string" minOccurs="1"/>
+			<xs:element name ="SearchMsg" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+	
+	
+	<xs:complexType name="SearchDocs">
+        <xs:annotation>
+      <xs:documentation>
+              Description: This is the enclosing envelope for all Search Documents in sorted order
+      </xs:documentation>
+        </xs:annotation>
+                    <xs:sequence>
+                <xs:element name ="SearchDoc" type="SearchDoc" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            </xs:complexType>	 
+	    
+      
+	<xs:complexType name="EntityCollection">
+        <xs:annotation>
+      <xs:documentation>
+              Description: This is the enclosing envelope for all CDM collections returned by DataServices.
+      </xs:documentation>
+        </xs:annotation>
+                    <xs:sequence>
+                <xs:element ref="SystemResponse" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            </xs:complexType>	  
+</xs:schema>
+

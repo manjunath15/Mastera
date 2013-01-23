@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.intuit.com/sb/cdm/v2"
+	targetNamespace="http://www.intuit.com/sb/cdm/v2" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation>		
+		Product: ALL
+		Description: Intuit Base type CDMs that will be used in any domains as base types 
+		</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="CdmComplexBase" abstract="true">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: QBW 
+			Description: Defines the abstract base type that is used as a base for collection types, or objects returned by the REST service. It also serves as a base for the substitution group for the REST service allowing for having the common root element for any object returned by the service.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="CdmCollections" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="CdmComplexBase"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- Type definitions -->
+	<xs:complexType name="CdmBase" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: CdmBase type which can be used as base type for all Intuit CDM objects that can be identified and modified as a top level CDM, example for top level CDMs are Party, Customer, Vendor in case of CMO these can extend from CdmBase. Though Physical Address, EmailAddress belong to a Party it can be manipulated as a independent object hence these also can be a &quot;extension&quot; of CdmBase. However CustomFields, Money is always associated with another top level CDM and will not be manipulated as independent object hence these CDMs are not considered as extension of CdmBase 			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmObject">
+				<xs:sequence>
+					<xs:element name="Id" type="IdType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW
+							Description: Unique identifier for an Intuit object across all Intuit internal domains. Required for the Update and Delete operations.
+							Product: QBO
+							Description: Unique identifier for an Intuit object across all Intuit internal domains. Required for the Update and Delete operations.[br /]Filter and Sort support for Bill and BillPayment only.
+							Required: ALL
+							[span style="display: none"] Default-Field: QBW [/span]
+							Filterable: QBO
+							Sortable: QBO
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SyncToken" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: ALL
+							Description: Version number of the object for optimistic locking purposes. Required for the Update and Delete operations.
+							Required: ALL							
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MetaData" type="ModificationMetaData" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: ALL
+							Description: Defines the metadata for the object.							
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ExternalKey" type="IdType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: Unique Identifier for an Intuit object that is also associated with an external domain.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Synchronized" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: If true, the data on the cloud has been synchronized with QuickBooks for Windows. If false, the data has been created or updated on the cloud but has not been synchronized with QuickBooks for Windows. Read-only field.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AlternateId" type="NameValue" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: NOT SUPPORTED. Identifier for an object in the domain of origin, outside of the Intuit domain.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomField" type="CustomField" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: Custom Field (or Data Extension).[br]See [a href="http://ipp.developer.intuit.com/0010_Intuit_Partner_Platform/0050_Data_Services/0500_QuickBooks_Windows/0200_Key_Concepts/0200_Custom_Fields"]Custom Fields[/a].
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="Draft" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>													
+							Product: QBW 
+							Description: Indicates whether the object is in the Draft state, or if it is ready to be written back to QuickBooks.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="ObjectState" type="objectStateEnum">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Indicates which state the object is in currently.[br /]
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CdmObject" abstract="true"/>
+	<xs:complexType name="CustomField" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: Custom field type that can be added to an entity, this object is not extended from CdmBase as CustomField can not be manipulated as independent object and will always be considered in association with another top level object. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DefinitionId" type="IdType">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Unique identifier for the CustomField definition; DefinitionId should be specified for every CustomField.[br /]Required for the Create request.
+					Required: QBW
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Name of the CustomField definition.[br /]Required for the Create request.
+					Required: QBW
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustomFieldDefinition" abstract="true">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: QBW 
+			Description: CustomFieldDefinition that can be defined to a CDM to add additional columns dynamically on a existing CDM entities, this object is not extended from CdmBase as it is considered as definition that can be manipulated by specifying the definition ID.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmObject">
+				<xs:sequence>
+					<xs:element name="Id" type="IdType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: DefinitionId of the CustomFieldDefinition object, Id element will be used if update is needed for the CustomFieldDefinition. 
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SyncToken" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: Version number of the object for optimistic locking purpose.[br /]Required for the Update request.
+							Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CdmType" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: Object type to which the CustomFieldDefinition is associated. Valid values are defined in the objectNameEnumType.[br /]Required for the Create request.
+							Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Name" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: Name of the CustomField object.[br /]Required for the Create request.
+							Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Hidden" type="xs:boolean" default="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: Whether the Custom Field is Private (value=true) or Public (value = false) and it can be shared among different applications.[br /]Default is "false".
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Required" type="xs:boolean" default="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: If the field is required for every instance (child) of the Parent for which the definition is defined. The value is not verified by Data Services.[br /]Default is "false".
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SetName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW 
+							Description: Client-provided identifier of the set of Custom Field Definitions. A client can specifiy the definition as a part of the set and later reuse that set for a one-time operation of custom field definition in another set using the CustomFieldDefinitionSetAdd request.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SetId" type="xs:positiveInteger" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW 
+							Description: Server provided Id for the Custom Field Definition that user designated to be a part of a set by providing the SetName element.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NameValue">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: A name/value pair allows for clients including data that is meaningful in the domain of origin, outside of the Intuit domain.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW 
+						Description: String label for the NameValue pair.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Value" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW 
+						Description: String value for the NameValue pair.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ModificationMetaData">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: Defines the metadata of the instance of data			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CreatedBy" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Name of the user who created the data. Read-only field.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CreatedById" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>									
+					Product: QBW 
+					Description: Authentication ID of user who created the data object. Read-only field.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CreateTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW
+					Description: Time the record was created. Read-only field.
+					Product: QBO
+					Description: Time the record was created. Read-only field.[br /]Filter support: Account, Bill, BillPayment, CashPurchase, Check, Class, CreditCardCharge, Customer, Employee, Estimate, Invoice, Item, Job, JournalEntry, Payment, PaymentMethod, SalesReceipt, SalesTerm, TimeActivity, Vendor.[br /]Sort support: Bill, BillPayment, CashPurchase, Check, CreditCardCharge, Estimate, Invoice, Item, JournalEntry, Payment, PaymentMethod, SalesReceipt, SalesTerm, TimeActivity.
+					Filterable: ALL
+					Sortable: QBO
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LastModifiedBy" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Name of the user who modified the data last. Read-only field.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LastModifiedById" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Authentication ID of user who modified the data last; this information is useful to look up for additional information about the user. Read-only field.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LastUpdatedTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+						Product: QBW
+						Description: Time the record was last updated. Read-only field.
+						Product: QBO
+						Description: Time the record was last updated. Read-only field.[br /]Filter support: Account, Bill, BillPayment, CashPurchase, Check, Class, CreditCardCharge, Customer, Employee, Estimate, Invoice, Item, Job, JournalEntry, Payment, PaymentMethod, SalesReceipt, SalesTerm, TimeActivity, Vendor.[br /]Sort support: Bill (default), BillPayment (default), CashPurchase (default), Check (default), CreditCardCharge (default), Estimate (default), Invoice (default), Item, JournalEntry, Payment (default), PaymentMethod, SalesReceipt (Default), SalesTerm, TimeActivity.
+						Filterable: ALL
+						Sortable: ALL
+						[span style="display: none"] Default-Field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Money">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Money type describes the Money value represented in Intuit as Currency Code and decimal value. Money type is always associated with another object and will not be manipulated as a standalone hence it is not extended from CdmBase
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CurrencyCode" type="currencyCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Currency code that follows ISO 4217 three letter code.[br /]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Amount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL						
+					Description: Amount value.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PhysicalAddress">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: QBW 
+			Description: Physical address type, this object is always manipulated in context of another parent object like Person, Organization, etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Unique Identifier for an Intuit object.
+					[span style="display: none"] Default-Field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Line1" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: First line of the address.[br /]Data Services max. length: 1024 characters; QuickBooks max. length: 41 characters.
+					Product: QBO
+					Description: First line of the address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Line2" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Second line of the address. [br /]Data Services max. length: 1024 characters; QuickBooks max. length: 41 characters.
+					Product: QBO
+					Description: Second line of the address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Line3" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Third line of the address. [br /]Data Services max. length: 1024 characters; QuickBooks max. length: 41 characters.
+					Product: QBO
+					Description: Third line of the address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Line4" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Fourth line of the address. [br /]Data Services max. length: 1024 characters; QuickBooks max. length: 41 characters.
+					Product: QBO
+					Description: Fourth line of the address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Line5" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Fifth line of the address. [br /]Data Services max. length: 1024 characters; QuickBooks max. length: 41 characters.
+					Product: QBO
+					Description: Fifth line of the address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="City" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: City name. [br /]Data Services max. length: 1024 characters; QuickBooks max. length: 41 characters.
+					Product: QBO
+					Description: City name.
+					Filterable: QBW
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="County" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Filterable: QBW
+					Description: County name. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CountyCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: County code. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Country" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Country name. [br /]Data Services max. length: 1024 characters; QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CountryCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Country code as ISO 3166. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CountrySubDivisionCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: The &quot;globalized&quot; form of representation of a region. For example, this would represent &quot;State&quot; information in case of USA, &quot;Province&quot; in case of Canada.[br /]Data Services max. length: 1024 characters; QuickBooks max. length: 21 characters.
+					Product: QBO
+					Description: The &quot;globalized&quot; form of representation of a region. For example, this would represent &quot;State&quot; information in case of USA, &quot;Province&quot; in case of Canada.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PostalCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Postal Code, such as Zip Code in case of USA and Canada.[br /]Data Services max. length: 1024 characters; QuickBooks max. length: 13 characters.
+					Product: QBO
+					Description: Postal Code, such as Zip Code in case of USA and Canada.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PostalCodeSuffix" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Postal Code extension. In case of USA, a 4 letter code extension of ZipCode.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GeoCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: A Geocode (Geospatial Entity Object Code) is representation format of a geospatial coordinate measurement used to provide a standard representation of an exact geospatial point location at, below, or above the surface of the earth at a specified moment of time. [br /]UNSUPPORTED FIELD.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateLastVerified" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Last date verified. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Default" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>				
+					Product: QBW 
+					Description: True if the address is the default.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Tag" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Tag (or label) that identifies the use of the address. The values allowed are defined in the PhysicalAddressLabelType.
+					Product: QBO
+					Description: Tag (or label) that identifies the use of the address.[br /]For the CompanyMetaData object, values are "COMPANY_ADDRESS" and "PUBLIC_ADDRESS".[br /]For the Customer, Employee, Job and Vendor object, values allowed are defined in the PhysicalAddressLabelType as "Shipping" or "Billing". If not specified, the default is "Billing".
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TelephoneNumber">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL 
+			Description: TelephoneNumberType definition, this object is always manipulated in context of another parent object like Person, Organization etc. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 	
+					Description: Unique Identifier for an Intuit object.
+					[span style="display: none"] Default-Field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Phone device type - LandLine, Mobile, Fax, and Pager as specified by TelephoneDevice enum.
+					Product: QBO
+					Description: Phone device type. Values: Primary, Secondary, Mobile, Fax, Pager (all case sensitive).[br /]If you retrieve a phone for which the DeviceType is not specified, the DeviceType will contain either Primary or Secondary in the return value.[br /]Not supported for CompanyMetaData.[br /]Required for Job and Vendor.
+					Required: QBO
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CountryCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Telephone Country code. [br /]UNSUPPORTED FIELD. Use FreeFormNumber instead.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AreaCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Telephone area code. [br /]UNSUPPORTED FIELD. Use FreeFormNumber instead.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExchangeCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Telephone exchange code. [br /]UNSUPPORTED FIELD. Use FreeFormNumber instead.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Extension" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Telephone extension code. [br /]UNSUPPORTED FIELD. Use FreeFormNumber instead.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FreeFormNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Telephone number in a free form string, this free form number takes precedence over all other countrycode, areacode, exchangecode, and extension values.[br /]Data Services max. length: 1024 characters; QuickBooks max. length: 21 characters.
+					Product: QBO
+					Description: Telephone number in a free form string.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PIN" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: PIN Number associated with some of the phone devices. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateLastVerified" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Last date the number was verified. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Default" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: True if this is the default phone number.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Tag" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Tag (or label) that identifies the use of the phone number. The value allowed are defined in the TelephoneNumberLabelType.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EmailAddress">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: EmailAddressType definition, this object is always manipulated in context of another parent object like Person, Organization etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Unique Identifier for an Intuit object.
+					[span style="display: none"] Default-Field: QBW [/span]
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Address" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Email address. [br /]Data Services max. length: 4000 characters; QuickBooks max. length: 1023 characters.
+					Product: QBO
+					Description: Email address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateLastVerified" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Last date the email address was verified. Time is not included. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Default" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: True if this is the default email address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Tag" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: Tag (or label) that identifies the use of the e-mail address. The values allowed are Home and Business, as defined in the EmailAddressLabelType Enum.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WebSiteAddress">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: QBW 
+			Description: Describes the website address, this object is always manipulated in context of another parent object like Person, Organization etc. [br /]UNSUPPORTED FIELD.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Unique Identifier for an Intuit object.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="URI" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL 
+					Description: URI (Uniform Resource Identifier).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateLastVerified" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Last date the web site was verified. [br /]UNSUPPORTED FIELD.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Default" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: True if this is the default web site.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Tag" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW 
+					Description: Tag (or label) that identifies the use of the web site.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExternalKey">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: ExternalKey type allows to associate ExternalID like QuickBooks ID to be represented in Data Services.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdType">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Describes the object's domain of origin. The acceptable values for the domain are defined in the idDomainEnum.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="idDomain" type="idDomainEnum" use="optional" default="NG"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CdmObject" type="CdmObject" abstract="true"/>
+	<xs:simpleType name="id">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Strongly typed unique identifier for an Intuit object.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="syncToken">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Strongly typed version number of an object for optimistic locking purposes.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="quantity">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Strongly typed quantity.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="ratio">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Strongly typed ratio.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="EmailAddressLabelType">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Enumeration of type of email addresses that the data sync process understands. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Business"/>
+			<xs:enumeration value="Home"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhysicalAddressLabelType">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: Enumeration of type of addresses that the data sync process understands. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Billing"/>
+			<xs:enumeration value="Shipping"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TelephoneNumberLabelType">
+		<xs:annotation>
+			<xs:documentation>		
+			Product: ALL
+			Description: Enumeration of type of phones that the data sync process understands. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Business"/>
+			<xs:enumeration value="Fax"/>
+			<xs:enumeration value="Home"/>
+			<xs:enumeration value="Mobile"/>
+			<xs:enumeration value="Pager"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TelephoneDevice">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Telephone device type enumeration.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LandLine"/>
+			<xs:enumeration value="Mobile"/>
+			<xs:enumeration value="Fax"/>
+			<xs:enumeration value="Pager"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="gender">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Gender of a person enumeration.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Male"/>
+			<xs:enumeration value="Female"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="currencyCode">
+		<xs:annotation>
+			<xs:documentation> 			
+			Product: ALL
+			Description: ISO 4217 Currency Code enumeration. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AED"/>
+			<xs:enumeration value="AFA"/>
+			<xs:enumeration value="ALL"/>
+			<xs:enumeration value="ANG"/>
+			<xs:enumeration value="AOA"/>
+			<xs:enumeration value="AOK"/>
+			<xs:enumeration value="ARP"/>
+			<xs:enumeration value="ARS"/>
+			<xs:enumeration value="AMD"/>
+			<xs:enumeration value="ATS"/>
+			<xs:enumeration value="AUD"/>
+			<xs:enumeration value="AWF"/>
+			<xs:enumeration value="AWG"/>
+			<xs:enumeration value="AZM"/>
+			<xs:enumeration value="BAM"/>
+			<xs:enumeration value="BBD"/>
+			<xs:enumeration value="BDT"/>
+			<xs:enumeration value="BEF"/>
+			<xs:enumeration value="BGL"/>
+			<xs:enumeration value="BHD"/>
+			<xs:enumeration value="BIF"/>
+			<xs:enumeration value="BMD"/>
+			<xs:enumeration value="BND"/>
+			<xs:enumeration value="BOB"/>
+			<xs:enumeration value="BRC"/>
+			<xs:enumeration value="BRL"/>
+			<xs:enumeration value="BSD"/>
+			<xs:enumeration value="BTN"/>
+			<xs:enumeration value="BUK"/>
+			<xs:enumeration value="BWP"/>
+			<xs:enumeration value="BYR"/>
+			<xs:enumeration value="BYB"/>
+			<xs:enumeration value="BZD"/>
+			<xs:enumeration value="CAD"/>
+			<xs:enumeration value="CDF"/>
+			<xs:enumeration value="CHF"/>
+			<xs:enumeration value="CLP"/>
+			<xs:enumeration value="CNY"/>
+			<xs:enumeration value="COP"/>
+			<xs:enumeration value="CRC"/>
+			<xs:enumeration value="CZK"/>
+			<xs:enumeration value="CUP"/>
+			<xs:enumeration value="CVE"/>
+			<xs:enumeration value="DDM"/>
+			<xs:enumeration value="DEM"/>
+			<xs:enumeration value="DJF"/>
+			<xs:enumeration value="DKK"/>
+			<xs:enumeration value="DOP"/>
+			<xs:enumeration value="DZD"/>
+			<xs:enumeration value="ECS"/>
+			<xs:enumeration value="EEK"/>
+			<xs:enumeration value="EGP"/>
+			<xs:enumeration value="ERN"/>
+			<xs:enumeration value="ESP"/>
+			<xs:enumeration value="ETB"/>
+			<xs:enumeration value="EUR"/>
+			<xs:enumeration value="FIM"/>
+			<xs:enumeration value="FJD"/>
+			<xs:enumeration value="FKP"/>
+			<xs:enumeration value="FRF"/>
+			<xs:enumeration value="GBP"/>
+			<xs:enumeration value="GEL"/>
+			<xs:enumeration value="GHC"/>
+			<xs:enumeration value="GIP"/>
+			<xs:enumeration value="GMD"/>
+			<xs:enumeration value="GNF"/>
+			<xs:enumeration value="GRD"/>
+			<xs:enumeration value="GTQ"/>
+			<xs:enumeration value="GWP"/>
+			<xs:enumeration value="GYD"/>
+			<xs:enumeration value="HKD"/>
+			<xs:enumeration value="HNL"/>
+			<xs:enumeration value="HRK"/>
+			<xs:enumeration value="HTG"/>
+			<xs:enumeration value="HUF"/>
+			<xs:enumeration value="IDR"/>
+			<xs:enumeration value="IEP"/>
+			<xs:enumeration value="ILS"/>
+			<xs:enumeration value="INR"/>
+			<xs:enumeration value="IQD"/>
+			<xs:enumeration value="IRR"/>
+			<xs:enumeration value="ISK"/>
+			<xs:enumeration value="ITL"/>
+			<xs:enumeration value="JMD"/>
+			<xs:enumeration value="JOD"/>
+			<xs:enumeration value="KES"/>
+			<xs:enumeration value="KGS"/>
+			<xs:enumeration value="KHR"/>
+			<xs:enumeration value="KMF"/>
+			<xs:enumeration value="KPW"/>
+			<xs:enumeration value="KRW"/>
+			<xs:enumeration value="KWD"/>
+			<xs:enumeration value="KYD"/>
+			<xs:enumeration value="KZT"/>
+			<xs:enumeration value="LAK"/>
+			<xs:enumeration value="LBP"/>
+			<xs:enumeration value="LKR"/>
+			<xs:enumeration value="LRD"/>
+			<xs:enumeration value="LSL"/>
+			<xs:enumeration value="LTL"/>
+			<xs:enumeration value="LUF"/>
+			<xs:enumeration value="LVL"/>
+			<xs:enumeration value="LYD"/>
+			<xs:enumeration value="MAD"/>
+			<xs:enumeration value="MDL"/>
+			<xs:enumeration value="MGF"/>
+			<xs:enumeration value="MKD"/>
+			<xs:enumeration value="MMK"/>
+			<xs:enumeration value="MNT"/>
+			<xs:enumeration value="MOP"/>
+			<xs:enumeration value="MRO"/>
+			<xs:enumeration value="MUR"/>
+			<xs:enumeration value="MVR"/>
+			<xs:enumeration value="MWK"/>
+			<xs:enumeration value="MXN"/>
+			<xs:enumeration value="MXP"/>
+			<xs:enumeration value="MYR"/>
+			<xs:enumeration value="MZM"/>
+			<xs:enumeration value="NAD"/>
+			<xs:enumeration value="NGN"/>
+			<xs:enumeration value="NIC"/>
+			<xs:enumeration value="NIO"/>
+			<xs:enumeration value="NLG"/>
+			<xs:enumeration value="NOK"/>
+			<xs:enumeration value="NPR"/>
+			<xs:enumeration value="NZD"/>
+			<xs:enumeration value="OMR"/>
+			<xs:enumeration value="PAB"/>
+			<xs:enumeration value="PEN"/>
+			<xs:enumeration value="PES"/>
+			<xs:enumeration value="PGK"/>
+			<xs:enumeration value="PHP"/>
+			<xs:enumeration value="PKR"/>
+			<xs:enumeration value="PLN"/>
+			<xs:enumeration value="PLZ"/>
+			<xs:enumeration value="PTE"/>
+			<xs:enumeration value="PYG"/>
+			<xs:enumeration value="QAR"/>
+			<xs:enumeration value="ROL"/>
+			<xs:enumeration value="RUR"/>
+			<xs:enumeration value="RWF"/>
+			<xs:enumeration value="SAR"/>
+			<xs:enumeration value="SBD"/>
+			<xs:enumeration value="SCR"/>
+			<xs:enumeration value="SDD"/>
+			<xs:enumeration value="SDP"/>
+			<xs:enumeration value="SEK"/>
+			<xs:enumeration value="SGD"/>
+			<xs:enumeration value="SHP"/>
+			<xs:enumeration value="SIT"/>
+			<xs:enumeration value="SKK"/>
+			<xs:enumeration value="SLL"/>
+			<xs:enumeration value="SM"/>
+			<xs:enumeration value="SOS"/>
+			<xs:enumeration value="SRG"/>
+			<xs:enumeration value="STD"/>
+			<xs:enumeration value="SUR"/>
+			<xs:enumeration value="SVC"/>
+			<xs:enumeration value="SYP"/>
+			<xs:enumeration value="SZL"/>
+			<xs:enumeration value="THB"/>
+			<xs:enumeration value="TMM"/>
+			<xs:enumeration value="TND"/>
+			<xs:enumeration value="TOP"/>
+			<xs:enumeration value="TRL"/>
+			<xs:enumeration value="TTD"/>
+			<xs:enumeration value="TWD"/>
+			<xs:enumeration value="TZS"/>
+			<xs:enumeration value="UAH"/>
+			<xs:enumeration value="UGS"/>
+			<xs:enumeration value="UGX"/>
+			<xs:enumeration value="USD"/>
+			<xs:enumeration value="UYP"/>
+			<xs:enumeration value="UYU"/>
+			<xs:enumeration value="UZS"/>
+			<xs:enumeration value="VND"/>
+			<xs:enumeration value="VUV"/>
+			<xs:enumeration value="VAL"/>
+			<xs:enumeration value="WST"/>
+			<xs:enumeration value="XAF"/>
+			<xs:enumeration value="XCD"/>
+			<xs:enumeration value="XOF"/>
+			<xs:enumeration value="XPF"/>
+			<xs:enumeration value="YER"/>
+			<xs:enumeration value="YUD"/>
+			<xs:enumeration value="ZAR"/>
+			<xs:enumeration value="ZMK"/>
+			<xs:enumeration value="ZRZ"/>
+			<xs:enumeration value="ZWD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="idDomainEnum">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Enumeration of possible Id Domains:[li] NG - (next generation) Data Services origin [li] QB - QuickBooks (provisional database) origin [li] QBO - QuickBooks Online [li] BM - Billing Manager (not used) [li] QBSDK - ListID, TxnID, or TxnLineId (not used) [li] PMT - Payments (not used).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BM"/>
+			<xs:enumeration value="NG"/>
+			<xs:enumeration value="PMT"/>
+			<xs:enumeration value="QB"/>
+			<xs:enumeration value="QBO"/>
+			<xs:enumeration value="QBSDK"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="objectStateEnum">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW
+			Description: Enumeration of possible states in which an object can be.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ReadOnly"/>
+			<xs:enumeration value="ReadWritable"/>
+			<xs:enumeration value="Errored"/>
+		</xs:restriction>
+	</xs:simpleType>
+        <xs:simpleType name="IDSDate">
+            <xs:annotation>
+                <xs:documentation>
+                Product: QBW
+                Description: Fields of this type can be either Java date or dateTime types.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:union memberTypes="xs:date xs:dateTime"/>
+        </xs:simpleType>
+</xs:schema>

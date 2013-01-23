@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schema.intuit.com/finance/v3"
+	targetNamespace="http://schema.intuit.com/finance/v3" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IntuitBaseTypes.xsd"/>
+	<xs:simpleType name="DateMacro">
+		<xs:annotation>
+			<xs:documentation>Date macros enumeration</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All"/>
+			<xs:enumeration value="Today"/>
+			<xs:enumeration value="This Week"/>
+			<xs:enumeration value="This Week-to-date"/>
+			<xs:enumeration value="This Month"/>
+			<xs:enumeration value="This Month-to-date"/>
+			<xs:enumeration value="This Fiscal Quarter"/>
+			<xs:enumeration value="This Fiscal Quarter-to-date"/>
+			<xs:enumeration value="This Fiscal Year"/>
+			<xs:enumeration value="This Fiscal Year-to-date"/>
+			<xs:enumeration value="Yesterday"/>
+			<xs:enumeration value="Last Week"/>
+			<xs:enumeration value="Last Week-to-date"/>
+			<xs:enumeration value="Last Month"/>
+			<xs:enumeration value="Last Month-to-date"/>
+			<xs:enumeration value="Last Fiscal Quarter"/>
+			<xs:enumeration value="Last Fiscal Quarter-to-date"/>
+			<xs:enumeration value="Last Fiscal Year"/>
+			<xs:enumeration value="Last Fiscal Year-to-date"/>
+			<xs:enumeration value="Next Week"/>
+			<xs:enumeration value="Next 4 Weeks"/>
+			<xs:enumeration value="Next Month"/>
+			<xs:enumeration value="Next Fiscal Quarter"/>
+			<xs:enumeration value="Next Fiscal Year"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SummarizeColumnsByEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Total"/>
+			<xs:enumeration value="Year"/>
+			<xs:enumeration value="Quarter"/>
+			<xs:enumeration value="Month"/>
+			<xs:enumeration value="Week"/>
+			<xs:enumeration value="Days"/>
+			<xs:enumeration value="Customers"/>
+			<xs:enumeration value="Vendors"/>
+			<xs:enumeration value="Employees"/>
+			<xs:enumeration value="Locations"/>
+			<xs:enumeration value="Classes"/>
+			<xs:enumeration value="ProductsAndServices"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ColTypeEnum">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies the column type definition </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ids_Amount"/>
+			<xs:enumeration value="ids_Date"/>
+			<xs:enumeration value="ids_IdType"/>
+			<xs:enumeration value="ids_Number"/>
+			<xs:enumeration value="ids_String"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ReportNameEnum">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">List of all possible report types</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AccountBalances"/>
+			<xs:enumeration value="BalanceSheet"/>
+			<xs:enumeration value="CustomerTxnDetail"/>
+			<xs:enumeration value="CustomersWhoOweMe"/>
+			<xs:enumeration value="IncomeBreakdown"/>
+			<xs:enumeration value="ProfitAndLoss"/>
+			<xs:enumeration value="SalesSummary"/>
+			<xs:enumeration value="Summary1099"/>
+			<xs:enumeration value="TopCustomersBySales"/>
+			<xs:enumeration value="VendorsToPay"/>
+			<xs:enumeration value="CustomTxnDetail"/>
+			<xs:enumeration value="Summary1099"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ColDesc">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Describes the columns</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ColTitle" type="xs:string">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Describes the column title name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ColType" type="ColTypeEnum">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Describes the column type enumeration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataRow">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">One DataRow can contain any number of columns</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ColData" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReportHeader">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies the Header of a Report, Time report was generated, parameters corresponding to the request</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Time" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the time at which report was generated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ReportBasis" type="ReportBasisEnum" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the report is cash basis or accrual basis</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Period" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Period for which the report was generated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SummarizeColumnsBy" type="SummarizeColumnsByEnum" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Summarize columns by enumeration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Currency" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the currency code associated with the report, note that this is one place where this is just the currency code, not a reference to a currency object</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Details" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies any other details specific to the report</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  -->
+	<!-- * * * * * * * * * *  REPORTS SECTION * * * * * * * * * *  -->
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  -->
+
+	<xs:complexType name="TextRow">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies the Unique Identifier for an Intuit Object of that type in that domain. Create request will not specify ID</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Value" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SummaryRow">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies the Unique Identifier for an Intuit Object of that type in that domain. Create request will not specify ID</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ColData" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Section">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies the Unique Identifier for an Intuit Object of that type in that domain. Create request will not specify ID</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element name="Text" type="TextRow">						
+					<xs:annotation>
+						<xs:documentation></xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DataRow" type="DataRow" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation></xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="Summary" type="SummaryRow" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Section" type="Section" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Report">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Specifies the Unique Identifier for an Intuit Object of that type in that domain. Create request will not specify ID</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Header" type="ReportHeader" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ColDesc" type="ColDesc" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Section" type="Section" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="domain" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Domain to which the report belongs</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" type="ReportNameEnum">
+			<xs:annotation>
+				<xs:documentation></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,3083 @@
+{
+    "endpoints":[
+        {
+            "name":"Account",
+            "Synopsis":"<p>Account represents the accounts that you keep to track your business. Account is a component of a chart of accounts, and is part of a ledger. You can use Account to record the total monetary amount that is allocated for a specific use. Accounts are one of five basic types:</p><ul><li>Asset</li><li>Liability</li><li>Revenue (Income)</li><li>Expenses</li><li>Equity</li></ul><br/><h4>Business Rules</h4><br/><p>The Account object has the following business rules and validations:</p><ul><li> The account name must be unique.</li><li> The Account Name is required.</li><li> The Account SubType is required.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Account",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/account/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Account",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Account searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/account/v2/:realmId/:accountId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "accountId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Account",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/accounts/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Account",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/account/v2/:realmId/:accountId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "accountId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Account",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the account for the given account Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/account/v2/:realmId/:accountId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "accountId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Account",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Account"
+            ]
+        },
+        {
+            "name":"Bill",
+            "Synopsis":"<p>The Bill represents an expense to the business. An expense is of the following types:</p><ul><li>Item-based expense for the item that the business owner purchases for resale.</li><li>Account-based expense for the amount that the business owner spends on an account, such as expense incurred on the Advertisement Expense account.</li></ul><br/><h4>Business Rules</h4><br/><p>The Bill object has the following business rules and validations:</p><ul><li> A bill must have reference to a vendor in the header.</li><li> A bill must have at least one line that describes the item or account.</li><li> An Account-based expense is a line with the AccountId, Amount, and Description attributes.</li><li>An Item-based expense is a line with the AccountId, Amount, Description, Qty, UnitPrice, ItemId, and ClassId attributes.</li></ul><p>Available only to QuickBooks Online Plus subscribers.</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Bill",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bill/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Bill",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Bill searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/bill/v2/:realmId/:billId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "billId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Bill",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bills/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Bill",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bill/v2/:realmId/:billId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "billId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Bill",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the bill for the given bill Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bill/v2/:realmId/:billId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "billId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Bill",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Bill"
+            ]
+        },
+        {
+            "name":"BillPayment",
+            "Synopsis":"<p>BillPayment represents the financial transaction of payment of bills that the business owner receives from a vendor for goods or services purchased from the vendor. QBO supports bill payments through a credit card or a bank account.</p><br/><h4>Business Rules</h4><br/><p>The BillPayment object has the following business rules and validations:</p><ul><li>A bill payment must have reference to a vendor by EntityId in the header.</li><li>A bill payment must specify a credit card account or a bank account.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type BillPayment",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bill-payment/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "BillPayment",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type BillPayment searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/bill-payment/v2/:realmId/:billPaymentId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "billPaymentId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type BillPayment",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bill-payments/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type BillPayment",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bill-payment/v2/:realmId/:billPaymentId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "billPaymentId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "BillPayment",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the BillPayment for the given BillPayment Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/bill-payment/v2/:realmId/:billPaymentId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "billPaymentId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "BillPayment",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "BillPayment"
+            ]
+        },
+        {
+            "name":"CashPurchase",
+            "Synopsis":"<p>CashPurchase represents an expense to the business as a cash transaction. An expense is of the following types:</p><ul><li>Item-based expense for the item that the business owner purchases for resale.</li><li>Account-based expense for the amount that the business owner spends on an account, such as expense incurred on the Advertisement Expense account.</li></ul><p>This is a QBO-only transaction.</p><br/><h4>Business Rules</h4><br/><p>The CashPurchase object has the following business rules and validations:</p><ul><li>An Account-based expense is a line with the AccountId, Amount, and Description attributes.</li><li>An Item-based expense is a line with the AccountId, Amount, Description, Qty, UnitPrice, and ItemId attributes.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type CashPurchase",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/cash-purchase/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CashPurchase",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type CashPurchase searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/cash-purchase/v2/:realmId/:cashPurchaseId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "cashPurchaseId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type CashPurchase",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/cash-purchases/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type CashPurchase",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/cash-purchase/v2/:realmId/:cashPurchaseId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "cashPurchaseId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CashPurchase",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the CashPurchase for the given CashPurchase Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/cash-purchase/v2/:realmId/:cashPurchaseId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "cashPurchaseId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CashPurchase",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "CashPurchase"
+            ]
+        },
+        {
+            "name":"Check",
+            "Synopsis":"<p>Financial transaction representing a payment to a payee. The Check represents an expense to the business paid as a check transaction. The expense is of the following types:</p><ul><li>Item based expense for the item that is purchased for reselling.</li><li>Account based expense for the amount spend on an account, such as expense incurred on \"advertisement expense\" account.</li></ul><br/><h4>Business Rules</h4><br/><p>The Check object has the following business rules and validations:</p><ul><li>An Account-based expense is a line with the AccountId, Amount, and Description attributes.</li><li>An Item-based expense is a line with the AccountId, Amount, Description, Qty, UnitPrice, ItemId, CustomerId, BillableStatus, and ClassId attributes.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Check",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/check/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Check",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Check searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/check/v2/:realmId/:checkId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "checkId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Check",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/checks/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Check",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/check/v2/:realmId/:checkId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "checkId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Check",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Check for the given Check Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/check/v2/:realmId/:checkId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "checkId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Check",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Check"
+            ]
+        },
+        {
+            "name":"Class",
+            "Synopsis":"<p>Classes provide a way to track different segments of the business, and to break down the income and expenses for each segment. Classes provide a system for categorizing transactions that goes beyond the basic ways of assigning transactions to expense or income accounts. With classes, it is possible to categorize each detail line on a transaction. This allows the customer to write one check to the office supply store for things bought for two different business units and still track the business unit for those purchases.</p><p>Example uses of classes:</p><ul><li>Department</li><li>Enterprise</li><li>Properties</li><li>Work categories (plumbing, electrical, etc.)</li><li>Manufacturers</li><li>Partners</li><li>Product Lines</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Class",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/class/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Class",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Class searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/class/v2/:realmId/:classId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "classId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Class",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/classes/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Class",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/class/v2/:realmId/:classId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "classId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Class",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Class for the given Class Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/class/v2/:realmId/:classId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "classId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Class",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Class"
+            ]
+        },
+        {
+            "name":"CompanyMetaData",
+            "Synopsis":"<p>Reports information about the company, given the realm ID. The information is read-only through this API. The user may change values in the \"Company/Preference/Company Contact Information\" UI screen in QBO.</p>",
+            "methods":[
+                {
+                    "MethodName":"Retrieve by Get",
+                    "Synopsis":"This operation retrieve an entity of type company metadata",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/companymetadata/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve by Post",
+                    "Synopsis":"This operation creates a new entity of the type company metadata",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/companymetadata/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CompanyMetaData",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "CompanyMetaData"
+            ]
+        },
+        {
+            "name":"CreditCardCharge",
+            "Synopsis":"<p>Financial transaction representing a charge for purchase of goods or services. The CreditCardCharge represents an expense to the business as a credit card charge transaction. The expense is of the following types:</p><ul><li>Item based expense for the item that is purchased for reselling.</li><li>Account based expense for the amount spend on an account, such as expense incurred on \"advertisement expense\" account.</li></ul><br/><h4>Business Rules</h4><br/><p>The CreditCardCharge object has the following business rules and validations:</p><ul><li>An Account-based expense is a line with the AccountId, Amount, and Description attributes.</li><li>An Item-based expense is a line with the AccountId, Amount, Description, Qty, UnitPrice, and ItemId attributes.</li><li>CreditCardCharge must have the total expense equal to the total expense of line items.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type CreditCardCharge",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/credit-card-charge/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CreditCardCharge",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type CreditCardCharge searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/credit-card-charge/v2/:realmId/:creditCardChargeId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "creditCardChargeId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type CreditCardCharge",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/credit-card-charges/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type CreditCardCharge",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/credit-card-charge/v2/:realmId/:creditCardChargeId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "creditCardChargeId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CreditCardCharge",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the CreditCardCharge for the given CreditCardCharge Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/credit-card-charge/v2/:realmId/:creditCardChargeId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "creditCardChargeId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "CreditCardCharge",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "CreditCardCharge"
+            ]
+        },
+        {
+            "name":"Customer",
+            "Synopsis":"<p>The Customer represents the consumer of the service or the product that your business offers. QBO allows categorizing the customers in a way that is meaningful to the business. For example, you can set up a category of customers to indicate which industry a customer represents, the geographic location of a customer, or how a customer came to know about the business. The categorization can be then used for reports or mails.</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Customer",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/customer/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Customer",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Customer searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/customer/v2/:realmId/:customerId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "customerId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Customer",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/customers/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Customer",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/customer/v2/:realmId/:customerId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "customerId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Customer",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Customer for the given Customer Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/customer/v2/:realmId/:customerId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "customerId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Customer",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Customer"
+            ]
+        },
+        {
+            "name":"Employee",
+            "Synopsis":"<p>The Employee represents the persons who are working for the company. In QBO, the Employee resource is available as a read-only resource. That is, only retrieve and simple query operations are supported for this resource.</p>",
+            "methods":[
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Employee searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/employee/v2/:realmId/:employeeId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "employeeId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Employee",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/employees/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ],
+            "EntityNames":[
+                "Employee"
+            ]
+        },
+        {
+            "name":"Entitlements",
+            "Synopsis":"<p>The entitlements API retrieves the features available to a company, identified by the company's realm ID (shown as the Company ID in QuickBooks Online). The features available are determined by the type of company established during QuickBooks Online setup. These features are a super set of those enabled for the company by preferences and those enabled for a user by permissions.</p><p>Once you have determined that a feature is available, you have to call the <a title=\"0030 Intuit Data Services/QuickBooks Online/Preferences\" rel=\"internal\" href=\"https://ipp.developer.intuit.com/0010_Intuit_Partner_Platform/0050_Data_Services/0400_QuickBooks_Online/Preferences\">preferences</a> API to determine if the feature is enabled.</p>",
+            "methods":[
+                {
+                    "MethodName":"Retrieve",
+                    "Synopsis":"This operation retrieve an entity of type Entitlements searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/manage/entitlements/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+            ],
+            "EntityNames":[
+                "Entitlements"
+            ]
+        },
+        {
+            "name":"Estimate",
+            "Synopsis":"<p>The Estimate represents a proposal for a financial transaction from a business to a customer for goods or services proposed to be sold, including proposed pricing. It is also known as quote. Note: Available only to the QuickBooks Online Plus subscribers.</p><br/><h4>Business Rules</h4><br/><p>The Estimate object has the following business rules and validations:</p><ul><li>An estimate must have at least one line that describes an item.</li><li>An estimate must have a reference to a customer in the header.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Estimate",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/estimate/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Estimate",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Estimate searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/estimate/v2/:realmId/:estimateId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "estimateId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve as PDF",
+                    "Synopsis":"This operation retrieves an Estimate as PDF using the ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/estimate-document/v2/:realmId/:estimateId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "estimateId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve in E-mail",
+                    "Synopsis":"This operation retrieves an Estimate in E-mail",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/estimate-email/v2/:realmId/:estimateId??sendto=:recipient-address",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "estimateId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "recipient-address",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Estimate",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/estimates/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Estimate",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/estimate/v2/:realmId/:estimateId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "estimateId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Estimate",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Estimate for the given Estimate Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/estimate/v2/:realmId/:estimateId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "estimateId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Estimate",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Estimate"
+            ]
+        },
+        {
+            "name":"Invoice",
+            "Synopsis":"<p>The Invoice object represents an invoice to a customer. Invoice could be based on salesterm with invoice and due dates for payment. Invoice supports sales tax, and shipping charges as a special line item. Invoice can be printed and emailed to a customer.</p><br/><h4>Business Rules</h4><br/><p>The Invoice object has the following business rules and validations:</p><ul><li>An invoice must have at least one line that describes the item and an amount.</li><li>An invoice must have a reference to a customer in the header.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Invoice",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/invoice/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Invoice",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Invoice searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/invoice/v2/:realmId/:invoiceId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "invoiceId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve as PDF",
+                    "Synopsis":"This operation retrieves an Invoice as PDF using the ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/invoice-document/v2/:realmId/:invoiceId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "invoiceId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve in E-mail",
+                    "Synopsis":"This operation retrieves an Invoice in E-mail",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/invoice-email/v2/:realmId/:invoiceId??sendto=:recipient-address",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "invoiceId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "recipient-address",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Invoice",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/invoices/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Invoice",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/invoice/v2/:realmId/:invoiceId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "invoiceId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Invoice",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Invoice for the given Invoice Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/invoice/v2/:realmId/:invoiceId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "invoiceId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Invoice",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Invoice"
+            ]
+        },
+        {
+            "name":"Item",
+            "Synopsis":"<p>The Item resource represents any product or service that is sold or purchased. Inventory items are not currently supported.</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Item",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/item/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Item",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Item searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/item/v2/:realmId/:itemId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "itemId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Item",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/items/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Item",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/item/v2/:realmId/:itemId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "itemId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Item",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Item for the given Item Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/item/v2/:realmId/:itemId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "itemId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Item",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Item"
+            ]
+        },
+        {
+            "name":"Job",
+            "Synopsis":"<p>A Job is a way to track larger orders such as those placed by different departments of the same organization. You can use it for many purposes such as tracking projects that belong to the same customers. It can also represent a person if you are tracking members for a team or a league. In QuickBooks Online, a Job is called a sub-customer, and you will find documentation referencing sub-customers instead of Job.</p><br/><h4>Business Rules</h4><br/><p>The Job object has the following business rules and validations:li>To create a Job object, you must have the parent customer in place already.</p><ul><li>You may have as many jobs as you want per customer, but you can only create Jobs for 4 levels deep.</li><li>A job has all the same attributes as a customer except that it will always belong to a customer and optionally may belong to a larger job.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Job",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/job/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Job",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Job searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/job/v2/:realmId/:jobId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "jobId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Job",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/jobs/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Job",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/job/v2/:realmId/:jobId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "jobId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Job",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Job for the given Job Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/job/v2/:realmId/:jobId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "jobId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Job",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Job"
+            ]
+        },
+        {
+            "name":"JournalEntry",
+            "Synopsis":"<p>A JournalEntry is a \"free-form\" transaction typically used to adjust the books. It must have at least 2 line items, one for a credit and one for a debit, and the sum of the two line item amounts must be zero (that is, credit and debit amounts must be balanced).</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type JournalEntry",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/journal-entry/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "JournalEntry",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type JournalEntry searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/journal-entry/v2/:realmId/:journalEntryId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "journalEntryId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type JournalEntry",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/journal-entries/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type JournalEntry",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/journal-entry/v2/:realmId/:journalEntryId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "journalEntryId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "JournalEntry",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the JournalEntry for the given JournalEntry Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/journal-entry/v2/:realmId/:journalEntryId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "journalEntryId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "JournalEntry",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "JournalEntry"
+            ]
+        },
+        {
+            "name":"Payment",
+            "Synopsis":"<p>The Payment represents the financial transaction that signifies a payment from a customer for one or more sales transactions.</p><br/><h4>Business Rules</h4><br/><p>The Payment object has the following business rules and validations:</p><ul><li>A payment must have a reference to a customer in the header</li><li>A payment must specify a line, with a transaction ID and an amount.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Payment",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payment/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Payment",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Payment searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/payment/v2/:realmId/:paymentId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "paymentId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Payment",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payments/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Payment",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payment/v2/:realmId/:paymentId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "paymentId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Payment",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Payment for the given Payment Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payment/v2/:realmId/:paymentId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "paymentId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Payment",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Payment"
+            ]
+        },
+        {
+            "name":"PaymentMethod",
+            "Synopsis":"<p>PaymentMethod represents the method of payment for a transaction. It can be a credit card payment type or a non-credit card payment type.</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type PaymentMethod",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payment-method/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PaymentMethod",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type PaymentMethod searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/payment-method/v2/:realmId/:paymentMethodId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "paymentMethodId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type PaymentMethod",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payment-methods/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type PaymentMethod",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payment-method/v2/:realmId/:paymentMethodId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "paymentMethodId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PaymentMethod",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the PaymentMethod for the given PaymentMethod Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/payment-method/v2/:realmId/:paymentMethodId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "paymentMethodId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "PaymentMethod",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "PaymentMethod"
+            ]
+        },
+        {
+            "name":"Preferences",
+            "Synopsis":"<p>Reports information about the company, given the realm ID. The information is read-only through this API. The user may change values in the \"Company/Preference/Company Contact Information\" UI screen in QBO.</p>",
+            "methods":[
+                {
+                    "MethodName":"Retrieve by Get",
+                    "Synopsis":"This operation retrieve an entity of type Preferences",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/preferences/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve by Post",
+                    "Synopsis":"This operation creates a new entity of the type Preferences",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/preferences/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Preferences",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Preferences"
+            ]
+        },
+        {
+            "name":"SalesReceipt",
+            "Synopsis":"<p>SalesReceipt represents the sales receipt that is given to a customer. A sales receipt is similar to an invoice. However, for a sales receipt, payment is received as part of the sale of goods and services. The sales receipt specifies a deposit account where the customer deposits the payment. If the deposit account is not specified, the payment type is classified as Undeposited Account.</p><br/><h4>Business Rules</h4><br/><p>The SalesReceipt object has the following business rules and validations:</p><ul><li>A sales receipt must have at least one line that describes the item and an amount.</li></ul>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type SalesReceipt",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-receipt/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesReceipt",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type SalesReceipt searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/sales-receipt/v2/:realmId/:salesReceiptId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesReceiptId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve as PDF",
+                    "Synopsis":"This operation retrieves an SalesReceipt as PDF using the ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/sales-receipt-document/v2/:realmId/:salesReceiptId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesReceiptId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve in E-mail",
+                    "Synopsis":"This operation retrieves an SalesReceipt in E-mail",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/sales-receipt-email/v2/:realmId/:salesReceiptId??sendto=:recipient-address",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesReceiptId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "recipient-address",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type SalesReceipt",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-receipts/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type SalesReceipt",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-receipt/v2/:realmId/:salesReceiptId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesReceiptId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesReceipt",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the SalesReceipt for the given SalesReceipt Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-receipt/v2/:realmId/:salesReceiptId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesReceiptId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesReceipt",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "SalesReceipt"
+            ]
+        },
+        {
+            "name":"SalesTerm",
+            "Synopsis":"<p>The SalesTerm object represents the terms under which a sale is made, typically expressed in the form of days due after the goods are received. There is an optional discount part of the sales term, where a discount of total amount can automatically be applied if payment is made within the stipulated time.</p><p>For example, net 30 indicates that you must make the payment within 30 days; 2%/15 net 60 indicates that you must make the payment within 60 days, and you can get a discount of 2% if you make payment within 15 days. SalesTerm also supports the ability to specify the absolute due date, a number of days from a start date, a percent discount, or an absolute discount.</p><p>The SalesTerm name itself is a text-only attribute and the desired application of the sales term must be coded. For example, a common term such as Net30Days is explicitly coded as a calculated DueDateTime or as a PaymentTermsDateTime and NumberOfDays.</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type SalesTerm",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-term/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesTerm",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type SalesTerm searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/sales-term/v2/:realmId/:salesTermId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesTermId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type SalesTerm",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-terms/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type SalesTerm",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-term/v2/:realmId/:salesTermId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesTermId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesTerm",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the SalesTerm for the given SalesTerm Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/sales-term/v2/:realmId/:salesTermId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "salesTermId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "SalesTerm",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "SalesTerm"
+            ]
+        },
+        {
+            "name":"TimeActivity",
+            "Synopsis":"<p>TimeActivity represents the Single Activity Time Sheet shown to the end user by QBO. TimeActivity consists of an employee or vendor who performed work, the amount of time worked, and optional fields listed below.</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type TimeActivity",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/time-activity/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "TimeActivity",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type TimeActivity searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/time-activity/v2/:realmId/:timeActivityId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "timeActivityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type TimeActivity",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/time-activities/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type TimeActivity",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/time-activity/v2/:realmId/:timeActivityId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "timeActivityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "TimeActivity",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the TimeActivity for the given TimeActivity Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/time-activity/v2/:realmId/:timeActivityId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "timeActivityId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "v",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "TimeActivity"
+            ]
+        },
+        {
+            "name":"Vendor",
+            "Synopsis":"<p>The Vendor represents the seller from whom your company purchases any service or product.</p>",
+            "methods":[
+                {
+                    "MethodName":"Create",
+                    "Synopsis":"This operation creates a new entity of the type Vendor",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/vendor/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Vendor",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Retrieve by ID",
+                    "Synopsis":"This operation retrieve an entity of type Vendor searched using ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/resource/vendor/v2/:realmId/:vendorId",
+                    "RequiresOAuth":"Y",
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "vendorId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Retrieve all",
+                    "Synopsis":"This operation retrieve all entities of type Vendor",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/vendors/v2/:realmId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"N",
+                    "headers":[
+                        {
+                            "Name": "Content-Type",
+                            "Default": "application/x-www-form-urlencoded",
+                            "Description":"Content type format"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Update",
+                    "Synopsis":"This operation Updates entity of the type Vendor",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/vendor/v2/:realmId/:vendorId",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml",
+                            "Type":"String",
+                            "Description":""
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "vendorId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Vendor",
+                    "RequestBodyExcludeElements": []
+                },
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"This operation deletes the Vendor for the given Vendor Id",
+                    "HTTPMethod":"POST",
+                    "URI":"/resource/vendor/v2/:realmId/:vendorId?methodx=delete",
+                    "RequiresOAuth":"Y",
+                    "RequiresPostData":"Y",
+                    "PopulateRequestBody":"Y",
+                    "headers":[
+                        {
+                            "Name": "content-type",
+                            "Default": "application/xml"
+                        }
+                    ],
+                    "parameters":[
+                        {
+                            "Name": "realmId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "vendorId",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ],
+                    "RequestBodyEntity": "Vendor",
+                    "RequestBodyExcludeElements": []
+                }
+            ],
+            "EntityNames":[
+                "Vendor"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schema.intuit.com/platform/fdatafeed/files/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/files/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+        
+	<!-- COMPLEX TYPES -->
+    <xs:complexType name="File">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="size" type="xs:long"/>
+            <xs:element name="modifiedTs" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="File" type="tns:File"/>
+
+    <xs:element name="Files">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="file" type="tns:File"
+				minOccurs="0" maxOccurs="unbounded">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+</xs:schema>

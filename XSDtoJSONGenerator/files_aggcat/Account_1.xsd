@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/account/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/account/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:complexType name="Account" abstract="true">
+        <xs:sequence>
+            <xs:element name="accountId" type="xs:long"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="accountNumber" type="xs:string"/>
+            <xs:element name="accountNumberReal"  type="xs:string" minOccurs="0"/>
+            <xs:element name="accountNickname" type="xs:string" minOccurs="0"/>
+            <xs:element name="displayPosition"  type="xs:int" minOccurs="0"/>
+            <xs:element name="institutionId"  type="xs:long"/>
+            <xs:element name="description"  type="xs:string" minOccurs="0"/>
+            <xs:element name="registeredUserName"  type="xs:string" minOccurs="0"/>
+            <xs:element name="balanceAmount" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="balanceDate"  type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="balancePreviousAmount" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="lastTxnDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="aggrSuccessDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="aggrAttemptDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="aggrStatusCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="currencyCode" type="cm:CurrencyCode" minOccurs="0"/>
+            <xs:element name="bankId" type="xs:string" minOccurs="0"/>
+          <!-- This is used to identify the accounts uniquely when we have multiple
+          InstitutionLogins for a single customer at the same institution-->
+            <xs:element name="institutionLoginId" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

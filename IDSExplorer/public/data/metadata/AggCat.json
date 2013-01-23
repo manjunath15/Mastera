@@ -1,0 +1,3138 @@
+{
+  "Address": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/common/v1",
+    "attributes": [
+      {
+        "name": "type",
+        "type": "tns:AddressType"
+      },
+      {
+        "name": "address1",
+        "type": "xs:string"
+      },
+      {
+        "name": "address2",
+        "type": "xs:string"
+      },
+      {
+        "name": "address3",
+        "type": "xs:string"
+      },
+      {
+        "name": "city",
+        "type": "xs:string"
+      },
+      {
+        "name": "state",
+        "type": "xs:string"
+      },
+      {
+        "name": "postalCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "country",
+        "type": "xs:string"
+      }
+    ]
+  },
+  "ErrorInfo": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/common/v1",
+    "attributes": [
+      {
+        "name": "errorType",
+        "type": "tns:ErrorType"
+      },
+      {
+        "name": "errorCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "errorMessage",
+        "type": "xs:string"
+      },
+      {
+        "name": "correlationId",
+        "type": "xs:string",
+        "synopsis": "This is a aggregation-specific addition to the XSD. This is necessary to determine\r\n               the appropriate node/log file to examine when troubleshooting the error"
+      },
+      {
+        "name": "exceptionDetail",
+        "type": "xs:string",
+        "synopsis": "This is a aggregation-specific addition to the XSD. This allows us to return a stack trace for easy debugging in non-production environments"
+      }
+    ]
+  },
+  "Status": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/common/v1",
+    "attributes": [
+      {
+        "name": "statusMessage",
+        "type": "xs:string"
+      },
+      {
+        "name": "errorInfo",
+        "type": "tns:ErrorInfo"
+      }
+    ]
+  },
+  "Account": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/account/v1",
+    "attributes": [
+      {
+        "name": "accountId",
+        "type": "xs:long"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumberReal",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNickname",
+        "type": "xs:string"
+      },
+      {
+        "name": "displayPosition",
+        "type": "xs:int"
+      },
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "registeredUserName",
+        "type": "xs:string"
+      },
+      {
+        "name": "balanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "balanceDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "balancePreviousAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastTxnDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrSuccessDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrAttemptDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrStatusCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "bankId",
+        "type": "xs:string"
+      },
+      {
+        "name": "institutionLoginId",
+        "type": "xs:long"
+      }
+    ]
+  },
+  "BankingAccount": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/bankingaccount/v1",
+    "attributes": [
+      {
+        "name": "accountId",
+        "type": "xs:long"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumberReal",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNickname",
+        "type": "xs:string"
+      },
+      {
+        "name": "displayPosition",
+        "type": "xs:int"
+      },
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "registeredUserName",
+        "type": "xs:string"
+      },
+      {
+        "name": "balanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "balanceDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "balancePreviousAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastTxnDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrSuccessDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrAttemptDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrStatusCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "bankId",
+        "type": "xs:string"
+      },
+      {
+        "name": "institutionLoginId",
+        "type": "xs:long"
+      },
+      {
+        "name": "bankingAccountType",
+        "type": "tns:BankingAccountType"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestType",
+        "type": "xs:string"
+      },
+      {
+        "name": "originationDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "openDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "periodInterestRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "periodDepositAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "periodInterestAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestAmountYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestPriorAmountYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "maturityDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "maturityAmount",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "CreditAccount": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/creditaccount/v1",
+    "attributes": [
+      {
+        "name": "accountId",
+        "type": "xs:long"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumberReal",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNickname",
+        "type": "xs:string"
+      },
+      {
+        "name": "displayPosition",
+        "type": "xs:int"
+      },
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "registeredUserName",
+        "type": "xs:string"
+      },
+      {
+        "name": "balanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "balanceDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "balancePreviousAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastTxnDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrSuccessDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrAttemptDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrStatusCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "bankId",
+        "type": "xs:string"
+      },
+      {
+        "name": "institutionLoginId",
+        "type": "xs:long"
+      },
+      {
+        "name": "creditAccountType",
+        "type": "tns:CreditAccountType"
+      },
+      {
+        "name": "detailedDescription",
+        "type": "xs:string"
+      },
+      {
+        "name": "interestRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "creditAvailableAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "creditMaxAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "cashAdvanceAvailableAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "cashAdvanceMaxAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "cashAdvanceBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "cashAdvanceInterestRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "currentBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "paymentMinAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "paymentDueDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "previousBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "statementEndDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "statementPurchaseAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "statementFinanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pastDueAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastPaymentAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastPaymentDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "statementCloseBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "statementLateFeeAmount",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "LoanAccount": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/loanaccount/v1",
+    "attributes": [
+      {
+        "name": "accountId",
+        "type": "xs:long"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumberReal",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNickname",
+        "type": "xs:string"
+      },
+      {
+        "name": "displayPosition",
+        "type": "xs:int"
+      },
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "registeredUserName",
+        "type": "xs:string"
+      },
+      {
+        "name": "balanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "balanceDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "balancePreviousAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastTxnDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrSuccessDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrAttemptDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrStatusCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "bankId",
+        "type": "xs:string"
+      },
+      {
+        "name": "institutionLoginId",
+        "type": "xs:long"
+      },
+      {
+        "name": "loanDescription",
+        "type": "xs:string"
+      },
+      {
+        "name": "loanType",
+        "type": "tns:LoanType"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "term",
+        "type": "xs:string"
+      },
+      {
+        "name": "holderName",
+        "type": "xs:string"
+      },
+      {
+        "name": "lateFeeAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "payoffAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "payoffAmountDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "referenceNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "originalMaturityDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "taxPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "principalBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "escrowBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestPeriod",
+        "type": "xs:string"
+      },
+      {
+        "name": "initialAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "initialDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "nextPaymentPrincipalAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "nextPaymentInterestAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "nextPayment",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "nextPaymentDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "lastPaymentDueDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "lastPaymentReceiveDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "lastPaymentAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastPaymentPrincipalAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastPaymentInterestAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastPaymentEscrowAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastPaymentLastFeeAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastPaymentLateCharge",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "principalPaidYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestPaidYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "insurancePaidYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "taxPaidYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "autopayEnrolled",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "collateral",
+        "type": "xs:string"
+      },
+      {
+        "name": "currentSchool",
+        "type": "xs:string"
+      },
+      {
+        "name": "firstPaymentDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "guarantor",
+        "type": "xs:string"
+      },
+      {
+        "name": "firstMortgage",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "loanPaymentFreq",
+        "type": "xs:string"
+      },
+      {
+        "name": "paymentMinAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalSchool",
+        "type": "xs:string"
+      },
+      {
+        "name": "recurringPaymentAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lender",
+        "type": "xs:string"
+      },
+      {
+        "name": "endingBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "availableBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "loanTermType",
+        "type": "tns:LoanTermType"
+      },
+      {
+        "name": "noOfPayments",
+        "type": "xs:int"
+      },
+      {
+        "name": "balloonAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "projectedInterest",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestPaidLtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestRateType",
+        "type": "tns:RateType"
+      },
+      {
+        "name": "loanPaymentType",
+        "type": "tns:PaymentType"
+      },
+      {
+        "name": "remainingPayments",
+        "type": "xs:int"
+      }
+    ]
+  },
+  "InvestmentAccount": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/investmentaccount/v1",
+    "attributes": [
+      {
+        "name": "accountId",
+        "type": "xs:long"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumberReal",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNickname",
+        "type": "xs:string"
+      },
+      {
+        "name": "displayPosition",
+        "type": "xs:int"
+      },
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "registeredUserName",
+        "type": "xs:string"
+      },
+      {
+        "name": "balanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "balanceDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "balancePreviousAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastTxnDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrSuccessDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrAttemptDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrStatusCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "bankId",
+        "type": "xs:string"
+      },
+      {
+        "name": "institutionLoginId",
+        "type": "xs:long"
+      },
+      {
+        "name": "investmentAccountType",
+        "type": "tns:InvestmentAccountType"
+      },
+      {
+        "name": "interestMarginBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "shortBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "availableCashBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "currentBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "maturityValueAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unvestedBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "vestedBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empMatchDeferAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empMatchDeferAmountYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empMatchAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empMatchAmountYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empPretaxContribAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empPretaxContribAmountYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "rolloverAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "contribTotalYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empMatchDeferAmountItd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empMatchAmountItd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "rolloverItd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "cashBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "initialLoanBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "loanStartDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "currentLoanBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "loanRate",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "RewardsAccount": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/rewardsaccount/v1",
+    "attributes": [
+      {
+        "name": "accountId",
+        "type": "xs:long"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumberReal",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNickname",
+        "type": "xs:string"
+      },
+      {
+        "name": "displayPosition",
+        "type": "xs:int"
+      },
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "registeredUserName",
+        "type": "xs:string"
+      },
+      {
+        "name": "balanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "balanceDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "balancePreviousAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastTxnDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrSuccessDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrAttemptDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrStatusCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "bankId",
+        "type": "xs:string"
+      },
+      {
+        "name": "institutionLoginId",
+        "type": "xs:long"
+      },
+      {
+        "name": "rewardsAccountType",
+        "type": "tns:RewardsAccountType"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "programType",
+        "type": "xs:string"
+      },
+      {
+        "name": "originalBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "currentBalance",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "rewardQualifyAmountYtd",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "rewardLifetimeEarned",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "segmentYtd",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "OtherAccount": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/otheraccount/v1",
+    "attributes": [
+      {
+        "name": "accountId",
+        "type": "xs:long"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNumberReal",
+        "type": "xs:string"
+      },
+      {
+        "name": "accountNickname",
+        "type": "xs:string"
+      },
+      {
+        "name": "displayPosition",
+        "type": "xs:int"
+      },
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "registeredUserName",
+        "type": "xs:string"
+      },
+      {
+        "name": "balanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "balanceDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "balancePreviousAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "lastTxnDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrSuccessDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrAttemptDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "aggrStatusCode",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "bankId",
+        "type": "xs:string"
+      },
+      {
+        "name": "institutionLoginId",
+        "type": "xs:long"
+      }
+    ]
+  },
+  "AccountList": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/accountlist/v1",
+    "attributes": [
+      {
+        "name": "BankingAccount",
+        "type": "bnk:BankingAccount"
+      },
+      {
+        "name": "CreditAccount",
+        "type": "cred:CreditAccount"
+      },
+      {
+        "name": "LoanAccount",
+        "type": "loan:LoanAccount"
+      },
+      {
+        "name": "InvestmentAccount",
+        "type": "inv:InvestmentAccount"
+      },
+      {
+        "name": "RewardsAccount",
+        "type": "rew:RewardsAccount"
+      },
+      {
+        "name": "OtherAccount",
+        "type": "oth:OtherAccount"
+      }
+    ]
+  },
+  "Transaction": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/transaction/v1",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "xs:long"
+      },
+      {
+        "name": "currencyType",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "institutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctAction",
+        "type": "tns:TransactionCorrectedType"
+      },
+      {
+        "name": "serverTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "checkNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "refNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "confirmationNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "extendedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "type",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueType",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalCurrency",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "userDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "amount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "runningBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pending",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "categorization",
+        "type": "tns:Categorization"
+      }
+    ]
+  },
+  "common": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/transaction/v1",
+    "attributes": [
+      {
+        "name": "normalizedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "merchant",
+        "type": "xs:string"
+      },
+      {
+        "name": "sic",
+        "type": "xs:int"
+      }
+    ]
+  },
+  "context": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/transaction/v1",
+    "attributes": [
+      {
+        "name": "source",
+        "type": "tns:CategorizationSource",
+        "required": true
+      },
+      {
+        "name": "categoryName",
+        "type": "xs:string",
+        "required": true
+      },
+      {
+        "name": "contextType",
+        "type": "xs:string"
+      },
+      {
+        "name": "scheduleC",
+        "type": "xs:string"
+      }
+    ]
+  },
+  "Categorization": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/transaction/v1",
+    "attributes": [
+      {
+        "name": "common",
+        "type": "common"
+      },
+      {
+        "name": "context",
+        "type": "context"
+      }
+    ]
+  },
+  "BankingTransaction": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/bnktransaction/v1",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "xs:long"
+      },
+      {
+        "name": "currencyType",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "institutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctAction",
+        "type": "tns:TransactionCorrectedType"
+      },
+      {
+        "name": "serverTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "checkNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "refNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "confirmationNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "extendedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "type",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueType",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalCurrency",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "userDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "amount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "runningBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pending",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "categorization",
+        "type": "tns:Categorization"
+      }
+    ]
+  },
+  "choice": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/challenge/v1",
+    "attributes": [
+      {
+        "name": "text",
+        "type": "xs:string"
+      },
+      {
+        "name": "val",
+        "type": "xs:string",
+        "required": true
+      }
+    ]
+  },
+  "challenge": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/challenge/v1",
+    "attributes": [
+      {
+        "name": "text",
+        "type": "xs:string"
+      },
+      {
+        "name": "image",
+        "type": "xs:base64Binary"
+      },
+      {
+        "name": "choice",
+        "type": "choice"
+      }
+    ]
+  },
+  "Challenges": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/challenge/v1",
+    "attributes": [
+      {
+        "name": "challenge",
+        "type": "challenge"
+      }
+    ]
+  },
+  "ChallengeResponses": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/challenge/v1",
+    "attributes": [
+      {
+        "name": "response",
+        "required": true,
+        "type": "xs:string"
+      }
+    ]
+  },
+  "CreditCardTransaction": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/cctransaction/v1",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "xs:long"
+      },
+      {
+        "name": "currencyType",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "institutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctAction",
+        "type": "tns:TransactionCorrectedType"
+      },
+      {
+        "name": "serverTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "checkNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "refNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "confirmationNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "extendedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "type",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueType",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalCurrency",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "userDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "amount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "runningBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pending",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "categorization",
+        "type": "tns:Categorization"
+      }
+    ]
+  },
+  "InstitutionLogin": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institutionlogin/v1",
+    "attributes": [
+      {
+        "name": "credentials",
+        "type": "tns:Credentials"
+      },
+      {
+        "name": "challengeResponses",
+        "type": "ch:ChallengeResponses"
+      }
+    ]
+  },
+  "Credentials": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institutionlogin/v1",
+    "attributes": [
+      {
+        "name": "credential",
+        "type": "tns:Credential"
+      }
+    ]
+  },
+  "Credential": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institutionlogin/v1",
+    "attributes": [
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "value",
+        "type": "xs:string"
+      }
+    ]
+  },
+  "Institution": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institution/v1",
+    "attributes": [
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "institutionName",
+        "type": "xs:string"
+      },
+      {
+        "name": "homeUrl",
+        "type": "xs:string"
+      },
+      {
+        "name": "phoneNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "virtual",
+        "type": "xs:boolean"
+      }
+    ]
+  },
+  "Institutions": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institution/v1",
+    "attributes": [
+      {
+        "name": "institution",
+        "type": "tns:Institution"
+      }
+    ]
+  },
+  "key": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institution/v1",
+    "attributes": [
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "val",
+        "type": "xs:string"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueLengthMin",
+        "type": "xs:int"
+      },
+      {
+        "name": "valueLengthMax",
+        "type": "xs:int"
+      },
+      {
+        "name": "displayFlag",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "displayOrder",
+        "type": "xs:int"
+      },
+      {
+        "name": "mask",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "instructions",
+        "type": "xs:string"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      }
+    ]
+  },
+  "keys": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institution/v1",
+    "attributes": [
+      {
+        "name": "key",
+        "type": "key"
+      }
+    ]
+  },
+  "InstitutionDetail": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/institution/v1",
+    "attributes": [
+      {
+        "name": "institutionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "institutionName",
+        "type": "xs:string"
+      },
+      {
+        "name": "homeUrl",
+        "type": "xs:string"
+      },
+      {
+        "name": "phoneNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "virtual",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "status",
+        "type": "xs:string"
+      },
+      {
+        "name": "address",
+        "type": "cm:Address"
+      },
+      {
+        "name": "emailAddress",
+        "type": "xs:string"
+      },
+      {
+        "name": "specialText",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "keys",
+        "type": "keys"
+      }
+    ]
+  },
+  "InvestmentBankingTransaction": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/ibnktransaction/v1",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "xs:long"
+      },
+      {
+        "name": "currencyType",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "institutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctAction",
+        "type": "tns:TransactionCorrectedType"
+      },
+      {
+        "name": "serverTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "checkNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "refNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "confirmationNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "extendedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "type",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueType",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalCurrency",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "userDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "amount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "runningBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pending",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "categorization",
+        "type": "tns:Categorization"
+      },
+      {
+        "name": "bankingTransactionType",
+        "type": "xs:string"
+      },
+      {
+        "name": "subaccountFundType",
+        "type": "txn:InvestmentSubAccountType"
+      },
+      {
+        "name": "banking401KSourceType",
+        "type": "tns:Banking401KSourceType"
+      }
+    ]
+  },
+  "SecurityInfo": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/securityinfo/v1",
+    "attributes": [
+      {
+        "name": "assetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "fiAssetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "ticker",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueId",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueIdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "asOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "rating",
+        "type": "xs:string"
+      },
+      {
+        "name": "percent",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "fiId",
+        "type": "xs:string"
+      },
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "fundName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "symbolRefId",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "DebtInfo": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/securityinfo/v1",
+    "attributes": [
+      {
+        "name": "assetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "fiAssetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "ticker",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueId",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueIdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "asOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "rating",
+        "type": "xs:string"
+      },
+      {
+        "name": "percent",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "fiId",
+        "type": "xs:string"
+      },
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "fundName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "symbolRefId",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "callDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "yieldToCall",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "callPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "callType",
+        "type": "xs:string"
+      },
+      {
+        "name": "couponFreq",
+        "type": "xs:string"
+      },
+      {
+        "name": "couponMaturityDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "couponRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "debtClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "debtType",
+        "type": "xs:string"
+      },
+      {
+        "name": "maturityDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "yieldToMaturity",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "parValue",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "MFInfo": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/securityinfo/v1",
+    "attributes": [
+      {
+        "name": "assetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "fiAssetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "ticker",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueId",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueIdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "asOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "rating",
+        "type": "xs:string"
+      },
+      {
+        "name": "percent",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "fiId",
+        "type": "xs:string"
+      },
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "fundName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "symbolRefId",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "mfType",
+        "type": "xs:string"
+      },
+      {
+        "name": "fundManager",
+        "type": "xs:string"
+      },
+      {
+        "name": "yield",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "yieldAsOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "secCurrencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "secCurrencyRate",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "StockInfo": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/securityinfo/v1",
+    "attributes": [
+      {
+        "name": "assetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "fiAssetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "ticker",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueId",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueIdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "asOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "rating",
+        "type": "xs:string"
+      },
+      {
+        "name": "percent",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "fiId",
+        "type": "xs:string"
+      },
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "fundName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "symbolRefId",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "stockType",
+        "type": "xs:string"
+      },
+      {
+        "name": "yield",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "yieldAsOfDate",
+        "type": "xs:dateTime"
+      }
+    ]
+  },
+  "OtherInfo": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/securityinfo/v1",
+    "attributes": [
+      {
+        "name": "assetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "fiAssetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "ticker",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueId",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueIdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "asOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "rating",
+        "type": "xs:string"
+      },
+      {
+        "name": "percent",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "fiId",
+        "type": "xs:string"
+      },
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "fundName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "symbolRefId",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "typeDesc",
+        "type": "xs:string"
+      }
+    ]
+  },
+  "OptionInfo": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/securityinfo/v1",
+    "attributes": [
+      {
+        "name": "assetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "fiAssetClass",
+        "type": "xs:string"
+      },
+      {
+        "name": "ticker",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueId",
+        "type": "xs:string"
+      },
+      {
+        "name": "uniqueIdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "asOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "rating",
+        "type": "xs:string"
+      },
+      {
+        "name": "percent",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "fiId",
+        "type": "xs:string"
+      },
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "fundName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "symbolRefId",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "expireDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "strikePrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "optType",
+        "type": "xs:string"
+      },
+      {
+        "name": "securityUniqueId",
+        "type": "xs:string"
+      },
+      {
+        "name": "securityUniqueIdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "sharesPerContract",
+        "type": "xs:long"
+      }
+    ]
+  },
+  "InvestmentPosition": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/invposition/v1",
+    "attributes": [
+      {
+        "name": "investmentPositionId",
+        "type": "xs:long"
+      },
+      {
+        "name": "changePercent",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "costBasis",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "currencyCode",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "currencyType",
+        "type": "xs:string"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "priceAsOfDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "cusip",
+        "type": "xs:string"
+      },
+      {
+        "name": "dailyChange",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "empPretaxContribAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "empMatchAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "heldInAccount",
+        "type": "xs:string"
+      },
+      {
+        "name": "holdType",
+        "type": "xs:string"
+      },
+      {
+        "name": "investmentAllocation",
+        "type": "xs:string"
+      },
+      {
+        "name": "investmentDirection",
+        "type": "xs:string"
+      },
+      {
+        "name": "paidPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "marketValue",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "maturityValue",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "units",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitUserQuantity",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "unitStreetQuantity",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "positionType",
+        "type": "xs:string"
+      },
+      {
+        "name": "positionStatus",
+        "type": "xs:string"
+      },
+      {
+        "name": "secured",
+        "type": "xs:string"
+      },
+      {
+        "name": "inv401kSource",
+        "type": "xs:string"
+      },
+      {
+        "name": "reinvestmentCapGains",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "reinvestmentDividend",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "transactionType",
+        "type": "xs:string"
+      },
+      {
+        "name": "invSecurityType",
+        "type": "si:InvSecurityType"
+      },
+      {
+        "name": "debtInfo",
+        "type": "si:DebtInfo"
+      },
+      {
+        "name": "mfInfo",
+        "type": "si:MFInfo"
+      },
+      {
+        "name": "stockInfo",
+        "type": "si:StockInfo"
+      },
+      {
+        "name": "optionInfo",
+        "type": "si:OptionInfo"
+      },
+      {
+        "name": "otherInfo",
+        "type": "si:OtherInfo"
+      }
+    ]
+  },
+  "InvestmentPositions": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/invposition/v1",
+    "attributes": [
+      {
+        "name": "position",
+        "type": "tns:InvestmentPosition"
+      }
+    ]
+  },
+  "InvestmentTransaction": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/invtransaction/v1",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "xs:long"
+      },
+      {
+        "name": "currencyType",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "institutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctAction",
+        "type": "tns:TransactionCorrectedType"
+      },
+      {
+        "name": "serverTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "checkNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "refNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "confirmationNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "extendedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "type",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueType",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalCurrency",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "userDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "amount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "runningBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pending",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "categorization",
+        "type": "tns:Categorization"
+      },
+      {
+        "name": "reversalInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "description",
+        "type": "xs:string"
+      },
+      {
+        "name": "buyType",
+        "type": "tns:BuyType"
+      },
+      {
+        "name": "incomeType",
+        "type": "tns:IncomeType"
+      },
+      {
+        "name": "inv401kSource",
+        "type": "xs:string"
+      },
+      {
+        "name": "loanId",
+        "type": "xs:string"
+      },
+      {
+        "name": "optionsActionType",
+        "type": "tns:OptionsActionType"
+      },
+      {
+        "name": "optionsBuyType",
+        "type": "tns:OptionsBuyType"
+      },
+      {
+        "name": "optionsSellType",
+        "type": "tns:OptionsSellType"
+      },
+      {
+        "name": "positionType",
+        "type": "tns:PositionType"
+      },
+      {
+        "name": "relatedInstitutionTradeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "relatedOptionTransType",
+        "type": "tns:RelatedOptionTransType"
+      },
+      {
+        "name": "securedType",
+        "type": "tns:SecuredType"
+      },
+      {
+        "name": "sellReason",
+        "type": "tns:SellReason"
+      },
+      {
+        "name": "sellType",
+        "type": "tns:SellType"
+      },
+      {
+        "name": "subaccountFromType",
+        "type": "txn:InvestmentSubAccountType"
+      },
+      {
+        "name": "subaccountFundType",
+        "type": "txn:InvestmentSubAccountType"
+      },
+      {
+        "name": "subaccountSecurityType",
+        "type": "txn:InvestmentSubAccountType"
+      },
+      {
+        "name": "subaccountToType",
+        "type": "txn:InvestmentSubAccountType"
+      },
+      {
+        "name": "transferAction",
+        "type": "tns:TransferAction"
+      },
+      {
+        "name": "unitType",
+        "type": "xs:string"
+      },
+      {
+        "name": "cusip",
+        "type": "xs:string"
+      },
+      {
+        "name": "symbol",
+        "type": "xs:string"
+      },
+      {
+        "name": "unitAction",
+        "type": "xs:string"
+      },
+      {
+        "name": "optionsSecurity",
+        "type": "xs:string"
+      },
+      {
+        "name": "tradeDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "settleDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "accruedInterestAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "averageCostBasisAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "commissionAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "denominator",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "payrollDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "purchaseDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "gainAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "feesAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "fractionalUnitsCashAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "loadAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "loanInterestAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "loanPrincipalAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "markdownAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "markupAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "newUnits",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "numerator",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "oldUnits",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "penaltyAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "priorYearContribution",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "sharesPerContract",
+        "type": "xs:short"
+      },
+      {
+        "name": "stateWithholding",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "totalAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "taxesAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "taxExempt",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "unitPrice",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "units",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "withholdingAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "optionsSharesPerContract",
+        "type": "xs:long"
+      },
+      {
+        "name": "invSecurityType",
+        "type": "si:InvSecurityType"
+      },
+      {
+        "name": "debtInfo",
+        "type": "si:DebtInfo"
+      },
+      {
+        "name": "mfInfo",
+        "type": "si:MFInfo"
+      },
+      {
+        "name": "stockInfo",
+        "type": "si:StockInfo"
+      },
+      {
+        "name": "optionInfo",
+        "type": "si:OptionInfo"
+      },
+      {
+        "name": "otherInfo",
+        "type": "si:OtherInfo"
+      }
+    ]
+  },
+  "LoanTransaction": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/loantransaction/v1",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "xs:long"
+      },
+      {
+        "name": "currencyType",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "institutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctAction",
+        "type": "tns:TransactionCorrectedType"
+      },
+      {
+        "name": "serverTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "checkNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "refNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "confirmationNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "extendedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "type",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueType",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalCurrency",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "userDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "amount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "runningBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pending",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "categorization",
+        "type": "tns:Categorization"
+      },
+      {
+        "name": "principalAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "interestAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "escrowTotalAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "escrowTaxAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "escrowInsuranceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "escrowPmiAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "escrowFeesAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "escrowOtherAmount",
+        "type": "xs:decimal"
+      }
+    ]
+  },
+  "RewardsTransaction": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/rewardstransaction/v1",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "xs:long"
+      },
+      {
+        "name": "currencyType",
+        "type": "cm:CurrencyCode"
+      },
+      {
+        "name": "institutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctInstitutionTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "correctAction",
+        "type": "tns:TransactionCorrectedType"
+      },
+      {
+        "name": "serverTransactionId",
+        "type": "xs:string"
+      },
+      {
+        "name": "checkNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "refNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "confirmationNumber",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeId",
+        "type": "xs:string"
+      },
+      {
+        "name": "payeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "extendedPayeeName",
+        "type": "xs:string"
+      },
+      {
+        "name": "memo",
+        "type": "xs:string"
+      },
+      {
+        "name": "type",
+        "type": "xs:string"
+      },
+      {
+        "name": "valueType",
+        "type": "xs:string"
+      },
+      {
+        "name": "currencyRate",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "originalCurrency",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "postedDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "userDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "availableDate",
+        "type": "xs:dateTime"
+      },
+      {
+        "name": "amount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "runningBalanceAmount",
+        "type": "xs:decimal"
+      },
+      {
+        "name": "pending",
+        "type": "xs:boolean"
+      },
+      {
+        "name": "categorization",
+        "type": "tns:Categorization"
+      }
+    ]
+  },
+  "TransactionList": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/transactionlist/v1",
+    "attributes": [
+      {
+        "name": "BankingTransaction",
+        "type": "bnk:BankingTransaction"
+      },
+      {
+        "name": "CreditCardTransaction",
+        "type": "cred:CreditCardTransaction"
+      },
+      {
+        "name": "InvestmentBankingTransaction",
+        "type": "ibnk:InvestmentBankingTransaction"
+      },
+      {
+        "name": "LoanTransaction",
+        "type": "loan:LoanTransaction"
+      },
+      {
+        "name": "InvestmentTransaction",
+        "type": "inv:InvestmentTransaction"
+      },
+      {
+        "name": "RewardsTransaction",
+        "type": "rew:RewardsTransaction"
+      }
+    ]
+  }
+}

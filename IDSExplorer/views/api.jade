@@ -1,0 +1,288 @@
+- var padding = 0
+- var attrCount = 0
+- var parentCache={}
+mixin recursiveRenderer(entityName, curpadding)
+    - each item,key in apiMetadata
+        - if(key == entityName)
+            - each attribute in item['attributes']
+                - attrCount++
+                - if(attribute.type)
+                    - var type = String(attribute.type)
+                    - type = type.substr(type.indexOf(':') + 1)
+                    - var cellPadding = "padding-left:" + curpadding + "px;"
+                    - var trStyle = 'altOne'
+                    - if(attrCount % 2 == 0)
+                        - trStyle = 'altTwo'
+                    tr(class=trStyle)
+                        - var cellData = restrictCellData(attribute.name, padding)
+                        - var toolTip = ''
+                        - if(cellData != attribute.name)
+                            - toolTip = attribute.name
+                        td(style=cellPadding, title=toolTip) #{cellData}
+                        - cellData = restrictCellData(type, 35)
+                        - toolTip = ''
+                        - if(cellData != type)
+                            - toolTip = type
+                        td(title=toolTip) #{cellData}
+                        td #{attribute.required}
+                        td !{attribute.synopsis}
+                        - var isComplexType = false
+                        - each attrItem, attrKey in apiMetadata
+                            - if(attrKey == type && attrItem['attributes'].length > 0)
+                                - isComplexType = true
+                        - if(isComplexType)
+                            - if(!parentCache[type])
+                                - padding = padding + 15
+                                - parentCache[type] = true
+                                mixin recursiveRenderer(type, padding)
+            - if(padding > 5)
+                - padding = padding - 15
+            - var typeCtr=0
+            - var attrToDelete
+            - each value,typeInfo in parentCache
+                - typeCtr = typeCtr + 1
+                - if(typeCtr>1 )
+                   - attrToDelete = typeInfo
+            - delete parentCache[attrToDelete]
+div(class='pageTitleContainer')
+    div(class='pageTitle')
+        h2 #{apiInfo.name}
+
+- if (session.authed && apiInfo.oauth && (apiInfo.oauth.type =='three-legged' || apiInfo.oauth.type == 'saml'))
+    - var authed = 'authed'
+- else
+    - var authed = ''
+
+section(class='body')
+    section(class='credentials')
+        div(class="title")
+            span Credentials
+        form(class="content")#credentials
+            input(type='hidden', name='apiName', value=apiName)
+            - if(!authed && (apiInfo.oauth || apiInfo.saml))
+                input(type='hidden', name='apiName', value=apiName)
+                p Not Authenticated!...&nbsp;&nbsp;
+                    input(type='button', id='popup-link', class='button', value='Authenticate!')
+            - else if (authed)
+                div
+                    span Authenticated with OAuth &nbsp;
+                    img(src='/images/accept.png')
+                div(style="padding-top:10px;")
+                    table(cellpadding='0', cellspacing='0', border='0')
+                        tr
+                            td(width="180") Consumer Key
+                            td : #{session.apiKey}
+                        tr
+                            td Consumer Secret
+                            td : #{session.apiSecret}
+                        tr
+                            td Access Token
+                            td : #{session.accessToken}
+                        tr
+                            td Access Token Secret
+                            td : #{session.accessTokenSecret}
+                - if(apiName.indexOf('AggCat') != -1)
+                    input(type='button', name='submit', value='Generate New OAuth Tokens', class="button save", id="popup-link")
+                - else
+                    input(type='submit', name='submit', value='Disconnect', class="button save")
+                - if(defaultParams != null)
+                    - each value,key in defaultParams
+                        - if(key == 'dataSource' && value !='')
+                            - if(apiName.indexOf(value) == -1)
+                                div(class='error')
+                                    - var toCompany = (value == 'QBO') ? 'QBD' : 'QBO';
+                                    span Warning!... The company you selected is incorrect. Please Disconnect and Authenticate by selecting a #{toCompany} company.
+    ul(class='filterLinks')
+    //    li
+    //        a#toggle-endpoints(href='#', class='selected') Toggle all Endpoints
+    //    li
+    //        a#toggle-methods(href='#') Toggle all Methods
+
+    section(class='mainContent')
+        div(id="api")
+        div(class='tabs')
+            ul
+                - var totalEndPoints = apiDefinition.endpoints.length
+                - each endpoint in apiDefinition.endpoints
+                    li.entityClass
+                        a(href="#api") #{endpoint.name}
+        - var count = 0
+        - var contentAreaClass = ''
+        - var contentAreaId = ''
+        - each endpoint in apiDefinition.endpoints
+            - var contentAreaId = 'contentAreaId' + count
+            - count++
+            - if(count == 1)
+                - contentAreaClass = 'contentArea hide'
+            - else
+                - contentAreaClass = 'contentArea hide'
+            div(class=contentAreaClass, id=contentAreaId)
+                div.methodLinks
+                    ul.filterLinks
+                        li.list-methods
+                            a(href='#') List Methods
+                        li.expand-methods
+                            a(href='#') Expand Methods
+
+                h3 #{endpoint.name}
+
+                -if(endpoint.Synopsis)
+                    !{endpoint.Synopsis}
+                - if(endpoint.EntityNames && endpoint.EntityNames.length > 0)
+                    div.attributesLayout
+                        a(class='attributesHeader') Attributes
+                        div.attributesContent
+                            - each entityName in endpoint.EntityNames
+                                span.attributesHeader #{entityName} Attributes
+                                table(class='attributes', cellpadding='0', cellspacing='0', border='0', width='700')
+                                    tr
+                                        th(width='180', align='left') Name
+                                        th(width='150', align='left') Type
+                                        th(width='50', align='left') Required
+                                        th(width='320', align='center') Description
+                                    - padding = 5
+                                    - attrCount = 0
+                                    - parentCache={}
+                                    - parentCache[entityName]=true
+                                    mixin recursiveRenderer(entityName, padding)
+                    //- else
+                        span Attributes not found
+                - if (endpoint.methods.length)
+                    - each method in endpoint.methods
+                        - if (method.RequiresOAuth === 'Y' || method.RequiresOAuth === true)
+                            - var secure = 'authrequired'
+                        - else
+                            - var secure = ''
+                        div.actionBlocks
+                            div(class='actionBlock method')
+                                div.titleSection
+                                    table
+                                        tr
+                                            td(width='250')
+                                                a(class='actionLink') #{method.MethodName}
+                                            td
+                                                span(class='path') #{method.URI}
+                                    //a(href='#api', class='actionButton') #{method.HTTPMethod}
+                                    //a(class='actionLink') #{method.MethodName}
+                                    //span(class='path') #{method.URI}
+                                form.hidden
+                                    input(type='hidden', name='httpMethod', value=method.HTTPMethod)
+                                    input(type='hidden', name='oauth', value=secure)
+                                    input(type='hidden', name='methodUri', value=method.URI)
+                                    input(type='hidden', name='endpointName', value=endpoint.name)
+                                    input(type='hidden', name='postContentType', value=method.PostContentType)
+                                    input(type='hidden', name='methodName', value=method.MethodName)
+
+                                    div(class='contentSection')
+                                        div.operation
+                                            span Operation: #{method.HTTPMethod}
+
+                                        - if (method.headers && method.headers.length > 0)
+                                            table(class='details', cellpadding='0', cellspacing='0', border='0', width='690')
+                                                tr
+                                                    th(width='180') Header
+                                                    th(width='200') Value
+                                                    th(width='310') Description
+                                                - var headerCount =0
+                                                - each header in method.headers
+                                                    - headerCount++
+                                                    div(id='header' + headerCount)
+                                                        - var mandatory ='Required'
+                                                        tr
+                                                            td #{header.Name}
+                                                            td
+                                                                - var defaultValue = header.Default
+                                                                - if (header.Type =='enumerated')
+                                                                    select(name='headers[' + header.Name + ']', placeholder=mandatory)
+                                                                        - if (header.Default =='')
+                                                                            option(value='')
+                                                                        - each choice in header.EnumeratedList
+                                                                            - if (header.Default ==choice)
+                                                                                option(value=choice, selected=true) #{choice}
+                                                                            - else
+                                                                                option(value=choice) #{choice}
+                                                                - else
+                                                                    - if(defaultHeaders != null)
+                                                                        - each value,key in defaultHeaders
+                                                                            - if (key == header.Name)
+                                                                                - defaultValue = value
+                                                                    - if(HelperHeaders != null)
+                                                                        -each value,key in HelperHeaders
+                                                                            - if(key == endpoint.name+':'+method.MethodName)
+                                                                                -each value1,key1 in value
+                                                                                    -if (key1 == header.Name)
+                                                                                        -defaultValue = value1
+                                                                    input(type='text', name='headers[' + header.Name + ']', value=defaultValue, placeholder=mandatory)
+                                                            td.description
+                                                                p=header.Description || 'No description'
+
+                                        - if (method.parameters.length > 0)
+                                            table(class='details', cellpadding='0', cellspacing='0', border='0', width='690')
+                                                tr
+                                                    th(width='180') Parameter
+                                                    th(width='200') Value
+                                                    th(width='310') Description
+                                                - var paramCount =0
+                                                - each parameter in method.parameters
+                                                    - paramCount++
+                                                    - if (parameter.Required == 'Y')
+                                                        - var mandatory = 'Required'
+                                                    - else
+                                                        - var mandatory = ''
+                                                    tr
+                                                        td #{parameter.Name}
+                                                        td
+                                                            - if (parameter.Type == 'enumerated')
+                                                                select(name='params[' + parameter.Name + ']', placeholder=mandatory)
+                                                                    - if (parameter.Default == '')
+                                                                        option(value='')
+                                                                    - each choice in parameter.EnumeratedList
+                                                                        - if (parameter.Default == choice)
+                                                                            option(value=choice, selected=true) #{choice}
+                                                                        - else
+                                                                            option(value=choice) #{choice}
+                                                            - else if (parameter.Type == 'boolean')
+                                                                select(name='params[' + parameter.Name + ']', placeholder=mandatory)
+                                                                    - if (parameter.Default == '')
+                                                                            option(value='')
+                                                                    - each choice in [apiInfo.booleanTrueVal,apiInfo.booleanFalseVal]
+                                                                        - if (parameter.Default == choice)
+                                                                            option(value=choice, selected=true) #{choice}
+                                                                        - else
+                                                                            option(value=choice) #{choice}
+                                                            - else
+                                                                - var defaultValue = parameter.Default
+                                                                - if(defaultParams != null)
+                                                                    - each value,key in defaultParams
+                                                                        - if (key == parameter.Name)
+                                                                            - defaultValue = value
+                                                                - if(HelperParams != null)
+                                                                    -each value,key in HelperParams
+                                                                        - if(key == endpoint.name+':'+method.MethodName)
+                                                                            -each value1,key1 in value
+                                                                                -if (key1 == parameter.Name)
+                                                                                    -defaultValue = value1
+                                                                input(type='text', name='params[' + parameter.Name + ']', value=defaultValue, placeholder=mandatory)
+                                                        td
+                                                            p=parameter.Description || 'No description'
+                                                            - if (parameter.Type =='enumerated' && parameter.EnumeratedDescription)
+                                                                dl.clearfix
+                                                                    - each description, choice in parameter.EnumeratedDescription
+                                                                        dt #{choice}
+                                                                        dd #{description}
+
+                                        - if(method.RequiresPostData == 'Y')
+                                            div
+                                                label Request Body&nbsp;&nbsp;&nbsp;
+                                                    - if(method.PopulateRequestBody == 'Y')
+                                                        a(class="xmlgenerator") Get Default Body
+                                                - var defaultValue = ''
+                                                - if(HelperRequestBody != null)
+                                                    - each value,key in HelperRequestBody
+                                                        - if(key == endpoint.name+':'+method.MethodName)
+                                                            - defaultValue = value
+                                                textarea(id='requestBody', name='requestBody') #{defaultValue}
+
+                                        // Create header fields and button to add/remove headers.
+                                        - if (!method['read-only'])
+                                            input(type='submit', class='button', id=method.MethodName, value='Try it!')

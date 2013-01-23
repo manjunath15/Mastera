@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.intuit.com/sb/cdm/v2"
+	targetNamespace="http://www.intuit.com/sb/cdm/v2" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IntuitCdmBaseTypes.xsd"/>
+	<xs:group name="PaymentMethodReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>			
+				Product: ALL
+				Description: That minimal subset of payment method information which is included on a transaction, so that a client viewing the transaction object need not make an additional data request to another service in order to render the transaction in human readable form. Note: the range of ItemType is ItemTypeEnum defined in asset-ops domain
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PaymentMethodId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: ID for the PaymentMethod object.
+						Product: QBO
+						Description: ID of the PaymentMethod.[br /]For Customer, this is the Id associated with the customer as set in the request, if nothing is set in the request it defaults to null.[br /]For Payment and SalesReceipt, this is the ID of the type of the payment method, such as credit card, cash, and check.[br /]Not supported for Job.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PaymentMethodName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: Name of the payment method.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 31 characters.
+						Product: QBO
+						Description: Name of the payment method - Cash, Check, AmericanExpress, Visa, MasterCard, etc.[br /]Supported for SalesReceipt only. Read-only field.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SalesRepReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>
+				Product: QBW
+				Description: That minimal subset of sales rep information which is included on a transaction, so that a client viewing the transaction object need not make an additional request to another service in order to render the transaction in human readable form
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SalesRepId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: ID for the SalesRep object.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SalesRepName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: Name of the sales rep.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="PriceLevelReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>
+				Product: QBW 
+				Description: That minimal subset of price level information which is included on a transaction, so that a client viewing the transaction object need not make an additional request to another service in order to render the transaction in human readable form
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PriceLevelId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW 
+						Description: ID for the PriceLevel object.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PriceLevelName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW 
+						Description: Name for the PriceLevel.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SalesTaxCodeReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>
+				Product: QBW
+				Description: That minimal subset of sales tax code information which is included on a transaction, so that a client viewing the transaction object need not make an additional request to another service in order to render the transaction in human readable form
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SalesTaxCodeId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW 
+					Description: ID for the SalesTaxCode object.
+					Product: QBO
+					Description: QBO only supports the customers or jobs being taxable or not, so if this field is "1", the job is taxable. If the field value is null, the job is not taxable. All other values are invalid.[br /]Note that if you have specified a TaxAmt and TaxRate, SalesTaxCodeId will be "1" even if you don't specify it directly. To make SalesTaxCodeId not taxable, TaxAmt and TaxRate must be null.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SalesTaxCodeName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW
+					Description: Name for the SalesTaxCode.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 31 characters.
+					Product: QBO
+					Description: Indicates if the customer or job is taxable. The only valid value is "IS_TAXABLE" indicating the job is taxable. If the field value is null, the job is not taxable. Use SalesTaxCodeId to set the value. This is a read-only field.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="SalesTermReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>
+			Product: ALL
+			Description: That minimal subset of sales term information which is included on a transaction, so that a client viewing the transaction object need not make an additional request to another service in order to render the transaction in human readable form			
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SalesTermId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: Identifies the minimal subset of sales term information included on a transaction.
+						Product: QBO
+						Description: The ID of the SalesTerm object associated with the Bill, Customer, Invoice, Job, or Vendor.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SalesTermName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW
+					Description: Human-readable name for a sales term. Example: "8% 30 Net 60".[br /]Data Services max. length: 256 characters. QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="TaxChoiceGroup">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW
+			Description: An optional hint which may be used by the client as a guideline in calculating the taxes to be applied to the entire transaction.  The authoritative source for the amount and specific taxes applied to the transaction is contained within the tax lines.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:group ref="TaxReferenceGroup" minOccurs="0"/>
+			<xs:group ref="TaxGroupReferenceGroup" minOccurs="0"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="TaxGroupReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW
+			Description: The minimal set of information required to specify a reference to a tax group.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TaxGroupId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: ID for the SalesTaxGroup object.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TaxGroupName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+					Product: QBW
+					Description: Name of the sales tax group.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="TaxReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW
+			Description: The minimal set of information required to specify a reference to a tax.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TaxId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: Federal Tax Identification Number for your business, also known as the Employer ID Number (EIN).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TaxName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW
+						Description: Name of your business as registered with your Federal Tax Identification Number.[br /]Data Services max. length: 256 characters. QuickBooks max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+</xs:schema>

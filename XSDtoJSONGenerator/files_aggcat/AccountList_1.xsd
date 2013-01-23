@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/accountlist/v1"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:bnk="http://schema.intuit.com/platform/fdatafeed/bankingaccount/v1"
+    xmlns:cred="http://schema.intuit.com/platform/fdatafeed/creditaccount/v1"
+    xmlns:loan="http://schema.intuit.com/platform/fdatafeed/loanaccount/v1"
+    xmlns:inv="http://schema.intuit.com/platform/fdatafeed/investmentaccount/v1"
+    xmlns:rew="http://schema.intuit.com/platform/fdatafeed/rewardsaccount/v1"
+    xmlns:oth="http://schema.intuit.com/platform/fdatafeed/otheraccount/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/accountlist/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/bankingaccount/v1" schemaLocation="BankingAccount_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/creditaccount/v1" schemaLocation="CreditAccount_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/loanaccount/v1" schemaLocation="LoanAccount_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/investmentaccount/v1" schemaLocation="InvestmentAccount_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/rewardsaccount/v1" schemaLocation="RewardsAccount_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/otheraccount/v1" schemaLocation="OtherAccount_1.xsd"/>
+
+    <!-- COMPLEX TYPES -->
+
+    <xs:complexType name="AccountList">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="bnk:BankingAccount"/>
+            <xs:element ref="cred:CreditAccount"/>
+            <xs:element ref="loan:LoanAccount"/>
+            <xs:element ref="inv:InvestmentAccount"/>
+            <xs:element ref="rew:RewardsAccount"/>
+            <xs:element ref="oth:OtherAccount"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:element name="AccountList" type="tns:AccountList" />
+
+</xs:schema>

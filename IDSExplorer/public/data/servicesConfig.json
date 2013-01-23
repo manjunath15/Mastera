@@ -1,0 +1,118 @@
+{
+    "AggCat": {
+        "enabled": true,
+        "name": "Customer Account Data",
+        "shortName": "AggCat",
+        "tooltip": "Click to call AggCat APIs such as getInstitutions, getInstitutionDetails, discoverAndAddAccounts and so forth.",
+        "protocol": "https",
+        "baseURL": "financialdatafeed.platform.intuit.com",
+        "publicPath": "",
+        "auth": "oauth",
+        "privatePath": "/v1",
+        "oauth": {
+            "type": "saml",
+            "requestURL": "https://oauth.intuit.com/oauth/v1/get_access_token_by_saml",
+            "version": "1.0",
+            "crypt": "HMAC-SHA1"
+        }
+    },
+    "AggCatBatch": {
+        "enabled": true,
+        "name": "Customer Account Data Batch APIs",
+        "shortName": "AggCat Batch",
+        "tooltip": "Click to call AggCat Batch APIs such as getFileData, deleteFile and listFiles.",
+        "protocol": "https",
+        "baseURL": "financialdatafeed.platform.intuit.com",
+        "publicPath": "",
+        "auth": "oauth",
+        "privatePath": "/export-war/v1",
+        "oauth": {
+            "type": "saml",
+            "requestURL": "https://oauth.intuit.com/oauth/v1/get_access_token_by_saml",
+            "version": "1.0",
+            "crypt": "HMAC-SHA1"
+        }
+    },
+    "V3QBD": {
+        "enabled": true,
+        "name": "IDS V3 QBD",
+        "shortName": "V3 QBD",
+        "tooltip": "Click to perform CRUD operations on IDS V3 QBD entities such as Account, Customer, Invoice and so forth.",
+        "protocol": "https",
+        "baseURL": "services.intuit.com",
+        "publicPath": "",
+        "auth": "oauth",
+        "privatePath": "/v3",
+        "LinkParams":{
+            "realmId": "companyId"
+        },
+        "oauth": {
+            "type": "three-legged",
+            "requestURL": "https://oauth.intuit.com/oauth/v1/get_request_token",
+            "signinURL":  "https://appcenter.intuit.com/Connect/Begin?oauth_token=",
+            "accessURL":  "https://oauth.intuit.com/oauth/v1/get_access_token",
+            "version": "1.0",
+            "crypt": "HMAC-SHA1"
+        }
+    },
+    "V3QBO": {
+        "enabled": true,
+        "name": "IDS V3 QBO",
+        "shortName": "V3 QBO",
+        "tooltip": "Click to perform CRUD operations on IDS V3 QBO entities such as Account, Customer, Invoice and so forth.",
+        "protocol": "https",
+        "baseURL": "qb.sbfinance.intuit.com",
+        "publicPath": "",
+        "auth": "oauth",
+        "privatePath": "/v3",
+        "LinkParams":{
+            "realmId": "companyId"
+        },
+        "oauth": {
+            "type": "three-legged",
+            "requestURL": "https://oauth.intuit.com/oauth/v1/get_request_token",
+            "signinURL":  "https://appcenter.intuit.com/Connect/Begin?oauth_token=",
+            "accessURL":  "https://oauth.intuit.com/oauth/v1/get_access_token",
+            "version": "1.0",
+            "crypt": "HMAC-SHA1"
+        }
+    },
+    "V2QBD": {
+        "enabled": true,
+        "name": "IDS V2 QBD",
+        "shortName": "V2 QBD",
+        "tooltip": "Click to perform CRUD operations on IDS V2 QBD entities such as Account, Customer, Invoice and so forth.",
+        "protocol": "https",
+        "baseURL": "services.intuit.com",
+        "publicPath": "",
+        "auth": "oauth",
+        "privatePath": "/sb",
+        "oauth": {
+            "type": "three-legged",
+            "requestURL": "https://oauth.intuit.com/oauth/v1/get_request_token",
+            "signinURL":  "https://appcenter.intuit.com/Connect/Begin?oauth_token=",
+            "accessURL":  "https://oauth.intuit.com/oauth/v1/get_access_token",
+            "version": "1.0",
+            "crypt": "HMAC-SHA1"
+        }
+    },
+    "V2QBO": {
+        "enabled": true,
+        "name": "IDS V2 QBO",
+        "shortName": "V2 QBO",
+        "tooltip": "Click to perform CRUD operations on IDS V2 QBO entities such as Account, Customer, Invoice and so forth.",
+        "protocol": "https",
+        "baseURL": "qbo.sbfinance.intuit.com",
+        "publicPath": "",
+        "auth": "oauth",
+        "privatePath": "",
+        "oauth": {
+            "type": "three-legged",
+            "requestURL": "https://oauth.intuit.com/oauth/v1/get_request_token",
+            "signinURL":  "https://appcenter.intuit.com/Connect/Begin?oauth_token=",
+            "accessURL":  "https://oauth.intuit.com/oauth/v1/get_access_token",
+            "version": "1.0",
+            "crypt": "HMAC-SHA1"
+        }
+    }
+}

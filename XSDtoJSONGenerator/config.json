@@ -1,0 +1,37 @@
+{
+    "V2QBD":{
+    	"path":"files_V2QBD/common",
+        "output":{
+            "path":"output",
+            "name":"V2QBD_metadata.json"
+        }
+    },
+    "V2QBO":{
+        "path":"files_V2QBO",
+        "output":{
+            "path":"output",
+            "name":"V2QBO_metadata.json"
+        }
+    },
+    "V3QBO":{
+        "path":"files_V3QBO",
+        "output":{
+            "path":"output",
+            "name":"V3QBO_metadata.json"
+        }
+    },
+    "aggcat":{
+        "path":"files_aggcat",
+        "output":{
+            "path":"output",
+            "name":"AggCat_metadata.json"
+        }
+    },
+    "aggcatBatch":{
+        "path":"files_aggcatBatch",
+        "output":{
+            "path":"output",
+            "name":"AggCatBatch_metadata.json"
+        }
+    }
+}

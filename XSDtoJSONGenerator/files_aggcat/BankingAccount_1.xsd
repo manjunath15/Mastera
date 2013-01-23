@@ -1,0 +1,52 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:acc="http://schema.intuit.com/platform/fdatafeed/account/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/bankingaccount/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/bankingaccount/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/account/v1" schemaLocation="Account_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element name="BankingAccount">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="acc:Account">
+                    <xs:sequence>
+                        <xs:element name="bankingAccountType" minOccurs="0" type="tns:BankingAccountType"/>
+                        <xs:element name="postedDate" minOccurs="0" type="xs:dateTime"     />
+                        <xs:element name="availableBalanceAmount" minOccurs="0" type="xs:decimal" />
+                        <xs:element name="interestType" minOccurs="0" type="xs:string"   />
+                        <xs:element name="originationDate" minOccurs="0" type="xs:dateTime"     />
+                        <xs:element name="openDate" minOccurs="0" type="xs:dateTime"     />
+                        <xs:element name="periodInterestRate" minOccurs="0" type="xs:decimal"   />
+                        <xs:element name="periodDepositAmount" minOccurs="0" type="xs:decimal" />
+                        <xs:element name="periodInterestAmount" minOccurs="0" type="xs:decimal" />
+                        <xs:element name="interestAmountYtd" minOccurs="0" type="xs:decimal" />
+                        <xs:element name="interestPriorAmountYtd" minOccurs="0" type="xs:decimal" />
+                        <xs:element name="maturityDate" minOccurs="0" type="xs:dateTime"     />
+                        <xs:element name="maturityAmount" minOccurs="0" type="xs:decimal" />
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Simple Types -->
+
+    <xs:simpleType name="BankingAccountType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="CHECKING"/>
+         <xs:enumeration value="SAVINGS"/>
+         <xs:enumeration value="MONEYMRKT"/>
+         <xs:enumeration value="RECURRINGDEPOSIT"/>
+         <xs:enumeration value="CD"/>
+         <xs:enumeration value="CASHMANAGEMENT"/>
+         <xs:enumeration value="OVERDRAFT"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+</xs:schema>

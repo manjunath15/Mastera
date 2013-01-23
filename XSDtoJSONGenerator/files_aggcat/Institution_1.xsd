@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schema.intuit.com/platform/fdatafeed/institution/v1"
+	xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/institution/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+    <xs:complexType name="Institution">
+        <xs:sequence>
+            <xs:element name="institutionId"    type="xs:long"/>
+            <xs:element name="institutionName"  type="xs:string"/>
+            <xs:element name="homeUrl"          type="xs:string" minOccurs="0"/>
+            <xs:element name="phoneNumber"      type="xs:string" minOccurs="0"/>
+            <xs:element name="virtual"          type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+   <xs:element name="Institutions">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="institution" type="tns:Institution"
+				minOccurs="0" maxOccurs="unbounded">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+
+   <xs:element name="InstitutionDetail">
+    <xs:complexType>
+        <xs:complexContent>
+            <xs:extension base="tns:Institution">
+                <xs:sequence>
+                    <xs:element name="status"                   type="xs:string"/>
+                    <xs:element name="address"                  type="cm:Address"/>
+                    <xs:element name="emailAddress"             type="xs:string" minOccurs="0"/>
+                    <xs:element name="specialText"              type="xs:string" minOccurs="0"/>
+                    <xs:element name="currencyCode"             type="cm:CurrencyCode" minOccurs="0" />
+                    <xs:element name="keys">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="key" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="name"             type="xs:string"/>
+                                            <xs:element name="val"              type="xs:string"/>
+                                            <xs:element name="status"           type="xs:string"/>
+                                            <xs:element name="valueLengthMin"   type="xs:int" minOccurs="0"/>
+                                            <xs:element name="valueLengthMax"   type="xs:int" minOccurs="0"/>
+                                            <xs:element name="displayFlag"      type="xs:boolean"/>
+                                            <xs:element name="displayOrder"     type="xs:int"/>
+                                            <xs:element name="mask"             type="xs:boolean"/>
+                                            <xs:element name="instructions"     type="xs:string" minOccurs="0"/>
+                                            <xs:element name="description"      type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:element>
+
+</xs:schema>

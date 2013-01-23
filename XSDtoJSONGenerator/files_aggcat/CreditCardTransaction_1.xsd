@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:txn="http://schema.intuit.com/platform/fdatafeed/transaction/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/cctransaction/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/cctransaction/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/transaction/v1" schemaLocation="Transaction_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element type="tns:CreditCardTransaction" name="CreditCardTransaction"/>
+
+    <xs:complexType name="CreditCardTransaction">
+        <xs:complexContent>
+            <xs:extension base="txn:Transaction"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

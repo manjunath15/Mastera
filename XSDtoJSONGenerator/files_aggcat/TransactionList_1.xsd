@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/transactionlist/v1"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:bnk="http://schema.intuit.com/platform/fdatafeed/bnktransaction/v1"
+    xmlns:cred="http://schema.intuit.com/platform/fdatafeed/cctransaction/v1"
+    xmlns:loan="http://schema.intuit.com/platform/fdatafeed/loantransaction/v1"
+    xmlns:inv="http://schema.intuit.com/platform/fdatafeed/invtransaction/v1"
+    xmlns:ibnk="http://schema.intuit.com/platform/fdatafeed/ibnktransaction/v1"
+    xmlns:rew="http://schema.intuit.com/platform/fdatafeed/rewardstransaction/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/transactionlist/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/bnktransaction/v1" schemaLocation="BankingTransaction_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/cctransaction/v1" schemaLocation="CreditCardTransaction_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/ibnktransaction/v1" schemaLocation="InvestmentBankingTransaction_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/loantransaction/v1" schemaLocation="LoanTransaction_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/invtransaction/v1" schemaLocation="InvestmentTransaction_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/rewardstransaction/v1" schemaLocation="RewardsTransaction_1.xsd"/>
+
+    <!-- COMPLEX TYPES -->
+
+    <xs:complexType name="TransactionList">
+        <xs:choice>
+            <xs:element ref="bnk:BankingTransaction"  minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="cred:CreditCardTransaction"  minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="ibnk:InvestmentBankingTransaction"  minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="loan:LoanTransaction"  minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="inv:InvestmentTransaction"  minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="rew:RewardsTransaction"  minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+        <xs:attribute name="notRefreshedReason" type="tns:NotRefreshedReason"/>
+    </xs:complexType>
+
+    <xs:element name="TransactionList" type="tns:TransactionList" />
+
+    <xs:simpleType name="NotRefreshedReason">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NOT_NECESSARY"/>
+            <xs:enumeration value="CREDENTIALS_REQUIRED"/>
+            <xs:enumeration value="CHALLENGE_RESPONSE_REQUIRED"/>
+            <xs:enumeration value="UNAVAILABLE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>

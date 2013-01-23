@@ -1,0 +1,28 @@
+
+div(class = 'pageTitleContainer')
+    div(class = 'pageTitle')
+        h2 IDS API Explorer
+
+section(class = 'body')
+    h3 One place to Learn, Test and Debug Intuit's RESTful web APIs live!
+    p IDS API Explorer is an interactive interface that lets you execute IDS V2, IDS V3 and AggCat API calls right from the API docs. With IDS API Explorer:
+    ul
+        li There's no need to spend time toggling between different interfaces or cut/paste codes. Spend more time in coding.
+        li Each API/Method is listed with a complete list of available parameters.
+        li Input the details and <b>with just one click</b>, get the response in XML or JSON format.
+        li Sign in with Intuit to store your authentication and web request details.
+    p
+        b
+            u Get started by selecting one of the following:
+    - var moduleClassCss = new Array("green", "orange", "blue", "red", "turquoise", "purple")
+    ul(class = 'api')
+        - var count = 0
+        - for (var api in services)
+            - if (services[api].enabled && services[api].enabled == true)
+                - if (count == moduleClassCss.length)
+                    - count = 0
+                li(class = moduleClassCss[count]): a(href = '/' + api, title=services[api].tooltip)
+                    div(class = 'block')
+                        span #{services[api].shortName}
+                    span(class = 'apiName', href='#') #{services[api].name}
+                - count++

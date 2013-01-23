@@ -1,0 +1,69 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:acc="http://schema.intuit.com/platform/fdatafeed/account/v1"
+	xmlns:tns="http://schema.intuit.com/platform/fdatafeed/investmentaccount/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/investmentaccount/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/account/v1" schemaLocation="Account_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element name="InvestmentAccount">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="acc:Account">
+                    <xs:sequence>
+                      <xs:element name="investmentAccountType" minOccurs="0" type="tns:InvestmentAccountType"/>
+                      <xs:element name="interestMarginBalance" minOccurs="0" type="xs:decimal"/>
+                      <xs:element name="shortBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="availableCashBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="currentBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="maturityValueAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="unvestedBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="vestedBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empMatchDeferAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empMatchDeferAmountYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empMatchAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empMatchAmountYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empPretaxContribAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empPretaxContribAmountYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="rolloverAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="contribTotalYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empMatchDeferAmountItd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="empMatchAmountItd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="rolloverItd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="cashBalanceAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="initialLoanBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="loanStartDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="currentLoanBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="loanRate" minOccurs="0" type="xs:decimal" />
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+     <!-- Simple Types -->
+
+    <xs:simpleType name="InvestmentAccountType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="TAXABLE"/>
+         <xs:enumeration value="401K"/>
+         <xs:enumeration value="BROKERAGE"/>
+         <xs:enumeration value="IRA"/>
+         <xs:enumeration value="403B"/>
+         <xs:enumeration value="KEOGH"/>
+         <xs:enumeration value="TRUST"/>
+         <xs:enumeration value="TDA"/>
+         <xs:enumeration value="SIMPLE"/>
+         <xs:enumeration value="NORMAL"/>
+         <xs:enumeration value="SARSEP"/>
+         <xs:enumeration value="UGMA"/>
+         <xs:enumeration value="OTHER"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+</xs:schema>

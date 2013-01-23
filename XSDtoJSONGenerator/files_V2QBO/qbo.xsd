@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 3 sp1 (x64) (http://www.altova.com) by Yujung Shen (Intuit) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sb="http://www.intuit.com/sb/cdm/v2" xmlns="http://www.intuit.com/sb/cdm/qbo" targetNamespace="http://www.intuit.com/sb/cdm/qbo" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.intuit.com/sb/cdm/v2" schemaLocation="Finance.xsd"/>
+	<xs:import namespace="http://www.intuit.com/sb/cdm/v2" schemaLocation="PartyCdmTypes.xsd"/>
+	<xs:import namespace="http://www.intuit.com/sb/cdm/v2" schemaLocation="IntuitCdmBaseTypes.xsd"/>
+	<!-- Type definitions -->
+	<xs:complexType name="QboCompany">
+		<xs:complexContent>
+			<xs:extension base="sb:Organization">
+				<xs:sequence>
+					<xs:element name="UseDefaultChartOfAccounts" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Specifies whether to use the default
+								Chart of Account for the company
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BillingCode" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Billing code associated with the company
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="UserName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								User Name associated with the company
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="UserAuthId" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Auth Id of the user (This is NOT the
+								company auth id. Company Auth Id maps to
+								the Id attribute of the base type
+								Organization
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Region" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								The Region where this company is deployed
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Partner" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								The partner name (SingTel etc.)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Currency" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Default currency of the company (USD, INR etc.)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Language" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Default language of the company (en,fr,cn etc.)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Timezone" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Timezone of the place where this user located (PST, EST etc.)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DateFormat" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								date format (US_DF for US region, GB_DF for GB region etc.)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NumberFormat" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								number format in which amounts shown
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="AccountingStandard" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Accounting Standard (GAAP, IFRS etc.)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="IPAddress" type="xs:string" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								IP Address of the user
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="QboCompanyReport">
+		<xs:sequence>
+			<xs:element name="CompanyInfo" type="QboCompany" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Company info</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PersonInfo" type="sb:Person" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Person information that was used when creating the company</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Trial" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Is this usage a trial?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Subscription" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Is this usage a subscription?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SKU" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">SKU (Stock Keeping Unit)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Z0NCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Is this usage a subscription?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NoOfLogins" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Number of logins</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NoOfCustomers" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Number of customers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MaxCustomers" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Maximum limit for number of customers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CreationDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Company creation date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SubscriptionDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Subscription date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PayrollTrial" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Payroll trial?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PayrollSubscription" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Payroll subscription?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MASUser" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Is MAS user (subscription or trial)?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboBulkResult">
+		<xs:annotation>
+			<xs:documentation>Provides the definition for bulk create entity</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="sb:IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the Id type of the Object</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SyncToken" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the version number of the object for optimistic locking purpose</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Success" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies if the operation is success or failed, true indicates success, false indicate failure</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ErrorClass" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Exception class name associated with the failure, valid only if the success is false</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ErrorCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">ErrorCode associated with the failure, valid only if the success is false</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ErrorCause" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">ErrorCause associated with the failue, valid only if the success is false</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Message" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Message Associated with the Bulk object creation, valid only if the success is false</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- XSD Types for Login and Switch Company operations -->
+	<xs:complexType name="QboUserCompanyMapping">
+		<xs:annotation>
+			<xs:documentation>Construct for user and company mapping</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CompanyId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Company Auth Id a.k.a. Parent Id a.k.a. Realm Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ClusterId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cluster number on which the company is available</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CompanyName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Company Name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BaseURI" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Base URI for this company</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SubscriptionStatus" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Subscription status for this company</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboUser">
+		<xs:annotation>
+			<xs:documentation>Represents a QboUser</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="LoginName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Login name of the user</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Password" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Password</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ticket" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Authentication ticket</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AgentId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Global Company Id</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CurrentCompany" type="QboUserCompanyMapping" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">QBO User and Company map</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UserCompanyMap" type="QboUserCompanyMapping" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">QBO User and Company map</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SearchResults">
+		<xs:annotation>
+			<xs:documentation>Wrapper for search results. It will include one of the plural objects and meta-data about the search results</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CdmCollections" type="sb:CdmCollections" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">One of the CDM collections (plural) objects</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Count" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Count of results in the current page</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CurrentPage" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Total number of pages in the search results</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboCompanyPreferences">
+		<xs:annotation>
+			<xs:documentation>Represents a set of QBO Company Preferences</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Preference" type="sb:NameValue" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Represents a single QBO Preference as Name-value pair</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="QboCompanyPreferencesEnum">
+		<xs:annotation>
+			<xs:documentation>QBO Company Preferences Enumeration. Contains a list of available preference names</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TaxEnabled"/>
+			<xs:enumeration value="TaxAccountId"/>
+			<xs:enumeration value="NewCustomersAreTaxable"/>
+			<xs:enumeration value="TaxPercent"/>
+			<xs:enumeration value="DiscountEnabled"/>
+			<xs:enumeration value="DefaultDiscountAccountId"/>
+			<xs:enumeration value="DefaultCustomerMessage"/>
+			<xs:enumeration value="TimeTrackingEnabled"/>
+			<xs:enumeration value="EstimateEnabled"/>
+			<xs:enumeration value="ClientTerminology"/>
+			<xs:enumeration value="ClassTrackingEnabled"/>
+			<xs:enumeration value="ExpenseTrackingEnabled"/>
+			<xs:enumeration value="CustomTransactionsEnabled"/>
+			<xs:enumeration value="AccountNumbersEnabled"/>
+			<xs:enumeration value="SalesEmailGreetingEnabled"/>
+			<xs:enumeration value="SalesEmailGreeting"/>
+			<xs:enumeration value="SalesEmailGreetingName"/>
+			<xs:enumeration value="SalesEmailInvoiceSubject"/>
+			<xs:enumeration value="SalesEmailCreditMemoSubject"/>
+			<xs:enumeration value="SalesEmailCashSaleSubject"/>
+			<xs:enumeration value="SalesEmailPurchaseOrderSubject"/>
+			<xs:enumeration value="SalesEmailStatementSubject"/>
+			<xs:enumeration value="SalesEmailInvoiceMessage"/>
+			<xs:enumeration value="SalesEmailCreditMemoMessage"/>
+			<xs:enumeration value="SalesEmailCashSaleMessage"/>
+			<xs:enumeration value="SalesEmailPurchaseOrderMessage"/>
+			<xs:enumeration value="SalesEmailStatementMessage"/>
+			<xs:enumeration value="SalesEmailCopyMeEnabled"/>
+			<xs:enumeration value="SalesEmailPrintCopyEnabled"/>
+			<xs:enumeration value="SalesEmailDeliveredByQboEnabled"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="QboSKU">
+		<xs:annotation>
+			<xs:documentation>Defines QBO Company's SKU (e.g. QBO Plus, QBO Essentials, etc.)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">SKU ID (e.g. 12)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">SKU Long Name (e.g. QuickBooks Online Essentials)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboBillingCodePayroll">
+		<xs:annotation>
+			<xs:documentation>Defines Payroll offer associated with QBO Billing Code</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Disclaimer" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">monthly price</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboBillingCodePrice">
+		<xs:annotation>
+			<xs:documentation>Defines monthly and annual price of a QBO Billing Code</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Monthly" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">monthly price</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Yearly" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">yearly price</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Currency" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Billing Currency</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CurrencySymbol" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Billing Currency Symbol</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboBillingCodeDiscount">
+		<xs:annotation>
+			<xs:documentation>Defines discount for the billing code</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DiscountAmount" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Amount of Fixed Amount Discount,
+                        Percentage Discount, etc. Look at IntroductoryDiscountType.enum
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiscountTypeID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Discount Type ID.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiscountTypeDesc" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Description of discount type
+                        e.g. fixed amount discount, percentage discount, etc.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiscountDurationUnitType" type="xs:int" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Duration unit type. 0 is day and 1 is month.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DiscountDurationUnitTypeDescription" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Duration unit type. day or month.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+			<xs:element name="DiscountOfferLength" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Discount offer length</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DiscountDuration" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Discount duration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboBillingMappedPlans">
+	   <xs:annotation>
+            <xs:documentation>List of billing plans as defined in the back end system</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MappedPlan" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Mapped plan details
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+	                <xs:sequence>
+	                    <xs:element name="PlanName" type="xs:string" minOccurs="0" maxOccurs="1">
+	                        <xs:annotation>
+	                            <xs:documentation xml:lang="en">Plan name
+	                            </xs:documentation>
+	                        </xs:annotation>
+	                    </xs:element>
+	                    <xs:element name="PlanType" type="xs:string" minOccurs="0" maxOccurs="1">
+	                        <xs:annotation>
+	                            <xs:documentation xml:lang="en">Type of plan: Whether trial of subscription
+	                            </xs:documentation>
+	                        </xs:annotation>
+	                    </xs:element>
+	                    <xs:element name="PlanDescription" type="xs:string" minOccurs="0" maxOccurs="1">
+	                        <xs:annotation>
+	                            <xs:documentation xml:lang="en">Description of the plan
+	                            </xs:documentation>
+	                        </xs:annotation>
+	                    </xs:element>
+	                </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboBillingCodeStatus">
+		<xs:annotation>
+			<xs:documentation>Defines status of the billing code</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Active" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+                        Defines whether billing code is active or no
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+                        Defines start date of the billing code
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+                        Defines end date of the billing code
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:complexType name="QboUpgradeConfirmation">
+		<xs:annotation>
+			<xs:documentation>Upgrade confirmation XML response</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CompanyId" type="xs:int" minOccurs="0" maxOccurs="1"></xs:element>
+            <xs:element name="UpgradePathId" type="xs:int" minOccurs="0" maxOccurs="1"></xs:element>
+            <xs:element name="PreviousSku" type="QboSKU" minOccurs="0"></xs:element>
+            <xs:element name="CurrentSku" type="QboSKU" minOccurs="0"></xs:element>
+            <xs:element name="Success" type="xs:boolean" minOccurs="0"></xs:element>
+            <xs:element name="Error" type="xs:string" minOccurs="0"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="QboUpgradeOneTimeCharge">
+		<xs:annotation>
+			<xs:documentation>XML response for One Time Charge calculation during upgrade</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CompanyId" type="xs:int" minOccurs="0" maxOccurs="1"></xs:element>
+            <xs:element name="UpgradePathId" type="xs:int" minOccurs="0" maxOccurs="1"></xs:element>
+            <xs:element name="OneTimeCharge" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+            <xs:element name="HigherSkuBasePrice" type="xs:string" minOccurs="0"></xs:element>
+            <xs:element name="HigherSku" type="QboSKU" minOccurs="0"></xs:element>
+            <xs:element name="Error" type="xs:string" minOccurs="0"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="QboAgentSUICompany">
+		<xs:annotation>
+			<xs:documentation>Defines important company info like company's subscription info, user info, company name, etc. This will be used by Agent SUI (Sales tool)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+            <xs:element name="MetaData">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Company meta data. company id, name, sku and region</xs:documentation>
+				</xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="CompanyId" type="xs:int" minOccurs="0"></xs:element>
+                        <xs:element name="CompanyName" type="xs:string" minOccurs="0"></xs:element>
+                        <xs:element name="Sku" type="QboSKU" minOccurs="0"></xs:element>
+                        <xs:element name="Region" type="xs:string" minOccurs="0"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+			</xs:element>
+            <xs:element name="SubscriptionInfo">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Company's subscription info</xs:documentation>
+				</xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="HasCreditCard" type="xs:boolean" minOccurs="0"></xs:element>
+                        <xs:element name="BillingCode" type="xs:string" minOccurs="0"></xs:element>
+                        <xs:element name="NextChargeDate" type="xs:date" minOccurs="0"></xs:element>
+                        <xs:element name="SubscriptionStatus" type="xs:string" minOccurs="0"></xs:element>
+                        <xs:element name="TrialInfo">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">Trial Info</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="InTrial" type="xs:boolean" minOccurs="0"></xs:element>
+                                    <xs:element name="TrialEndDate" type="xs:date" minOccurs="0"></xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="CurrentPrice">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">Base and renewal price</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="CurrentRenewalPrice" type="xs:string" minOccurs="0"></xs:element>
+                                    <xs:element name="CurrentBasePrice" type="xs:string" minOccurs="0"></xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="BillingPeriod">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">Billing period</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Id" type="xs:int" minOccurs="0"></xs:element>
+                                    <xs:element name="Description" type="xs:string" minOccurs="0"></xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="UserBucket">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">User bucket info</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Id" type="xs:int" minOccurs="0"></xs:element>
+                                    <xs:element name="Description" type="xs:string" minOccurs="0"></xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="UpgradePaths">
+                            <xs:annotation>
+                                <xs:documentation>List of all possible upgrade paths for this company</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="UpgradePath" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="PathId" type="xs:int" minOccurs="0"></xs:element>
+                                                <xs:element name="LowerSku" type="xs:int" minOccurs="0"></xs:element>
+                                                <xs:element name="HigherSku" type="xs:int" minOccurs="0"></xs:element>
+                                                <xs:element name="HigherSkuBasePrice" type="xs:string" minOccurs="0"></xs:element>
+                                                <xs:element name="Description" type="xs:string" minOccurs="0"></xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Packages">
+                            <xs:annotation>
+                                <xs:documentation>List of all packages attached to this company</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Package" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="Id" type="xs:int" minOccurs="0"></xs:element>
+                                                <xs:element name="Name" type="xs:string" minOccurs="0"></xs:element>
+                                                <xs:element name="StatusId" type="xs:int" minOccurs="0"></xs:element>
+                                                <xs:element name="StatusDescription" type="xs:string" minOccurs="0"></xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+			</xs:element>
+            <xs:element name="Users">
+                <xs:annotation>
+                    <xs:documentation>List of all users in a company with subscription access rights or more</xs:documentation>
+                </xs:annotation>
+				<xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="User" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+								<xs:sequence>
+									<xs:element name="AuthId" type="xs:int" minOccurs="0"></xs:element>
+                                    <xs:element name="Name" type="xs:string" minOccurs="0"></xs:element>
+                                    <xs:element name="Email" type="xs:string" minOccurs="0"></xs:element>
+                                    <xs:element name="Role" type="xs:string" minOccurs="0"></xs:element>
+								</xs:sequence>
+							</xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+			</xs:element>
+            <xs:element name="Error" type="xs:string" minOccurs="0"></xs:element>
+        </xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboCompanyInfo">
+		<xs:annotation>
+			<xs:documentation>A dump of key information for a QBO company</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CompanyID" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines the company ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MetaData">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Get general meta data</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CompanyRegion" type="xs:string" minOccurs="0"/>
+						<xs:element name="CompanyPartner" type="xs:string"/>
+						<xs:element name="BillingInfo">
+						  <xs:annotation>
+						      <xs:documentation xml:lang="en">Company billing information</xs:documentation>
+						  </xs:annotation>
+						  <xs:complexType>
+						      <xs:sequence>
+						          <xs:element name="EntitlementStatus" type="xs:string"/>
+						          <xs:element name="NextBillingDate" type="xs:date"/>
+						          <xs:element name="PaymentInfo" type="xs:string"/>
+						          <xs:element name="SubscriptionPrice" type="xs:string"/>
+						          <xs:element name="BillingFrequency" type="xs:string"/>
+						      </xs:sequence>
+						  </xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CompanyUsersInfo">
+			    <xs:annotation>
+                    <xs:documentation xml:lang="en">Get info of company logins</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="User" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Active" type="xs:boolean"/>
+                                    <xs:element name="Username" type="xs:string"/>
+                                    <xs:element name="FirstName" type="xs:string"/>
+                                    <xs:element name="LastName" type="xs:string"/>
+                                    <xs:element name="Email" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+			</xs:element>
+			<xs:element name="CompanyFeatureSet">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Info on the features this company has</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Name"/>
+									<xs:element name="AvailableForSignup" type="xs:boolean"/>
+									<xs:element name="Added" type="xs:boolean"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AccountInfo">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Summary of company's accounting info</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="NumTxns" type="xs:int" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Number of transactions for the company</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="NumCustomers" type="xs:int" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Number of customers for the company</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="NumVendors" type="xs:int" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Number of vendors/suppliers for the company</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="NumEmployees" type="xs:int" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Number of employees for the company</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="NumItems" type="xs:int" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Number of items for the company</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="NumAccounts" type="xs:int" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Number of accounts for the company</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="LastActivity">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Last activity on this company</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ActivityTime" type="xs:dateTime" minOccurs="0"/>
+						<xs:element name="Activity" type="xs:string"/>
+						<xs:element name="User" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboBillingCodes">
+        <xs:annotation>
+            <xs:documentation>Provides the definition of collection of billing codes</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+	        <xs:extension base="sb:CdmCollections">
+				<xs:sequence>
+					<xs:element name="Values" type="QboBillingCode" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+    </xs:complexType>
+	<xs:simpleType name="QboBillingItemType">
+		<xs:annotation>
+			<xs:documentation>The list of billing item type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TrialOptin"/>
+			<xs:enumeration value="Subscription"/>
+			<xs:enumeration value="TrialOptout"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="QboBillingCode">
+		<xs:annotation>
+			<xs:documentation>Details of QBO Billing Code</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+		    <xs:element name="Name" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Billing code name</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Region" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">region that the billing code belongs to</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SKU" type="QboSKU" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines SKU</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Price" type="QboBillingCodePrice" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines monthly and yearly price of the billing code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Discount" type="QboBillingCodeDiscount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines discount given by the billing code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TrialLength" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines length of trial. Trial lenght unit is defined in TrialLengthUnit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TrialLengthUnit" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines trial lenght unit used for trial length</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Status" type="QboBillingCodeStatus" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines status of the billing code.
+                        Whether billing code is active or not, its starting and ending date
+                        if defined.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartAnotherCompanyBC" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines start another company billing code
+                        corresponding to requested billing code. Any company that is created
+                        with current billing code can create another company at a discount (usually 10%)
+                        with start another company billing code
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BillingItemType" type="QboBillingItemType">
+				<xs:annotation>
+					<xs:documentation>Billing item type determines if payment info is required. 
+					Trial optin doesn't require Payment informationw and trial optout/subscription type
+					requires Payment information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MappedBackendPlans" type="QboBillingMappedPlans" minOccurs="0" maxOccurs="1">
+			     <xs:annotation>
+			         <xs:documentation xml:lang="en"> Defines the list of plan ids of the back end system to which this billing code is mapped to
+			         </xs:documentation>
+			     </xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QboStatementChargeHeader">
+		<xs:complexContent>
+			<xs:extension base="sb:ChargeHeader">
+				<xs:sequence>
+					<xs:element name="Credit" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Specifies if the Charge is Credit or Refund, Default is Charge (false or null)
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="QboStatementChargeLine">
+		<xs:complexContent>
+			<xs:extension base="sb:ChargeLine">
+				<xs:sequence>
+					<xs:element name="Taxable" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Specifies if the Charge is Taxable or not. Default is false or null which indicate non-taxable
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="QboStatementCharge">
+		<xs:complexContent>
+			<xs:extension base="sb:CdmBase">
+				<xs:sequence>
+					<xs:element name="Header" type="QboStatementChargeHeader" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Specifies if the headercharge of QBO
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Line" type="QboStatementChargeLine" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">
+								Specifies if the Line Charge of QBO
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="QboStatementCharges">
+		<xs:annotation>
+			<xs:documentation>Provides the definition that allows bulk data transfer of QboStatementCharges</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="sb:CdmCollections">
+				<xs:sequence>
+					<xs:element name="QboStatementCharge" type="QboStatementCharge" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SimpleQuerySpecs">
+		<xs:annotation>
+			<xs:documentation>Defines the SimpleQuerySpecs for querying Reporting data </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Filter" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Defines all the Filter conditions
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Sort" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Defines the sort fields for the specific query
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PageNum" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						PageNum of the query results
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResultsPerPage" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Size needed in the result set
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ReturnAttributes" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Defines a list of return attributes
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="qboObjectName">
+		<xs:annotation>
+			<xs:documentation>
+				Supported QBO object names
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Account"/>
+			<xs:enumeration value="Bill"/>
+			<xs:enumeration value="BillPayment"/>
+			<xs:enumeration value="BillPaymentCreditCard"/>
+			<xs:enumeration value="CashPurchase"/>
+			<xs:enumeration value="Charge"/>
+			<xs:enumeration value="Check"/>
+			<xs:enumeration value="Class"/>
+			<xs:enumeration value="Company"/>
+			<xs:enumeration value="CreditCardCharge"/>
+			<xs:enumeration value="CreditCardCredit"/>
+			<xs:enumeration value="CreditMemo"/>
+			<xs:enumeration value="Customer"/>
+			<xs:enumeration value="CustomerMsg"/>
+			<xs:enumeration value="CustomerType"/>
+			<xs:enumeration value="Discount"/>
+			<xs:enumeration value="Employee"/>
+			<xs:enumeration value="Estimate"/>
+			<xs:enumeration value="FixedAsset"/>
+			<xs:enumeration value="InventoryAdjustment"/>
+			<xs:enumeration value="Invoice"/>
+			<xs:enumeration value="Item"/>
+			<xs:enumeration value="ItemReceipt"/>
+			<xs:enumeration value="Job"/>
+			<xs:enumeration value="JobType"/>
+			<xs:enumeration value="JournalEntry"/>
+			<xs:enumeration value="OtherName"/>
+			<xs:enumeration value="Payment"/>
+			<xs:enumeration value="PaymentMethod"/>
+			<xs:enumeration value="PayrollItem"/>
+			<xs:enumeration value="Preferences"/>
+			<xs:enumeration value="PurchaseOrder"/>
+			<xs:enumeration value="QboNote"/>
+		    <xs:enumeration value="QboStatementCharge"/>
+			<xs:enumeration value="SalesOrder"/>
+			<xs:enumeration value="SalesReceipt"/>
+			<xs:enumeration value="SalesRep"/>
+			<xs:enumeration value="SalesTax"/>
+			<xs:enumeration value="SalesTaxCode"/>
+			<xs:enumeration value="SalesTaxGroup"/>
+			<xs:enumeration value="SalesTaxPaymentCheck"/>
+			<xs:enumeration value="ShipMethod"/>
+			<xs:enumeration value="TemplateName"/>
+			<xs:enumeration value="Term"/>
+			<xs:enumeration value="TimeActivity"/>
+			<xs:enumeration value="UOM"/>
+			<xs:enumeration value="Vendor"/>
+			<xs:enumeration value="VendorCredit"/>
+			<xs:enumeration value="VendorType"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="GenericEntity">
+		<xs:annotation>
+			<xs:documentation>Defines the List of Generic entities</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="sb:IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Defines the ID of the object
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EntityType" type="qboObjectName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Defines the EntityType as defined in "objectName" enumeration
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LastUpdatedTime" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						LastUpdatedTime of the entity
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeletedEntities">
+		<xs:annotation>
+			<xs:documentation>Provides collection of Generic entities as deleted entities</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="sb:CdmCollections">
+				<xs:sequence>
+					<xs:element name="Entity" type="GenericEntity" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SimpleName">
+		<xs:annotation>
+			<xs:documentation>Represents a Simple Name object for entities such as Customer, Employees, and Vendors</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Id" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Name ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FullName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fully qualified name including any hierarchical elements such as parent names separated by a ":"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Sublevel" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fully qualified name including any hierarchical elements such as parent names separated by a ":"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EntityType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Entity Type - Customer, Employee, or Vendor</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SimpleNames">
+		<xs:annotation>
+			<xs:documentation>Provides the definition that allows bulk data transfer of SimpleName</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="sb:CdmCollections">
+				<xs:sequence>
+					<xs:element name="SimpleName" type="SimpleName" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="QboNoteTypeEnum">
+		<xs:annotation>
+			<xs:documentation>enumeration of types for notes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Base">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">This type indicates the existing note attached to name entities for backward compatible reasons</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Note">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">This type indicates new notes that we are supporting</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="QboNote">
+		<xs:annotation>
+			<xs:documentation>Represents an audited text that users can associated with other entities such as Customers, Transactions or etc.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="sb:Note">
+				<xs:sequence>
+					<xs:element name="Type" type="QboNoteTypeEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specifies note type: note or pulse</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="EntityType" type="qboObjectName" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specifies which type of entity (Invoice, Customer or etc) the note is attached to.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="EntityId" type="sb:IdType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The entity ID associated with this note</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="QboNotes">
+		<xs:annotation>
+			<xs:documentation>Provides the definition that allows bulk data transfer of QboNote</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="sb:CdmCollections">
+				<xs:sequence>
+					<xs:element name="QboNote" type="QboNote" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

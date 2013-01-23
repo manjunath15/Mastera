@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schema.intuit.com/platform/fdatafeed/institutionlogin/v1"
+    xmlns:ch="http://schema.intuit.com/platform/fdatafeed/challenge/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/institutionlogin/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+        
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/challenge/v1" schemaLocation="Challenge_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <!-- A login represents a customer's identity at an external financial
+    institution. In order to discover and add accounts, a Login entity
+    must be POST-ed to {baseUrl}/institutions/{institution_id}/logins.
+
+    The POST-ed Login must have the user-supplied values for the institution
+    Keys returned by the Get Institution Detail API. If the credentials are
+    accepted by the external institution and the aggregation succeeds, the Login
+    entity is returned in the response with a loginId value set to the DB
+    identifier for that newly created login along with high level account
+    details of all discovered accounts. Any previously-discovered accounts will
+    be returned in the response, but any pre-existing data for those accounts
+    will not be modified.
+
+    Details for the discovered accounts can be retrieved by accessing
+    {baseUrl}/logins/{login_id}/accounts/{account_id}
+
+    This entity is also used for updating login credentials and refreshing
+    accounts associated with a login. A PUT of an empty InstitutionLogin
+    to {baseUrl}/logins/{loginId}?refresh=true will refresh a login with
+    the currently-stored credentials. If credentials are supplied, the
+    InstitutionLogin will be updated with the new credentials. If refresh=true,
+    the InstitutionLogin's accounts will be refreshed with the new credentials.
+    If the login belongs to a restricted FI, the credentials in the InstitutionLogin
+    will be used to perform the refresh.
+    -->
+    <xs:element name="InstitutionLogin">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:choice>
+                    
+                    <!-- Credentials and challengeResponses are for requests only. CustomerCentral will never
+                    return them in a response -->
+                    <xs:element name="credentials" type="tns:Credentials"/>
+                    <xs:element name="challengeResponses" type="ch:ChallengeResponses"/>
+
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Credentials">
+        <xs:sequence>
+            <xs:element name="credential" type="tns:Credential"
+				minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Credential">
+        <xs:sequence>
+            <!-- This name must match the name in the corresponding Institution Key-->
+            <xs:element name="name"    type="xs:string"/>
+            <xs:element name="value"    type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

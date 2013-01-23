@@ -1,0 +1,11 @@
+{
+    "V2QBD":{
+        "basePath": "C:\Users\lokesh\Documents\v3_xsd",
+        "path":"path of XSD files relative to base path",
+        "output":{
+            "basePath":"base path for output file",
+            "path":"path of output file relative to output base path",
+            "name":"file name"
+        }
+    }
+}

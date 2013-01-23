@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/transaction/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/transaction/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:complexType name="Transaction">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="currencyType" type="cm:CurrencyCode" minOccurs="0"/>
+            <xs:element name="institutionTransactionId" type="xs:string"  minOccurs="0"/>
+            <xs:element name="correctInstitutionTransactionId" type="xs:string"  minOccurs="0"/>
+            <xs:element name="correctAction" type="tns:TransactionCorrectedType"  minOccurs="0"/>
+            <xs:element name="serverTransactionId" type="xs:string"  minOccurs="0"/>
+            <xs:element name="checkNumber" type="xs:string"  minOccurs="0"/>
+            <xs:element name="refNumber" type="xs:string"  minOccurs="0"/>
+            <xs:element name="confirmationNumber" type="xs:string"  minOccurs="0"/>
+            <xs:element name="payeeId" type="xs:string"  minOccurs="0"/>
+            <xs:element name="payeeName" type="xs:string" minOccurs="0"/>
+            <xs:element name="extendedPayeeName" type="xs:string" minOccurs="0"/>
+            <xs:element name="memo" type="xs:string" minOccurs="0"/>
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:element name="valueType" type="xs:string" minOccurs="0"/>
+            <xs:element name="currencyRate" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="originalCurrency" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="postedDate" type="xs:dateTime"/>
+            <xs:element name="userDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="availableDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="runningBalanceAmount" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="pending" type="xs:boolean" />
+            <xs:element name="categorization" type="tns:Categorization" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Categorization">
+        <xs:sequence>
+            <xs:element name="common">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="normalizedPayeeName" type="xs:string" minOccurs="0"/>
+                        <xs:element name="merchant" type="xs:string" minOccurs="0"/>
+                        <xs:element name="sic" type="xs:int" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="context" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="source" type="tns:CategorizationSource" minOccurs="1"/>
+                        <xs:element name="categoryName" type="xs:string" minOccurs="1"/>
+                        <xs:element name="contextType" type="xs:string" minOccurs="0"/>
+                        <xs:element name="scheduleC" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+      
+    <!-- simple types -->
+    <xs:simpleType name="CategorizationSource">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AGGR"/>
+            <xs:enumeration value="OFX"/>
+            <xs:enumeration value="CAT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="TransactionCorrectedType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REPLACE"/>
+            <xs:enumeration value="DELETE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+   <xs:simpleType name="InvestmentSubAccountType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CASH"/>
+      <xs:enumeration value="MARGIN"/>
+      <xs:enumeration value="SHORT"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

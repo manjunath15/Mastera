@@ -1,0 +1,831 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*
+Intuit API Explorer
+Created on Nav 13, 2012
+*/
+
+*
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body
+{
+    font-family: Verdana, Geneva, sans-serif;
+    color:#505050;
+    font-size:12px;
+    margin:0;
+    padding:0;
+    border:0;
+    overflow-y:scroll;
+}
+img
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+h1, h2, h3, h4, h5
+{
+    margin: 0;
+    padding: 0;
+}
+h2
+{
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 24px;
+    color: #fff;
+    padding: 20px 0;
+}
+h3
+{
+    font-size: 16px;
+    padding-bottom:15px;
+}
+.contentArea h3
+{
+    padding-bottom:10px;
+}
+p
+{
+    padding-bottom: 10px;
+    line-height: 16px;
+}
+a
+{
+    color:#2a9ded;
+    text-decoration:none;
+    font-size:12px;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+.wrapper
+{
+    min-width:960px;
+}
+.header, .body, .pageTitleContainer .pageTitle, .footer
+{
+    width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+header
+{
+    background:url(../images/headerBg.png) repeat-x;
+    height:84px;
+}
+.logo
+{
+    float:left;
+    padding-top:25px;
+}
+.login
+{
+    float:right;
+    padding-top:45px;
+}
+.login.user
+{
+    padding-top:49px;
+}
+.login .separator {
+    border-right: 1px solid #CCC;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-top: 3px;
+    float: left;
+    height: 20px;
+}
+.login a.login
+{
+    /*background:url(../images/loginButton.png) no-repeat;
+    width:119px;
+    height:27px;*/
+    display:inline-block;
+    padding-top:0;
+}
+.login .button
+{
+    float: left;
+}
+.pageTitleContainer
+{
+    background:#365ebf;
+    color:#fff;
+}
+.pageTitleContainer .pageTitle
+{
+    position:relative;
+}
+.menu
+{
+    position:absolute;
+    top:30px;
+    right:0;
+}
+.menu label
+{
+    padding-right:10px;
+}
+.menu select
+{
+    background:#fff;
+    padding:2px 3px;
+    width:150px;
+}
+.pageTitle h2
+{
+    display:block;
+}
+.body
+{
+    padding:20px 0;
+    min-height:700px;
+}
+ul
+{
+    padding-left:50px;
+    padding-bottom:10px;
+}
+ul li
+{
+    padding-bottom:10px;
+}
+.api
+{
+    list-style:none;
+    padding-left:0;
+    overflow:hidden;
+    padding:10px 0 20px 0;
+}
+.api li
+{
+    text-align:center;
+    float:left;
+    margin-right:20px;
+    margin-bottom:10px;
+}
+.api li a
+{
+    display:inline-block;
+
+}
+.block
+{
+    padding:0 20px;
+    width:100px;
+    height:200px;
+    background:#79be28 url(../images/exploreIcon.png) center 30px no-repeat;
+    position:relative;
+}
+.green .block
+{
+    background:#79be28 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.orange .block
+{
+    background:#ef9400 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.blue .block
+{
+    background:#00adef url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.red .block
+{
+    background:#e2472f url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.turquoise .block
+{
+    background:#00bba2 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.purple .block
+{
+    background:#c747ad url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.green .block:hover
+{
+    background:#5ca91b url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.orange .block:hover
+{
+    background:#e97700 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.blue .block:hover
+{
+    background:#0094e9 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.red .block:hover
+{
+    background:#d83220 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.turquoise .block:hover
+{
+    background:#00ad90 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.purple .block:hover
+{
+    background:#bc3ba0 url(../images/exploreIcon.png) center 30px no-repeat;
+}
+.block span
+{
+    position:absolute;
+    bottom:20px;
+    display:block;
+    text-align:center;
+    width:inherit;
+    color:#fff;
+    font-size:18px;
+}
+.apiName
+{
+    padding-top:10px;
+    display:block;
+    width:130px;
+    margin:0 auto;
+}
+.credentials
+{
+
+}
+.credentials .title
+{
+    background:#7f7f7f;
+    padding:10px 20px;
+    font-size:18px;
+    color:#fff;
+}
+.credentials .title span
+{
+    padding-right:25px;
+    background:url(../images/key.png) no-repeat right center;
+}
+.credentials .content
+{
+    background:#e1e1e1;
+    border:1px solid #7f7f7f;
+    padding:20px 0 20px 20px;
+}
+.row
+{
+    overflow:hidden;
+}
+.row .col
+{
+    float:left;
+    width:214px;
+    margin-right:20px;
+}
+.row .col label
+{
+    display:block;
+    padding-bottom:3px;
+}
+input[type="text"]
+{
+    padding:7px 5px;
+    border:1px solid #b5b5b5;
+    width: 140px;
+}
+.row .col input[type="text"]
+{
+    width:201px;
+}
+.button
+{
+    height:30px;
+    background:url(../images/buttonBg.png) repeat-x;
+    padding:3px 15px;
+    border-radius:5px;
+    border:1px solid #595959;
+    color:#fff;
+    cursor: pointer !important;
+    font-weight: bold;
+}
+.button:hover
+{
+    background:url(../images/buttonBgHover.png) repeat-x;
+}
+@-moz-document url-prefix() {
+  .button
+  {
+    padding:3px 15px 7px;
+  }
+}
+.save
+{
+    margin-top:15px;
+}
+.filterLinks
+{
+    list-style:none;
+    padding:0;
+    padding:20px 0 10px;
+    overflow:hidden;
+}
+.contentArea .filterLinks
+{
+    float:right;
+    padding:0;
+}
+.filterLinks li
+{
+    float:left;
+    margin-right:2px;
+    padding-bottom:0;
+}
+.filterLinks li a
+{
+    padding:5px 10px;
+    font-size:11px;
+    display:inline-block;
+    background:#eee;
+}
+.filterLinks li.last a
+{
+    border:0;
+}
+.filterLinks li a.selected
+{
+    background:#2A9DED;
+    color:#fff;
+    padding:5px 10px;
+    border-right:0;
+}
+.filterLinks li a.selected:hover
+{
+    text-decoration:none;
+}
+.mainContent
+{
+    overflow:hidden;
+}
+.tabs
+{
+    float:left;
+    width:200px;
+    position:relative;
+    z-index:2;
+}
+.tabs ul
+{
+    padding:0;
+}
+.tabs ul li
+{
+    padding:0;
+}
+.tabs a
+{
+    display:block;
+    padding:10px 10px;
+    font-weight: bold;
+}
+.tabs a.selected
+{
+    /*border:1px solid #828282;*/
+    border-right:1px solid #fff;
+    width:179px;
+    background:url(../images/tabGradient.png) repeat-y;
+    font-weight:bold;
+}
+.contentArea
+{
+    float:left;
+    padding:20px;
+    width:715px;
+    display: block;
+    border:1px solid #828282;
+}
+.contentArea.hide
+{
+    display: none;
+}
+.methodLinks
+{
+    overflow:hidden;
+}
+.actionBlock
+{
+    border:1px solid #b3da86;
+    background:#f1fce3;
+    padding:3px;
+    margin-bottom:5px;
+}
+.actionBlock.get
+{
+    border:1px solid #b3da86;
+    background:#f1fce3;
+}
+.actionBlock.post
+{
+    border:1px solid #f6cd8a;
+    background:#fef8d8;
+}
+.actionBlock.blue
+{
+    border:1px solid #95dffb;
+    background:#e9f7fc;
+}
+.actionBlock.delete
+{
+    border:1px solid #f7cbc4;
+    background:#fff5f3;
+}
+.actionBlock.put
+{
+    border:1px solid #a9e5e3;
+    background:#e8fefd;
+}
+.actionBlock.purple
+{
+    border:1px solid #ebc4e2;
+    background:#fcf5fa;
+}
+.actionButton
+{
+    display:inline-block;
+    padding:5px 10px;
+    background:#79be28;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    text-align: center;
+    cursor: pointer;
+}
+.actionButton:hover
+{
+    text-decoration:none;
+    cursor: pointer;
+}
+.get .actionButton
+{
+    background:#79be28;
+}
+.post .actionButton
+{
+    background:#ef9400;
+}
+.blue .actionButton
+{
+    background:#00adef;
+}
+.delete .actionButton
+{
+    background:#e2472f;
+}
+.put .actionButton
+{
+    background:#00c4bf;
+}
+.purple .actionButton
+{
+    background:#c747ad;
+}
+.get .actionButton:hover
+{
+    background:#5ca91b;
+}
+.post .actionButton:hover
+{
+    background:#e97700;
+}
+.blue .actionButton:hover
+{
+    background:#0094e9;
+}
+.delete .actionButton:hover
+{
+    background:#d83220;
+}
+.put .actionButton:hover
+{
+    background:#33bda6;
+}
+.purple .actionButton:hover
+{
+    background:#bc3ba0;
+}
+.actionLink
+{
+    color:#505050;
+    font-size:14px;
+    margin-left:5px;
+}
+.path
+{
+    margin-left:0px;
+}
+.contentSection
+{
+    padding:10px;
+}
+.details
+{
+    margin-bottom:10px;
+}
+.get .details
+{
+    border:1px solid #c2e19e;
+}
+.post .details
+{
+    border:1px solid #f8d7a1;
+}
+.blue .details
+{
+    border:1px solid #aae5fc;
+}
+.delete .details
+{
+    border:1px solid #f9d5d0;
+}
+.put .details
+{
+    border:1px solid #baeae9;
+}
+.purple .details
+{
+    border:1px solid #F1D1EA;
+}
+.details th, .details td
+{
+    text-align:left;
+    padding:5px 10px;
+}
+.get .details th
+{
+    background:#c2e19e;
+}
+.post .details th
+{
+    background:#f8d7a1;
+}
+.blue .details th
+{
+    background:#aae5fc;
+}
+.delete .details th
+{
+    background:#f9d5d0;
+}
+.put .details th
+{
+    background:#baeae9;
+}
+.purple .details th
+{
+    background:#f1d1ea;
+}
+.get .details td
+{
+    background:#ddeec8;
+}
+.post .details td
+{
+    background:#fbe8ca;
+}
+.blue .details td
+{
+    background:#cff1fd;
+}
+.delete .details td
+{
+    background:#fbe8e4;
+}
+.put .details td
+{
+    background:#dbf7f6;
+}
+.purple .details td
+{
+    background:#f7e4f3;
+}
+.details input[type="text"]
+{
+    padding:4px;
+}
+.details select
+{
+    background:#fff;
+    padding:2px 3px;
+    border:1px solid #b5b5b5;
+    width:150px;
+}
+.contentSection label
+{
+    display:block;
+    /*text-transform:uppercase;*/
+    padding-bottom:2px;
+}
+textarea
+{
+    border:1px solid #B5B5B5;
+    width:678px;
+    height:150px;
+    margin-bottom:10px;
+    padding:5px;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:12px;
+    resize: none;
+}
+
+/* For result section */
+.actionBlock pre
+{
+    font-size: 12px;
+    padding: 10px;
+    overflow: auto;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.actionBlock pre.response
+{
+    max-height: 500px;
+}
+.actionBlock pre.prettyprint
+{
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.actionBlock pre.error
+{
+    background-color: rgba(255, 245, 245, 0.9);
+    border-color: rgba(255, 100, 100, 0.5);
+}
+.actionBlock .result
+{
+    padding: 10px;
+}
+.actionBlock h4
+{
+    margin-top: 15px;
+    margin-bottom: 3px;
+}
+.actionBlock form a.clear-results
+{
+    margin-left: 20px;
+    font-weight: normal;
+}
+.actionBlock form img.loader
+{
+    margin-left: 20px;
+}
+/* For Footer */
+footer
+{
+    padding:10px 0;
+    background:#365EBF;
+    color:#d7dff2;
+}
+.copyright
+{
+    float:left;
+}
+.footerText
+{
+    /*float:center;*/
+    text-align: center;
+}
+.error {
+    color: #e2472f;
+    padding-top: 10px;
+}
+/* for attributes */
+table.attributes
+{
+    border:1px solid #7f7f7f;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.attributes th
+{
+    padding:5px 5px;
+    background:#7f7f7f;
+    color:#FFFFFF;
+}
+.attributes tr.altOne td
+{
+    padding:5px 0px 10px 5px;
+    background:#e1e1e1;
+    word-wrap: break-word;
+}
+.attributes tr.altTwo td
+{
+    padding:5px 0px 10px 5px;
+    background:#f6f6f6;
+    word-wrap: break-word;
+}
+a.attributesHeader
+{
+    font-size: 14px;
+    font-weight: bold;
+    display:inline-block;
+    padding:5px 15px;
+    background:#7f7f7f;
+    color:#fff;
+    text-decoration:none;
+}
+a.attributesHeader:hover
+{
+    background:#505050;
+    cursor: pointer;
+}
+span.attributesHeader
+{
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+.attributesLayout
+{
+    border:1px solid #7f7f7f;
+    background:#ffffff;
+    padding: 3px 3px;
+    margin-bottom: 10px;
+}
+.attributesContent {
+    padding: 5px 5px;
+}
+.actionBlock.method
+{
+    border:1px solid #7f7f7f;
+    background:#ffffff;
+}
+.method .actionButton
+{
+    background:#e1e1e1;
+    color: #2a9ded;
+}
+.method .actionButton:hover
+{
+    background:#b4b4b4;
+    color: #50506f;
+}
+.method .actionLink
+{
+    font-weight: bold;
+}
+.method .actionLink:hover
+{
+    cursor: pointer;
+}
+.method .details
+{
+    border:1px solid #e1e1e1;
+}
+.method .details th
+{
+    background:#e1e1e1;
+}
+.method .details td
+{
+    background:#f6f6f6;
+}
+a.xmlgenerator:hover
+{
+    cursor: pointer;
+}
+.preload
+{
+    background:url(../images/transparentBg.png);
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:999;
+}
+.preloader
+{
+    position:fixed;
+    top:49%;
+    left:49%;
+}
+.operation
+{
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+.homeIcon
+{
+    float:right;
+
+}
+.homeIcon img
+{
+    height: 23px;
+}
+.intuitPlatformLoginButtonHorizontal
+{
+    float: left !important;
+}
+.loggedinText
+{
+    float: left;
+    padding-top: 5px;
+}

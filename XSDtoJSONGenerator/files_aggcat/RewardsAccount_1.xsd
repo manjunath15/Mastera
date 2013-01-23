@@ -1,0 +1,46 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:acc="http://schema.intuit.com/platform/fdatafeed/account/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/rewardsaccount/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/rewardsaccount/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/account/v1" schemaLocation="Account_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element name="RewardsAccount">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="acc:Account">
+                    <xs:sequence>
+                      <xs:element name="rewardsAccountType" minOccurs="0" type="tns:RewardsAccountType"/>
+                      <xs:element name="postedDate" minOccurs="0" type="xs:dateTime"/>
+                      <xs:element name="programType" minOccurs="0" type="xs:string"/>
+                      <xs:element name="originalBalance" minOccurs="0" type="xs:decimal"/>
+                      <xs:element name="currentBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="rewardQualifyAmountYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="rewardLifetimeEarned" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="segmentYtd" minOccurs="0" type="xs:decimal" />
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Simple Types -->
+
+    <xs:simpleType name="RewardsAccountType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="AFFINITY"/>
+         <xs:enumeration value="AIRLINE"/>
+         <xs:enumeration value="AUTO"/>
+         <xs:enumeration value="HOTEL"/>
+         <xs:enumeration value="SHOPPING"/>
+         <xs:enumeration value="OTHER"/>        
+      </xs:restriction>
+   </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:txn="http://schema.intuit.com/platform/fdatafeed/transaction/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/loantransaction/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/loantransaction/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/transaction/v1" schemaLocation="Transaction_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element type="tns:LoanTransaction" name="LoanTransaction"/>
+
+    <xs:complexType name="LoanTransaction">
+        <xs:complexContent>
+            <xs:extension base="txn:Transaction">
+                <xs:sequence>
+                    <xs:element name="principalAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="interestAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="escrowTotalAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="escrowTaxAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="escrowInsuranceAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="escrowPmiAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="escrowFeesAmount" type="xs:decimal" minOccurs="0"/>
+                    <xs:element name="escrowOtherAmount" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

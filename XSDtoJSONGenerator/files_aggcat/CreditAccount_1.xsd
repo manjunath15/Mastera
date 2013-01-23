@@ -1,0 +1,56 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:acc="http://schema.intuit.com/platform/fdatafeed/account/v1"
+	xmlns:tns="http://schema.intuit.com/platform/fdatafeed/creditaccount/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/creditaccount/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/account/v1" schemaLocation="Account_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element name="CreditAccount">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="acc:Account">
+                    <xs:sequence>
+                      <xs:element name="creditAccountType" minOccurs="0" type="tns:CreditAccountType" />
+                      <xs:element name="detailedDescription" minOccurs="0" type="xs:string"   />
+                      <xs:element name="interestRate" minOccurs="0" type="xs:decimal"   />
+                      <xs:element name="creditAvailableAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="creditMaxAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="cashAdvanceAvailableAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="cashAdvanceMaxAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="cashAdvanceBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="cashAdvanceInterestRate" minOccurs="0" type="xs:decimal"   />
+                      <xs:element name="currentBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="paymentMinAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="paymentDueDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="previousBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="statementEndDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="statementPurchaseAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="statementFinanceAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="pastDueAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lastPaymentAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lastPaymentDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="statementCloseBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="statementLateFeeAmount" minOccurs="0" type="xs:decimal" />
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Simple Types -->
+
+    <xs:simpleType name="CreditAccountType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="CREDITCARD"/>
+         <xs:enumeration value="LINEOFCREDIT"/>
+         <xs:enumeration value="OTHER"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+</xs:schema>

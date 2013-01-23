@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Last Modified $DateTime: 2011/01/20 14:37:19 $ and $Revision: #11 $ -->
+
+<xs:schema 
+      xmlns:tns="http://schema.intuit.com/platform/fdatafeed/securityinfo/v1"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema"
+      xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+      targetNamespace="http://schema.intuit.com/platform/fdatafeed/securityinfo/v1"
+      elementFormDefault="qualified" attributeFormDefault="unqualified"
+      version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:complexType name="SecurityInfo">
+        <xs:sequence>
+            <xs:element name="assetClass" type="xs:string" minOccurs="0"/>
+            <xs:element name="fiAssetClass" type="xs:string" minOccurs="0"/>
+            <xs:element name="ticker" type="xs:string" minOccurs="0"/>
+            <xs:element name="uniqueId" type="xs:string" minOccurs="0"/>
+            <xs:element name="uniqueIdType" type="xs:string" minOccurs="0"/>
+            <xs:element name="asOfDate" type="xs:dateTime"  minOccurs="0"/>
+            <xs:element name="rating" type="xs:string" minOccurs="0"/>
+            <xs:element name="percent" type="xs:decimal"  minOccurs="0"/>
+            <xs:element name="fiId" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="fundName" type="xs:string" minOccurs="0"/>
+            <xs:element name="memo" type="xs:string" minOccurs="0"/>
+            <xs:element name="symbolRefId" type="xs:string" minOccurs="0"/>
+            <xs:element name="currencyCode" type="cm:CurrencyCode" minOccurs="0"/>
+            <xs:element name="currencyRate" type="xs:decimal"  minOccurs="0"/>
+            <xs:element name="unitPrice" type="xs:decimal"  minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="DebtInfo">
+        <xs:complexContent>
+            <xs:extension base="tns:SecurityInfo">
+                <xs:sequence>
+                    <xs:element name="callDate" type="xs:dateTime"  minOccurs="0"/>
+                    <xs:element name="yieldToCall" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="callPrice" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="callType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="couponFreq" type="xs:string" minOccurs="0"/>
+                    <xs:element name="couponMaturityDate" type="xs:dateTime"  minOccurs="0"/>
+                    <xs:element name="couponRate" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="debtClass" type="xs:string" minOccurs="0"/>
+                    <xs:element name="debtType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="maturityDate" type="xs:dateTime"  minOccurs="0"/>
+                    <xs:element name="yieldToMaturity" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="parValue" type="xs:decimal"  minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="MFInfo">
+        <xs:complexContent>
+            <xs:extension base="tns:SecurityInfo">
+                <xs:sequence>
+                    <xs:element name="mfType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="fundManager" type="xs:string" minOccurs="0"/>
+                    <xs:element name="yield" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="yieldAsOfDate" type="xs:dateTime"  minOccurs="0"/>
+                    <xs:element name="secCurrencyCode" type="cm:CurrencyCode" minOccurs="0"/>
+                    <xs:element name="secCurrencyRate" type="xs:decimal"  minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="StockInfo">
+        <xs:complexContent>
+            <xs:extension base="tns:SecurityInfo">
+                <xs:sequence>
+                    <xs:element name="stockType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="yield" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="yieldAsOfDate" type="xs:dateTime"  minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="OtherInfo">
+        <xs:complexContent>
+            <xs:extension base="tns:SecurityInfo">
+                <xs:sequence>
+                    <xs:element name="typeDesc" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="OptionInfo">
+        <xs:complexContent>
+            <xs:extension base="tns:SecurityInfo">
+                <xs:sequence>
+                    <xs:element name="expireDate" type="xs:dateTime"  minOccurs="0"/>
+                    <xs:element name="strikePrice" type="xs:decimal"  minOccurs="0"/>
+                    <xs:element name="optType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="securityUniqueId" type="xs:string" minOccurs="0"/>
+                    <xs:element name="securityUniqueIdType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sharesPerContract" type="xs:long" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="InvSecurityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MFINFO"/>
+            <xs:enumeration value="STOCKINFO"/>
+            <xs:enumeration value="OPTINFO"/>
+            <xs:enumeration value="DEBTINFO"/>
+            <xs:enumeration value="OTHERINFO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>

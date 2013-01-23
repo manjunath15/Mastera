@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.intuit.com/sb/cdm/v2"
+	targetNamespace="http://www.intuit.com/sb/cdm/v2" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../common/IntuitCdmBaseTypes.xsd"/>
+	<xs:include schemaLocation="../common/IntuitCustomFieldCdmTypes.xsd"/>
+	<xs:element name="PayrollItem" type="PayrollItem"/>
+	<xs:element name="PayrollNonWageItem" type="PayrollNonWageItem" />
+	<xs:group name="PayrollItemReferenceGroup">
+		<xs:annotation>
+			<xs:documentation>
+				Product: QBW 
+				Description: Payroll item reference group. Consists of the payroll item id and  name.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PayItemId" type="IdType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW 
+						Description: Reference to the Payroll Item object.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PayItemName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Product: QBW 
+						Description: Name of the payroll item.[br /]Max. length: 31 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="PayrollItem">
+		<xs:annotation>
+			<xs:documentation>
+				Product: QBW 
+				Description: A payroll item (wage-based) is used to track individual amounts on a paycheck for wage, salary, commission, or bonus. You can assign these payroll items to various accounts. For non-wage based payroll items, such as taxes, saving plan (401K) contributions, or direct-deposit amounts, see [a href="http://ipp.developer.intuit.com/0010_Intuit_Partner_Platform/0050_Data_Services/0500_QuickBooks_Windows/0600_Object_Reference/PayrollNonWageItem"]PayrollNonWageItem[/a].
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW  
+								Description: User recognizable name for the Payroll Item.[br /]Max. length: 31 characters.[br /]Required for the Create request.
+								Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="Active" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW
+								Description: Whether or not the payroll item is active. Inactive payroll items may be hidden from display and may not be used on financial transactions.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="Type" type="PayrollItemTypeEnum">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW 
+								Description: The type of wage line in payroll, defined in the PayrollItemTypeEnum.[br /]
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PayrollNonWageItem">
+		<xs:annotation>
+			<xs:documentation>
+				Product: QBW 
+				Description: A non-wage payroll item is used to track individual amounts on a paycheck for taxes, saving plan (401K) contributions, direct-deposit amounts - items other than wage, salary, commission, or bonus. You can assign these payroll items to various accounts. For wage-based payroll items, see [a href="http://ipp.developer.intuit.com/0010_Intuit_Partner_Platform/0050_Data_Services/0500_QuickBooks_Windows/0600_Object_Reference/PayrollItem"]PayrollItem[/a].
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmBase">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW  
+								Description: User recognizable name for the Payroll Item.[br /]Max. length: 31 characters.[br /]Required for the Create request.
+								Required: QBW
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="Active" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW
+								Description: Whether or not the payroll non-wage item is active. Inactive payroll non-wage items may be hidden from display and may not be used on financial transactions.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="Type" type="PayrollNonWageItemTypeEnum">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW 
+								Description: The type of non-wage line in payroll, defined in the PayrollNonWageItemTypeEnum.[br /]
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ExpenseAccountId" type="IdType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW
+								Description: The Expense account from which the non-wage item is paid.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ExpenseAccountName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW
+								Description: The Expense account from which the non-wage item is paid.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LiabilityAccountId" type="IdType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW
+								Description: The liability account to which the non-wage item is paid.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LiabilityAccountName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Product: QBW
+								Description: The liability account from which the non-wage item is paid.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PayrollItems">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: Provides the definition that allows bulk data transfer of Payroll Items.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmCollections">
+				<xs:sequence>
+					<xs:element name="PayrollItem" type="PayrollItem" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PayrollNonWageItems">
+		<xs:annotation>
+			<xs:documentation>
+			Product: QBW 
+			Description: Provides the definition that allows bulk data transfer of Payroll Non Wage Items
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmCollections">
+				<xs:sequence>
+					<xs:element name="PayrollNonWageItem" type="PayrollNonWageItem" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="PayrollItemTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Addition"/>
+			<xs:enumeration value="Bonus"/>
+			<xs:enumeration value="Commission"/>
+			<xs:enumeration value="Company Contribution"/>
+			<xs:enumeration value="Deduction"/>
+			<xs:enumeration value="Direct Deposit"/>
+			<xs:enumeration value="Hourly Rate"/>
+			<xs:enumeration value="Salary"/>
+			<xs:enumeration value="Tax"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PayrollNonWageItemTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Addition" />
+			<xs:enumeration value="CompanyContribution"/>
+			<xs:enumeration value="Deduction" />
+			<xs:enumeration value="DirectDeposit" />
+			<xs:enumeration value="Tax" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

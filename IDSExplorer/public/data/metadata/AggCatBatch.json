@@ -1,0 +1,28 @@
+{
+  "File": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/files/v1",
+    "attributes": [
+      {
+        "name": "name",
+        "type": "xs:string"
+      },
+      {
+        "name": "size",
+        "type": "xs:long"
+      },
+      {
+        "name": "modifiedTs",
+        "type": "xs:dateTime"
+      }
+    ]
+  },
+  "Files": {
+    "namespace": "http://schema.intuit.com/platform/fdatafeed/files/v1",
+    "attributes": [
+      {
+        "name": "file",
+        "type": "tns:File"
+      }
+    ]
+  }
+}

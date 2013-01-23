@@ -1,0 +1,122 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:acc="http://schema.intuit.com/platform/fdatafeed/account/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/loanaccount/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/loanaccount/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/account/v1" schemaLocation="Account_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element name="LoanAccount">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="acc:Account">
+                    <xs:sequence>
+                      <xs:element name="loanDescription" minOccurs="0" type="xs:string"/>
+                      <xs:element name="loanType" minOccurs="0" type="tns:LoanType"/>
+                      <xs:element name="postedDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="term" minOccurs="0" type="xs:string"   />
+                      <xs:element name="holderName" minOccurs="0" type="xs:string"   />
+                      <xs:element name="lateFeeAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="payoffAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="payoffAmountDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="referenceNumber" minOccurs="0" type="xs:string"   />
+                      <xs:element name="originalMaturityDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="taxPayeeName" minOccurs="0" type="xs:string"   />
+                      <xs:element name="principalBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="escrowBalance" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="interestRate" minOccurs="0" type="xs:decimal"   />
+                      <xs:element name="interestPeriod" minOccurs="0" type="xs:string"   />
+                      <xs:element name="initialAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="initialDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="nextPaymentPrincipalAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="nextPaymentInterestAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="nextPayment" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="nextPaymentDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="lastPaymentDueDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="lastPaymentReceiveDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="lastPaymentAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lastPaymentPrincipalAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lastPaymentInterestAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lastPaymentEscrowAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lastPaymentLastFeeAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lastPaymentLateCharge" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="principalPaidYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="interestPaidYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="insurancePaidYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="taxPaidYtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="autopayEnrolled" minOccurs="0" type="xs:boolean"     />
+                      <xs:element name="collateral" minOccurs="0" type="xs:string"   />
+                      <xs:element name="currentSchool" minOccurs="0" type="xs:string"   />
+                      <xs:element name="firstPaymentDate" minOccurs="0" type="xs:dateTime"     />
+                      <xs:element name="guarantor" minOccurs="0" type="xs:string"   />
+                      <xs:element name="firstMortgage" minOccurs="0" type="xs:boolean"    />
+                      <xs:element name="loanPaymentFreq" minOccurs="0" type="xs:string"    />
+                      <xs:element name="paymentMinAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="originalSchool" minOccurs="0" type="xs:string"   />
+                      <xs:element name="recurringPaymentAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="lender" minOccurs="0" type="xs:string"   />
+                      <xs:element name="endingBalanceAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="availableBalanceAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="loanTermType" minOccurs="0" type="tns:LoanTermType" />
+                      <xs:element name="noOfPayments" minOccurs="0" type="xs:int" />
+                      <xs:element name="balloonAmount" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="projectedInterest" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="interestPaidLtd" minOccurs="0" type="xs:decimal" />
+                      <xs:element name="interestRateType" minOccurs="0" type="tns:RateType" />
+                      <xs:element name="loanPaymentType" minOccurs="0" type="tns:PaymentType" />
+                      <xs:element name="remainingPayments" minOccurs="0" type="xs:int" />
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Simple Types -->
+
+    <xs:simpleType name="LoanTermType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="COMBO"/>
+         <xs:enumeration value="FIXED"/>
+         <xs:enumeration value="REVOLVE"/>
+         <xs:enumeration value="OPEN"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+    <xs:simpleType name="PaymentType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="INT_ONLY"/>
+         <xs:enumeration value="PRN_AND_INT"/>
+         <xs:enumeration value="PRN_PLUS_INT"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+    <xs:simpleType name="RateType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="FIXED"/>
+         <xs:enumeration value="FLOATING"/>
+         <xs:enumeration value="ARM"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="LoanType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="LOAN"/>
+         <xs:enumeration value="AUTO"/>
+         <xs:enumeration value="COMMERCIAL"/>
+         <xs:enumeration value="CONSTR"/>
+         <xs:enumeration value="CONSUMER"/>
+         <xs:enumeration value="HOMEEQUITY"/>
+         <xs:enumeration value="MILITARY"/>
+         <xs:enumeration value="MORTGAGE"/>
+         <xs:enumeration value="SMB"/>
+         <xs:enumeration value="STUDENT"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+
+</xs:schema>

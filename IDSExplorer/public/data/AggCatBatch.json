@@ -1,0 +1,80 @@
+{
+    "endpoints":[
+        {
+            "name":"listFiles",
+            "methods":[
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This API returns the list of files available for download that contain your batched customer information.",
+                    "HTTPMethod":"GET",
+                    "URI":"/export/files",
+                    "RequiresOAuth":"Y",
+                    "PopulateRequestBody":"N",
+                    "parameters":[
+                    ]
+                }
+
+            ],
+            "EntityNames":[
+                "Files"
+            ]
+        },
+        {
+            "name":"getFileData",
+            "methods":[
+                {
+                    "MethodName":"Read",
+                    "Synopsis":"This API returns the file data in the range specified in the Range header.",
+                    "HTTPMethod":"GET",
+                    "URI":"/export/files/:fileName/:Range",
+                    "RequiresOAuth":"Y",
+                    "PopulateRequestBody":"N",
+                    "parameters":[
+                        {
+                            "Name": "fileName",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        },
+                        {
+                            "Name": "Range",
+                            "Required": "N",
+                            "Default": "",
+                            "Type": "bytes"
+                        }
+                    ]
+                }
+
+            ],
+            "EntityNames":[
+
+            ]
+        },
+        {
+            "name":"deleteFile",
+            "methods":[
+                {
+                    "MethodName":"Delete",
+                    "Synopsis":"<p>This API removes the file from the calling application's file list.</p><p> This is a soft delete so the file will remain for housekeeping but will not display in the listFiles API cal</p>",
+                    "HTTPMethod":"DELETE",
+                    "URI":"/export/files/:fileName",
+                    "RequiresOAuth":"Y",
+                    "PopulateRequestBody":"N",
+                    "parameters":[
+                        {
+                            "Name": "fileName",
+                            "Required": "Y",
+                            "Default": "",
+                            "Type": "string"
+                        }
+                    ]
+                }
+
+            ],
+            "EntityNames":[
+
+            ]
+        }
+    ]
+
+}

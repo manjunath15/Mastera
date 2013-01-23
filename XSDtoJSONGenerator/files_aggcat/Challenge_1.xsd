@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+	targetNamespace="http://schema.intuit.com/platform/fdatafeed/challenge/v1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+    <xs:element name="Challenges">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="challenge">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:choice>
+                                <xs:element type="xs:string" name="text"/>
+                                <xs:element type="xs:base64Binary" name="image"/>
+                            </xs:choice>
+                            <xs:element name="choice" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="text" type="xs:string" />
+                                        <xs:element name="val" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ChallengeResponses">
+        <xs:sequence>
+            <!-- Do not allow blank answers -->
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="response">
+                <xs:simpleType>
+                    <xs:restriction base = "xs:string">
+                      <xs:minLength value="1" />
+                      <xs:pattern value=".*[^\s].*" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

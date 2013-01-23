@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.intuit.com/sb/cdm/v2"
+	targetNamespace="http://www.intuit.com/sb/cdm/v2" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../common/IntuitCdmBaseTypes.xsd"/>
+	<xs:element name="CompanyMetaData" type="CompanyMetaData" substitutionGroup="CdmObject">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: See CompanyMetaData complexType
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- ============================================================================== -->
+	<!--Complex Types definitions-->
+	<!-- ============================================================================== -->
+	<xs:complexType name="Offering">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: definition of one or many offerings associated with each company
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OfferingId" type="offeringId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL
+					Description: Required offering id.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OfferingName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+		            Product: QBO
+		            Description: Offering name
+		            Product: QBW
+		            Description: Offering name.[br /]Data Services max. length: 512 characters.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActivationDate" type="IDSDate" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL
+					Description: Offering activation date.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TrialExpiryDate" type="IDSDate" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL
+					Description: Offering trial expiration date.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CancelationDate" type="IDSDate" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL
+					Description: Offering cancel date.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Seats" type="xs:positiveInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL
+					Description: Offering licensed seats allowed.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SeatType" type="seatType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: ALL
+					Description: Offering licensed seat type allowed.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CompanyMetaData">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: QBO
+			Description: Reports information about the company, given the realm ID. The information is read-only through this API. The user may change values in the "Company/Preference/Company Contact Information" UI screen in QBO.
+			Product: QBW
+			Description: Company specific collection of attributes.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmObject">
+				<xs:sequence>
+					<xs:element name="ExternalRealmId" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+			                Product: QBO
+			                Description: Unique company string assigned by QBN system.
+			                Product: QBW
+			                Description: Unique company string assigned by QBN system.[br /]Data Services max. length: 22 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="QBNRegisteredCompanyName" type="CompanyNameType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBO
+							Description: Name of the company.
+							Product: QBW 
+							Description: Name of the company.[br /]Data Services max. length: 1024 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CompanySignUpDateTime" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW
+							Description: DateTime when this COMPANY signed up for QB data sync services.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LatestUploadDateTime" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+								Product: QBW
+								Description: DateTime when company data was last uploaded to data sync server.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LatestWritebackDateTime" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW
+							Description: DateTime when company data was last written back to QB desktop.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="QBVersion" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+			                Product: QBW
+			                Description: QB company file latest version. The format reports the major release in the first number, the minor release in the second number (always a zero), the release update (slipstream or "R") in the third number, and the build number in the final number.[br /]For example, "21 0 6 4" reports major release 21 (2011), R6, build 4. [br /]Data Services max. length: 512 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CompanyFileName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+			                Product: QBW
+			                Description: QuickBooks company file name.[br /]Data Services max. length: 512 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FlavorStratum" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+			                Product: QBW
+			                Description: QB software flavor being used on the file on the PC.[br /]Data Services max. length: 512 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SampleFile" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+							Product: QBW
+							Description: if the QB desktop file is a sample file.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="QBNCompanyUserAdminIdNumber" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+			                Product: QBW
+			                Description: IAM or QBN admin users id sequence number to group many external realms for this user under his id number.[br /]Data Services max. length: 512 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="QBNCompanyUserAdminEmail" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+			                Product: QBW
+			                Description: IAM or QBN admin users email.[br /]Data Services max. length: 512 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SyncEnabled" type="xs:boolean" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+								Product: QBW
+							Description: if company file has been signed up for data sync
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LatestForcedSyncDateTime" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>							
+								Product: QBW
+							Description: Latest forced sync dat and time stamp
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SyncEnvironmentName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+                Product: QBW
+                Description: Intuit Internal use only: env name for sync as a service ETL feature, required during sign up.[br /]Data Services max. length: 512 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Offering" type="Offering" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>							
+								Product: QBW
+							Description: Many offerings could be associated with each company
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="AddressGroup" minOccurs="0"/>
+					<xs:element name="LegalAddress" type="PhysicalAddress" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: ALL
+							Description: Legal address.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="IndustryType" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW
+							Description: The type of industry in which the company operates.[br /]Data Services max. length: 512 characters.
+							Product: QBO
+							Description: The type of industry in which the company operates.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FiscalYearStart" type="xs:int" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW
+							Description: Fiscal year start date. Cannot be created or updated in Data Services.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="IncomeTaxYearStart" type="xs:int" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW
+							Description: Income Tax Year start date. Cannot be created or updated in Data Services.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TaxForm" type="TaxFormEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW
+							Description: Tax Form type. Cannot be created or updated in Data Services.[br /]
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TaxIdentifier" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW
+							Description:Tax identifier.[br /]Data Services max. length: 512 characters.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomField" type="CustomField" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>
+							Product: QBW
+							Description: Custom field (or data extension). Only the String type is supported. [br]See [a href="http://ipp.developer.intuit.com/0010_Intuit_Partner_Platform/0050_Data_Services/0500_QuickBooks_Windows/0200_Key_Concepts/0200_Custom_Fields"]Custom Fields[/a].
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CompaniesMetaData">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Provides basic meta data information on QB company files and their data sync status
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CdmCollections">
+				<xs:sequence>
+					<xs:element name="CompanyMetaData" type="CompanyMetaData" minOccurs="0"
+						maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="offeringId">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: All requestors MUST provide a self identifying string. The default value is "ipp".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ipp"/>
+			<xs:enumeration value="cmo"/>
+			<xs:enumeration value="esbsync"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="seatType">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Seat type, either "concurrent" or "named".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="concurrent"/>
+			<xs:enumeration value="named"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CompanyNameType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TaxFormEnum">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: QBW
+			Description: Describes possible values for the Tax Forms used in the company file.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Form1040"/>
+			<xs:enumeration value="Form1065"/>
+			<xs:enumeration value="Form1120"/>
+			<xs:enumeration value="Form1120S"/>
+			<xs:enumeration value="Form990"/>
+			<xs:enumeration value="Form990PF"/>
+			<xs:enumeration value="Form990T"/>
+			<xs:enumeration value="OtherOrNone"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:group name="AddressGroup">
+		<xs:annotation>
+			<xs:documentation>			
+			Product: ALL
+			Description: Contact information group of properties. Cannot be created or updated in Data Services.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Address" type="PhysicalAddress" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>					
+						Product: QBW
+						Description: Tagged postal address.
+						Product: QBO
+						Description: Tagged postal address. For CompanyMetaData, QBO defines two company addresses:[li]An internal company address, identified by the Tag value, "COMPANY_ADDRESS"[/li][li]An external, public address, identified by the tag, "PUBLIC_ADDRESS"[/li]Note that LegalAddress has its own element.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Phone" type="TelephoneNumber" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW
+					Description: Tagged phone number.
+					Product: QBO
+					Description: Phone number. For the CompanyMetaData object, only one phone number is supported, and it maps to the Primary DeviceType.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Email" type="EmailAddress" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW
+					Description: Tagged email address.
+					Product: QBO
+					Description: Tagged email address. For CompanyMetaData, two email addresses are defined and identied with the tags, "COMPANY_EMAIL" and "EMAIL_ADDRESS_FOR_CUSTOMERS".
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Fax" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>					
+						Product: QBW
+						Description: Fax machine number.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WebSite" type="WebSiteAddress" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>					
+					Product: QBW
+					Description: Tagged web address.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<!--The End.-->
+</xs:schema>

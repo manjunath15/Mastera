@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:si="http://schema.intuit.com/platform/fdatafeed/securityinfo/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/invposition/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/invposition/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/securityinfo/v1" schemaLocation="SecurityInfo_1.xsd"/>
+
+    <xs:element name="InvestmentPosition" type="tns:InvestmentPosition" />
+    
+	<!-- COMPLEX TYPES -->
+
+    <xs:complexType name="InvestmentPosition">
+        <xs:sequence>
+            <xs:element name="investmentPositionId" type="xs:long" />
+            <xs:element name="changePercent" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="costBasis" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="currencyCode" type="cm:CurrencyCode" minOccurs="0"/>
+            <xs:element name="currencyRate" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="currencyType" type="xs:string" minOccurs="0"/>
+            <xs:element name="unitPrice" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="priceAsOfDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="cusip" type="xs:string" minOccurs="0" />
+            <xs:element name="dailyChange" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="memo" type="xs:string" minOccurs="0" />
+            <xs:element name="empPretaxContribAmount" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="empMatchAmount" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="heldInAccount" type="xs:string" minOccurs="0" />
+            <xs:element name="holdType" type="xs:string" minOccurs="0" />
+            <xs:element name="investmentAllocation" type="xs:string" minOccurs="0" />
+            <xs:element name="investmentDirection" type="xs:string" minOccurs="0" />
+            <xs:element name="paidPrice" type="xs:decimal" minOccurs="0" />
+            <xs:element name="marketValue" type="xs:decimal" minOccurs="0" />
+            <xs:element name="maturityValue" type="xs:decimal" minOccurs="0" />
+            <xs:element name="units" type="xs:decimal" minOccurs="0" />
+            <xs:element name="unitUserQuantity" type="xs:decimal" minOccurs="0" />
+            <xs:element name="unitStreetQuantity" type="xs:decimal" minOccurs="0" />
+            <xs:element name="positionType" type="xs:string" minOccurs="0" />
+            <xs:element name="positionStatus" type="xs:string" minOccurs="0" />
+            <xs:element name="secured" type="xs:string" minOccurs="0" />
+            <xs:element name="inv401kSource" type="xs:string" minOccurs="0" />
+            <xs:element name="reinvestmentCapGains" type="xs:boolean" minOccurs="0" />
+            <xs:element name="reinvestmentDividend" type="xs:boolean" minOccurs="0" />
+            <xs:element name="transactionType" type="xs:string" minOccurs="0" />
+            <xs:element name="invSecurityType" type="si:InvSecurityType" minOccurs="0"/>
+            <xs:choice>
+                <xs:element name="debtInfo" type="si:DebtInfo" minOccurs="0"/>
+                <xs:element name="mfInfo" type="si:MFInfo" minOccurs="0"/>
+                <xs:element name="stockInfo" type="si:StockInfo" minOccurs="0"/>
+                <xs:element name="optionInfo" type="si:OptionInfo" minOccurs="0"/>
+                <xs:element name="otherInfo" type="si:OtherInfo" minOccurs="0"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="InvestmentPositions">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="position" type="tns:InvestmentPosition"
+				minOccurs="0" maxOccurs="unbounded">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+
+</xs:schema>

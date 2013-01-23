@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cm="http://schema.intuit.com/platform/fdatafeed/common/v1"
+    xmlns:txn="http://schema.intuit.com/platform/fdatafeed/transaction/v1"
+    xmlns:tns="http://schema.intuit.com/platform/fdatafeed/ibnktransaction/v1"
+    targetNamespace="http://schema.intuit.com/platform/fdatafeed/ibnktransaction/v1"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
+    version="1.0" id="AGG">
+
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/common/v1" schemaLocation="Common_1.xsd"/>
+    <xs:import namespace="http://schema.intuit.com/platform/fdatafeed/transaction/v1" schemaLocation="Transaction_1.xsd"/>
+
+	<!-- COMPLEX TYPES -->
+
+    <xs:element type="tns:InvestmentBankingTransaction" name="InvestmentBankingTransaction"/>
+
+    <xs:complexType name="InvestmentBankingTransaction">
+        <xs:complexContent>
+            <xs:extension base="txn:Transaction">
+                <xs:sequence>
+                    <xs:element name="bankingTransactionType" type="xs:string" minOccurs="0"/>
+                    <xs:element name="subaccountFundType" type="txn:InvestmentSubAccountType" minOccurs="0"/>
+                    <xs:element name="banking401KSourceType" type="tns:Banking401KSourceType" minOccurs="0" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- simple types -->
+
+    <xs:simpleType name="Banking401KSourceType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PRETAX"/>
+            <xs:enumeration value="AFTERTAX"/>
+            <xs:enumeration value="MATCH"/>
+            <xs:enumeration value="PROFITSHARING"/>
+            <xs:enumeration value="ROLLOVER"/>
+            <xs:enumeration value="OTHERVEST"/>
+            <xs:enumeration value="OTHERNONVEST"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>
